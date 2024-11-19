@@ -1,0 +1,105 @@
++------------------+       +------------------+
+|   Utilisateur    |       |    Entreprise    |
++------------------+       +------------------+
+| id_utilisateur   | 1 --- | id_entreprise    |
+| nom              |       | nom              |
+| email            |       | adresse          |
+| téléphone        |       | ...              |
+| mot_de_passe     |       +------------------+
+| niveau_acces     |
+| status           |
++------------------+
+
++------------------+       +------------------+       +------------------+
+|      Produit     |       |       Stock      |       |      Client      |
++------------------+       +------------------+       +------------------+
+| id_produit       | 1 --- | id_produit       | 1 --- | id_client        |
+| nom              |       | quantite         |       | nom              |
+| nature           |       | date_enreg       |       | telephone        |
+| unite            |       | status           |       | adresse          |
+| prix_standard    |       | entreprise_id    |       +------------------+
+| prix_minimum     |       +------------------+
+| quantite_dispo   |
++------------------+       
+
++------------------+       +------------------+
+|      Vente       |       |      Trace       |
++------------------+       +------------------+
+| id_vente         | 1 --- | id_trace         |
+| id_utilisateur   |       | id_utilisateur   |
+| id_client        |       | date_heure       |
+| date_vente       |       | libelle          |
+| prix             |       +------------------+
+| status_vente     |
++------------------+
+
+### 1. **Modèle logique de données**
+
+**Entités principales :**
+
+1. **Entreprise**
+   - `id_entreprise` (PK)
+   - `nom_entreprise`
+   - `adresse_entreprise`
+   - `id_utilisateur` (FK, l'utilisateur créateur de l'entreprise)
+
+2. **Utilisateur**
+   - `id_utilisateur` (PK)
+   - `nom`
+   - `email`
+   - `telephone`
+   - `mot_de_passe`
+   - `niveau_acces` (0: administrateur, 1: utilisateur de niveau 1, 2: utilisateur de niveau 2, 3: utilisateur de niveau 3)
+   - `status` (révoqué: oui/non)
+   - `id_entreprise` (FK, entreprise à laquelle l'utilisateur appartient)
+
+3. **Produit**
+   - `id_produit` (PK)
+   - `nom_produit`
+   - `nature` (service/article)
+   - `unite` (piece, packet, carton, sans unité)
+   - `prix_standard`
+   - `prix_minimum`
+   - `quantite_disponible`
+   - `id_entreprise` (FK)
+
+4. **Stock**
+   - `id_stock` (PK)
+   - `id_produit` (FK)
+   - `quantite`
+   - `date_enregistrement`
+   - `status` (validé/non validé)
+   - `id_entreprise` (FK)
+
+5. **Client**
+   - `id_client` (PK)
+   - `nom_client`
+   - `numero_client`
+   - `adresse_client`
+   - `id_entreprise` (FK)
+
+6. **Vente**
+   - `id_vente` (PK)
+   - `id_utilisateur` (FK, utilisateur ayant effectué la vente)
+   - `id_client` (FK)
+   - `id_produit` (FK)
+   - `prix_vente`
+   - `date_vente`
+   - `status_vente` (complétée/annulée)
+   - `id_entreprise` (FK)
+
+7. **Trace**
+   - `id_trace` (PK)
+   - `id_utilisateur` (FK)
+   - `date_action`
+   - `libelle_action`
+   - `id_entreprise` (FK)
+
+**Relations :**
+- Une **entreprise** a plusieurs **utilisateurs** et plusieurs **produits**.
+- Un **utilisateur** peut créer plusieurs **entreprises**, en être administrateur, ou avoir des niveaux d'accès spécifiques.
+- Un **produit** peut être en plusieurs enregistrements de **stock**.
+- Une **vente** est liée à un **produit** et un **client**.
+- Un **utilisateur** génère une **trace** pour chaque action effectuée.
+
+

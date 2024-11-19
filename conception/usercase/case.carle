@@ -1,0 +1,36 @@
+tous ces cas d'utilisation se font avec avec un maximum de protocole de sécurité pour protéger le serveur
+des injections sql et autres dangers pour un systeme SQL en php.
+utiliser mysqli pour les requetes sql.
+
+tout le code est async avec le xmlhttrequest. les requetes sont envoyées à des fichiers php et les boolean recus par Js.
+cas d'utilisation :
+    -s'inscrire : l'utilisateur entre son numéro de telephone ou son email et son mot de passe
+                    le systeme recupére les inputs et verifie si un utilisateur du meme email ou numero existe
+                    sinon, enregistrer dans la base de données avec un niveau administrateur et renvoyer un boolean.
+    -s'authentifier : l'utilisateur entre son email ou numéro de telephone et son mot de passe, vérification dans la
+                    base de données si l'utilisateur existe et n'est pas révoqué. on revoie un boolean 
+    -creer des nouveaux produits: ce cas d'utilisation peut se faire soit avec un fichier excel ou sans
+        -avec un fichier excel, verifier que le fichier est bien au format csv et utilise le ";" comme séparateur, et
+            tous les 06 champs sont verifiés avant d'etre inséré dans la base de données pour eviter une injection SQL
+        -sans fichier, verifier les valeurs recu par un formulaire avant de les ajouter dans la base de données
+    -modifier les valeurs d'un produits de l'entreprise dans la base de données sauf la quantité et les prix
+    -enregistrer un stock de l'entreprise 
+    -consulter la trace de ses operations 
+    -ajouter un nouveau client de l'entreprise
+    -modifier les informations d'un client de l'entreprise
+    -enregistrer une vente de l'entreprise
+    -valider un enregistrement en stock de l'entreprise
+    -annuler un enregistrement de stock de l'entreprise
+    -modifier le prix standard et minimum d'un produits de l'entreprise
+    -consulter ses rapports financiers de l'entreprise à une date
+    -consulter ses ventes de l'entreprise
+    -annuler une vente de l'entreprise
+    -consulter les ventes de l'entreprise
+    -consulter les traces faites par les utilisateurs de l'entreprise
+    -consulter les rapports financiers généraux de l'entreprise à une date
+    -creer une entreprise
+    -supprimer les produits de l'entreprise dans la base de données
+    -supprimer une vente de l'entreprise
+    -supprimer un client de l'entreprise
+    -revoquer un utilisateur
+    -non revoquer un utilisateur
