@@ -1,0 +1,444 @@
+<div id="wizard-step-0" class="inner-wrapper is-active" data-step-title="Project Files">
+    <!--src/partials/pages/wizard/wizard-v1/-->
+    <div class="step-content">
+        <div class="step-title">
+            <h2 class="dark-inverted">Les biens et services que vous offrez</h2>
+            <p>Vous pouvez passer cette etape. Vous pouvez la faire plus tard.</p>
+        </div>
+
+        <!--List Empty Search Placeholder -->
+        <div class="page-placeholder is-files">
+            <div class="placeholder-content">
+                <img class="light-image is-rounded" src="assets/img/illustrations/wizard/upload-placeholder.svg" alt="" />
+                <img class="dark-image is-rounded" src="assets/img/illustrations/wizard/upload-placeholder.svg" alt="" />
+                <h3>Télécharger le template <a href="#">ici</a></h3>
+                <p class="is-larger">
+                    Il s'agit d'un fichier excel qui contient des exemples de produits et services facturés.
+                    Modifier le à votre sauce.
+                </p>
+                <a class="action-link toggle-uploader-link">Charger le fichier</a>
+            </div>
+        </div>
+
+        <div class="uploader is-hidden">
+            <div id="actions" class="uploader-toolbar">
+                <div class="left">
+                    <div class="uploader-actions">
+                        <div class="uploader-action">
+                            <span class="inner-action fileinput-button hint--bubble hint--primary hint--top" data-hint="Add Files">
+                                <i data-feather="plus"></i>
+                            </span>
+                        </div>
+                        <div class="uploader-action">
+                            <button type="button" class="inner-action start hint--bubble hint--primary hint--top" data-hint="Upload All">
+                                <i data-feather="upload"></i>
+                            </button>
+                        </div>
+                        <div class="uploader-action">
+                            <button type="reset" class="inner-action cancel hint--bubble hint--primary hint--top" data-hint="Remove All">
+                                <i data-feather="x"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="right">
+                    <!-- The global file processing state -->
+                    <div class="fileupload-process">
+                        <div id="total-progress" class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                            <div class="progress-bar progress-bar-success" data-dz-uploadprogress></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="uploader-container">
+                <div class="upload-wrapper">
+                    <div class="upload-box fileinput-button">
+                        <div class="uploader-label">
+                            <i class="lnil lnil-cloud-upload"></i>
+                            <h3>Upload photos/videos</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="template-list" id="previews">
+                <div id="template" class="template-list-item">
+                    <div class="preview-box">
+                        <!-- This is used as the file preview template -->
+                        <div class="preview">
+                            <img data-dz-thumbnail src="https://via.placeholder.com/150x150" alt="" />
+                        </div>
+                        <div class="list-item-meta">
+                            <p class="name" data-dz-name></p>
+                            <p class="error text-danger" data-dz-errormessage></p>
+                        </div>
+                        <div class="list-item-progress">
+                            <p class="size" data-dz-size></p>
+                            <div class="progress active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                                <div class="progress-bar progress-bar-success" data-dz-uploadprogress></div>
+                            </div>
+                        </div>
+                        <div class="list-item-actions">
+                            <button class="list-item-action start hint--bubble hint--primary hint--top" data-hint="Upload File">
+                                <i data-feather="play"></i>
+                            </button>
+                            <button data-dz-remove class="list-item-action cancel hint--bubble hint--primary hint--top" data-hint="Cancel">
+                                <i data-feather="arrow-left"></i>
+                            </button>
+                            <button data-dz-remove class="list-item-action delete">
+                                <i data-feather="trash-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="wizard-step-1" class="inner-wrapper" data-step-title="Team Members">
+    <!--src/partials/pages/wizard/wizard-v1/-->
+    <div class="step-content">
+        <div class="step-title">
+            <h2 class="dark-inverted">Vos employers doivent-ils utiliser ce logiciel?</h2>
+            <p>Ajouter les différents roles. Vous pouvez y revenir plus tard.</p>
+        </div>
+
+        <!--List Empty Search Placeholder -->
+        <div class="page-placeholder is-people">
+            <div class="placeholder-content">
+                <img class="light-image is-rounded" src="assets/img/illustrations/wizard/team-placeholder.svg" alt="" />
+                <img class="dark-image is-rounded" src="assets/img/illustrations/wizard/team-placeholder.svg" alt="" />
+                <h3>Ajouter des Employers</h3>
+                <p class="is-larger">
+                    Ces employers pourront utiliser le logiciel en fonction des niveaux d'acces définis.
+                </p>
+                <a class="action-link toggle-members-link">Ajouter les</a>
+            </div>
+        </div>
+
+        <div class="project-team-wrapper is-hidden">
+            <div class="project-team-header">
+                <div class="field is-autocomplete">
+                    <div class="control has-icon">
+                        <input id="add-member" class="input" name="member" placeholder="Entrer un numéro de telephone" />
+                        <div class="form-icon">
+                            <i data-feather="search"></i>
+                        </div>
+                    </div>
+                    <div class="control has-icon">
+                        <select name="member-rol" class="input" id="">
+                            <option value="admin1">Admin 1</option>
+                        </select>
+                        <div class="form-icon">
+                            <i data-feather="search"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="h-avatar is-big">
+                    <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/8.jpg" alt="" data-user-popover="3" />
+                    <img class="badge" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/icons/flags/united-states-of-america.svg" alt="" />
+                </div>
+                <h3 class="title is-4 is-narrow is-thin" id="owner">Erik Kovalsky</h3>
+                <p class="light-text">You are the project owner</p>
+            </div>
+
+            <div class="project-team-body">
+                <div class="members-list">
+                    <div class="empty-wrap has-text-centered">
+                        <span>No team members yet</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="wizard-step-2" class="inner-wrapper" data-step-title="Project Tools">
+    <!--src/partials/pages/wizard/wizard-v1/-->
+    <div class="step-content">
+        <div class="step-title">
+            <h2 class="dark-inverted">Quelles Fonctionnalités utilisées?</h2>
+            <p>Choisissez maintenant. Vous pouvez passer l'étape et la faire plus tard.</p>
+        </div>
+
+        <div class="tools-wrapper">
+            <div class="columns is-multiline">
+                <!--Tool-->
+                <div class="column is-4">
+                    <div class="tool-card">
+                        <input type="checkbox" />
+                        <div class="tool-card-inner">
+                            <div class="media-flex-center">
+                                <div class="h-avatar">
+                                    <img class="avatar is-squared" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/photo/demo/tools/illustrator.svg" alt="" />
+                                </div>
+                                <div class="flex-meta">
+                                    <span>Gestion du Stock</span>
+                                    <span>Design Software</span>
+                                </div>
+                                <div class="flex-end">
+                                    <div class="checkmark">
+                                        <i data-feather="check"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Tool-->
+                <div class="column is-4">
+                    <div class="tool-card">
+                        <input type="checkbox" />
+                        <div class="tool-card-inner">
+                            <div class="media-flex-center">
+                                <div class="h-avatar">
+                                    <img class="avatar is-squared" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/photo/demo/tools/photoshop.svg" alt="" />
+                                </div>
+                                <div class="flex-meta">
+                                    <span>Photoshop</span>
+                                    <span>Design Software</span>
+                                </div>
+                                <div class="flex-end">
+                                    <div class="checkmark">
+                                        <i data-feather="check"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Tool-->
+                <div class="column is-4">
+                    <div class="tool-card">
+                        <input type="checkbox" />
+                        <div class="tool-card-inner">
+                            <div class="media-flex-center">
+                                <div class="h-avatar">
+                                    <img class="avatar is-squared" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/photo/demo/tools/xd.svg" alt="" />
+                                </div>
+                                <div class="flex-meta">
+                                    <span>Adobe XD</span>
+                                    <span>Design Software</span>
+                                </div>
+                                <div class="flex-end">
+                                    <div class="checkmark">
+                                        <i data-feather="check"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Tool-->
+                <div class="column is-4">
+                    <div class="tool-card">
+                        <input type="checkbox" />
+                        <div class="tool-card-inner">
+                            <div class="media-flex-center">
+                                <div class="h-avatar">
+                                    <img class="avatar is-squared" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/photo/demo/tools/figma.svg" alt="" />
+                                </div>
+                                <div class="flex-meta">
+                                    <span>Figma</span>
+                                    <span>Design Software</span>
+                                </div>
+                                <div class="flex-end">
+                                    <div class="checkmark">
+                                        <i data-feather="check"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Tool-->
+                <div class="column is-4">
+                    <div class="tool-card">
+                        <input type="checkbox" />
+                        <div class="tool-card-inner">
+                            <div class="media-flex-center">
+                                <div class="h-avatar">
+                                    <img class="avatar is-squared" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/photo/demo/tools/invision.svg" alt="" />
+                                </div>
+                                <div class="flex-meta">
+                                    <span>Invision</span>
+                                    <span>Design Software</span>
+                                </div>
+                                <div class="flex-end">
+                                    <div class="checkmark">
+                                        <i data-feather="check"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Tool-->
+                <div class="column is-4">
+                    <div class="tool-card">
+                        <input type="checkbox" />
+                        <div class="tool-card-inner">
+                            <div class="media-flex-center">
+                                <div class="h-avatar">
+                                    <img class="avatar is-squared" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/photo/demo/tools/jira.svg" alt="" />
+                                </div>
+                                <div class="flex-meta">
+                                    <span>Jira</span>
+                                    <span>Issue Tracker</span>
+                                </div>
+                                <div class="flex-end">
+                                    <div class="checkmark">
+                                        <i data-feather="check"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Tool-->
+                <div class="column is-4">
+                    <div class="tool-card">
+                        <input type="checkbox" />
+                        <div class="tool-card-inner">
+                            <div class="media-flex-center">
+                                <div class="h-avatar">
+                                    <img class="avatar is-squared" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/photo/demo/tools/taiga.svg" alt="" />
+                                </div>
+                                <div class="flex-meta">
+                                    <span>Taiga</span>
+                                    <span>Scrumboard</span>
+                                </div>
+                                <div class="flex-end">
+                                    <div class="checkmark">
+                                        <i data-feather="check"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Tool-->
+                <div class="column is-4">
+                    <div class="tool-card">
+                        <input type="checkbox" />
+                        <div class="tool-card-inner">
+                            <div class="media-flex-center">
+                                <div class="h-avatar">
+                                    <img class="avatar is-squared" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/photo/demo/tools/slack.svg" alt="" />
+                                </div>
+                                <div class="flex-meta">
+                                    <span>Slack</span>
+                                    <span>Messaging App</span>
+                                </div>
+                                <div class="flex-end">
+                                    <div class="checkmark">
+                                        <i data-feather="check"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Tool-->
+                <div class="column is-4">
+                    <div class="tool-card">
+                        <input type="checkbox" />
+                        <div class="tool-card-inner">
+                            <div class="media-flex-center">
+                                <div class="h-avatar">
+                                    <img class="avatar is-squared" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/photo/demo/tools/asana.svg" alt="" />
+                                </div>
+                                <div class="flex-meta">
+                                    <span>Asana</span>
+                                    <span>Task Manager</span>
+                                </div>
+                                <div class="flex-end">
+                                    <div class="checkmark">
+                                        <i data-feather="check"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Tool-->
+                <div class="column is-4">
+                    <div class="tool-card">
+                        <input type="checkbox" />
+                        <div class="tool-card-inner">
+                            <div class="media-flex-center">
+                                <div class="h-avatar">
+                                    <img class="avatar is-squared" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/photo/demo/tools/teamwork.svg" alt="" />
+                                </div>
+                                <div class="flex-meta">
+                                    <span>Teamwork</span>
+                                    <span>Collaborative App</span>
+                                </div>
+                                <div class="flex-end">
+                                    <div class="checkmark">
+                                        <i data-feather="check"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Tool-->
+                <div class="column is-4">
+                    <div class="tool-card">
+                        <input type="checkbox" />
+                        <div class="tool-card-inner">
+                            <div class="media-flex-center">
+                                <div class="h-avatar">
+                                    <img class="avatar is-squared" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/photo/demo/tools/github.svg" alt="" />
+                                </div>
+                                <div class="flex-meta">
+                                    <span>GitHub</span>
+                                    <span>Code Repository</span>
+                                </div>
+                                <div class="flex-end">
+                                    <div class="checkmark">
+                                        <i data-feather="check"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Tool-->
+                <div class="column is-4">
+                    <div class="tool-card">
+                        <input type="checkbox" />
+                        <div class="tool-card-inner">
+                            <div class="media-flex-center">
+                                <div class="h-avatar">
+                                    <img class="avatar is-squared" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/photo/demo/tools/gitlab.svg" alt="" />
+                                </div>
+                                <div class="flex-meta">
+                                    <span>Gitlab</span>
+                                    <span>Code Repository</span>
+                                </div>
+                                <div class="flex-end">
+                                    <div class="checkmark">
+                                        <i data-feather="check"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

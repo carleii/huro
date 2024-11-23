@@ -1,6 +1,7 @@
 <?php
 $HURO = connectDb();
-if(isset($_POST) and !empty($_POST) and $_POST != null){
+if(isset($_POST) and !empty($_POST) and $_POST != null and isset($_POST['save-acc'])){
+    print_r($_POST);print_r($_FILES);exit();
 $utilisateur = new Utilisateur($_POST['name'], null, $_POST['telephone'], $_POST['password']);
 if ($utilisateur->register()) {
     if ($utilisateur->createEntreprise($_POST['business-name'], $_POST['business-adress'])) {
@@ -12,13 +13,13 @@ if ($utilisateur->register()) {
             if (move_uploaded_file($_FILES['resume']['tmp_name'], "./protocoles/logo/".$logo_name)) {                
                 $entreprise->updateLogo($logo_name);                                
                 # code...
-            }else {
-                die("logo error");
-            }
+            }            
         # code...
+        }        
+        if (setcookie('andhisnameisjhoncena', $utilisateur->id_utilisateur, time() + 24*60*60*360)) {
+            header("Location: ./auth-register.php?f");exit();
+            # code...
         }
-        setcookie('user_session', $utilisateur->id_utilisateur, time() + 24*60*60*360);
-        header("Location: ./");exit();
         # code...
     }else {
         // utilisateur failed
@@ -26,4 +27,4 @@ if ($utilisateur->register()) {
     }
     # code...
 }
-print_r($_POST);print_r($_FILES);exit();};
+};
