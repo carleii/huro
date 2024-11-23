@@ -1,8 +1,8 @@
 <?php
 // Classe de base Utilisateur
 class Utilisateur {
-    protected $conn;
-    protected $table = "utilisateurs";
+    protected $HURO;
+    protected $table = "utilisateur";
     public $id_utilisateur;
     public $nom;
     public $email;
@@ -12,15 +12,18 @@ class Utilisateur {
     public $status_;
     public $id_entreprise;
 
-    public function __construct() {
-        // 
+    public function __construct($nom, $email, $telephone, $mot_de_passe) {
+        $this->HURO = connectDb();
+        $this->nom = mysqli_real_escape_string($this->HURO, $nom);
+        $this->telephone = mysqli_real_escape_string($this->HURO, $telephone);
+        $this->mot_de_passe = md5(mysqli_real_escape_string($this->HURO, $mot_de_passe));
     }
 
     // Méthode pour s'inscrire
     public function register() {
-        $query = "INSERT INTO " . $this->table . " SET nom = ?, email = ?, telephone = ?, mot_de_passe = ?, niveau_acces = 1";
-        $stmt = HURO->prepare($query);
-        $stmt->bind_param("ssss", $this->nom, $this->email, $this->telephone, $this->mot_de_passe);
+        $query = "INSERT INTO " . $this->table . " (nom, telephone, mot_de_passe) VALUES (?, ?, ?)";
+        $stmt = $this->HURO->prepare($query);        
+        $stmt->bind_param("sss", $this->nom, $this->telephone, $this->mot_de_passe);
         if ($stmt->execute()) {
             return true;
         }
@@ -30,7 +33,7 @@ class Utilisateur {
     // Méthode pour s'authentifier
     public function authenticate() {
         $query = "SELECT id_utilisateur, mot_de_passe, status_, niveau_acces FROM " . $this->table . " WHERE email = ? OR telephone = ?";
-        $stmt = HURO->prepare($query);
+        $stmt = $this->HURO->prepare($query);
         $stmt->bind_param("ss", $this->email, $this->telephone);
         $stmt->execute();
         $stmt->store_result();
@@ -47,17 +50,16 @@ class Utilisateur {
     // Révoquer un utilisateur
     public function revoke() {
         $query = "UPDATE " . $this->table . " SET status_ = 'revoque' WHERE id_utilisateur = ?";
-        $stmt = HURO->prepare($query);
+        $stmt = $this->HURO->prepare($query);
         $stmt->bind_param("i", $this->id_utilisateur);
         return $stmt->execute();
     }
 
     // Créer une entreprise (Admin1)
     public function createEntreprise($nom, $adresse) {
-        $entreprise = new Entreprise;
+        $entreprise = new Entreprise($this->telephone);
         $entreprise->nom = $nom;
         $entreprise->adresse = $adresse;
-        $entreprise->id_utilisateur = $this->id_utilisateur;
         return $entreprise->create();
     }
 }
@@ -186,15 +188,12 @@ class Administrateur extends Admin3 {
 
     // Revoquer un utilisateur
     public function revokeUtilisateur($id_utilisateur) {
-        $utilisateur = new Utilisateur;
-        $utilisateur->id_utilisateur = $id_utilisateur;
-        return $utilisateur->revoke();
     }
 
     // Non révoquer un utilisateur
     public function nonRevokeUtilisateur($id_utilisateur) {
         $query = "UPDATE " . $this->table . " SET status_ = 'actif' WHERE id_utilisateur = ?";
-        $stmt = HURO->prepare($query);
+        $stmt = $this->HURO->prepare($query);
         $stmt->bind_param("i", $id_utilisateur);
         return $stmt->execute();
     }
@@ -205,26 +204,93 @@ class Administrateur extends Admin3 {
     }
 }
 
+// Classe Client
+class Client{
+    protected $HURO;
+    private $table = "client";
+
+    public $id_client;
+    public $nom;
+    public $adresse;
+    public $numero;
+    public $id_entreprise;
+
+    public function __construct() {
+        $this->HURO = connectDb();
+        // 
+    }
+
+    // Créer un client
+    public function create(){
+
+    }
+
+    // Update un client
+    public function update(){
+
+    }
+
+    // Delete un client
+    public function delete(){
+
+    }
+}
+
 // Classe Entreprise
 class Entreprise {
-    private $table = "entreprises";
+    protected $HURO;
+    private $table = "entreprise";
 
     public $id_entreprise;
     public $nom;
     public $adresse;
-    public $id_utilisateur;
+    public $telephone_utilisateur;
+    public $logo;
 
-    public function __construct() {
+    public function __construct($telephone_utilisateur) {
+        $this->HURO = connectDb();
+        $this->telephone_utilisateur = $telephone_utilisateur;
+        $query = "SELECT id_entreprise, nom_entreprise, telephone_utilisateur, logo FROM ".$this->table." WHERE telephone_utilisateur = ?  ";
+        $stmt = $this->HURO->prepare($query);
+        $stmt->bind_param('s', $telephone_utilisateur);
+        $stmt->execute();
+        $stmt->store_result();
+        if ($stmt->num_rows() != 0)   {
+            $stmt->bind_result($this->id_entreprise, $this->nom, $this->telephone_utilisateur, $this->logo);
+            $stmt->fetch();    
+            # code...
+        }
+            # code...
         // 
     }
 
     // Créer une entreprise
-    public function create() {
-        $query = "INSERT INTO " . $this->table . " SET nom = ?, adresse = ?, id_utilisateur = ?";
-        $stmt = HURO->prepare($query);
-        $stmt->bind_param("ssi", $this->nom, $this->adresse, $this->id_utilisateur);
+    public function create() {  
+        $query = "INSERT INTO " . $this->table . " (nom_entreprise, adresse_entreprise, telephone_utilisateur) VALUES (?, ?, ?)";
+        $stmt = $this->HURO->prepare($query);
+        $stmt->bind_param("ssi", $this->nom, $this->adresse, $this->telephone_utilisateur);
         if ($stmt->execute()) {
-            return true;
+            // Get id_enterprise
+            $query = "SELECT id_entreprise FROM ".$this->table." WHERE telephone_utilisateur = ?";
+            $stmt = $this->HURO->prepare($query);
+            $stmt->bind_param('i', $this->telephone_utilisateur);
+            $stmt->execute();
+            $stmt->store_result();
+            $stmt->bind_result($this->id_entreprise);
+            if ($stmt->fetch()) {           
+                // update utilisateur_id_entreprise
+                $query = "UPDATE utilisateur SET id_entreprise = ? WHERE telephone = ? ";
+                $stmt = $this->HURO->prepare($query);
+                $stmt->bind_param("is", $this->id_entreprise, $this->telephone_utilisateur);                
+                return $stmt->execute();
+                # code...
+            }else {
+                return false;
+            }
+
+
+
+            
         }
         return false;
     }
@@ -232,15 +298,24 @@ class Entreprise {
     // Supprimer une entreprise
     public function delete() {
         $query = "DELETE FROM " . $this->table . " WHERE id_entreprise = ?";
-        $stmt = HURO->prepare($query);
+        $stmt = $this->HURO->prepare($query);
         $stmt->bind_param("i", $this->id_entreprise);
+        return $stmt->execute();
+    }
+
+    // uptade logo
+    public function updateLogo($path){
+        $query = "UPDATE ".$this->table." SET logo = ? WHERE telephone_utilisateur = ? ";
+        $stmt = $this->HURO->prepare($query);
+        $stmt->bind_param("ss", $path, $this->telephone_utilisateur);
         return $stmt->execute();
     }
 }
 
 // Classe Produit
 class Produit {    
-    private $table = "produits";
+    protected $HURO;
+    private $table = "produit";
 
     public $id_produit;
     public $nom;
@@ -252,13 +327,14 @@ class Produit {
     public $id_entreprise;
 
     public function __construct() {
+        $this->HURO = connectDb();
         // 
     }
 
     // Créer un produit
     public function create() {
         $query = "INSERT INTO " . $this->table . " SET nom = ?, nature = ?, unite = ?, prix_standard = ?, prix_minimum = ?, quantite_dispo = 0, id_entreprise = ?";
-        $stmt = HURO->prepare($query);
+        $stmt = $this->HURO->prepare($query);
         $stmt->bind_param("sssssi", $this->nom, $this->nature, $this->unite, $this->prix_standard, $this->prix_minimum, $this->id_entreprise);
         return $stmt->execute();
     }
@@ -266,7 +342,7 @@ class Produit {
     // Modifier un produit
     public function update() {
         $query = "UPDATE " . $this->table . " SET nom = ?, nature = ?, unite = ?, prix_standard = ?, prix_minimum = ? WHERE id_produit = ?";
-        $stmt = HURO->prepare($query);
+        $stmt = $this->HURO->prepare($query);
         $stmt->bind_param("sssssi", $this->nom, $this->nature, $this->unite, $this->prix_standard, $this->prix_minimum, $this->id_produit);
         return $stmt->execute();
     }
@@ -274,7 +350,7 @@ class Produit {
     // Supprimer un produit
     public function delete() {
         $query = "DELETE FROM " . $this->table . " WHERE id_produit = ?";
-        $stmt = HURO->prepare($query);
+        $stmt = $this->HURO->prepare($query);
         $stmt->bind_param("i", $this->id_produit);
         return $stmt->execute();
     }
@@ -282,7 +358,8 @@ class Produit {
 
 // Classe Stock
 class Stock {    
-    private $table = "stocks";
+    protected $HURO;
+    private $table = "stock";
 
     public $id_stock;
     public $id_produit;
@@ -292,13 +369,14 @@ class Stock {
     public $id_entreprise;
 
     public function __construct() {
+        $this->HURO = connectDb();
         // 
     }
 
     // Enregistrer un stock
     public function create() {
         $query = "INSERT INTO " . $this->table . " SET id_produit = ?, quantite = ?, date_enreg = ?, status_ = 'non validé', id_entreprise = ?";
-        $stmt = HURO->prepare($query);
+        $stmt = $this->HURO->prepare($query);
         $stmt->bind_param("issi", $this->id_produit, $this->quantite, $this->date_enreg, $this->id_entreprise);
         return $stmt->execute();
     }
@@ -306,7 +384,7 @@ class Stock {
     // Valider un stock
     public function validate() {
         $query = "UPDATE " . $this->table . " SET status_ = 'validé' WHERE id_stock = ?";
-        $stmt = HURO->prepare($query);
+        $stmt = $this->HURO->prepare($query);
         $stmt->bind_param("i", $this->id_stock);
         return $stmt->execute();
     }
@@ -314,7 +392,7 @@ class Stock {
     // Annuler un stock
     public function cancel() {
         $query = "DELETE FROM " . $this->table . " WHERE id_stock = ?";
-        $stmt = HURO->prepare($query);
+        $stmt = $this->HURO->prepare($query);
         $stmt->bind_param("i", $this->id_stock);
         return $stmt->execute();
     }
@@ -322,7 +400,8 @@ class Stock {
 
 // Classe Vente
 class Vente {    
-    private $table = "ventes";
+    protected $HURO;
+    private $table = "vente";
 
     public $id_vente;
     public $id_utilisateur;
@@ -333,13 +412,14 @@ class Vente {
     public $id_entreprise;
 
     public function __construct() {
+        $this->HURO = connectDb();
         // 
     }
 
     // Enregistrer une vente
     public function create() {
         $query = "INSERT INTO " . $this->table . " SET id_utilisateur = ?, id_client = ?, date_vente = ?, prix = ?, status__vente = 'complète', id_entreprise = ?";
-        $stmt = HURO->prepare($query);
+        $stmt = $this->HURO->prepare($query);
         $stmt->bind_param("iissi", $this->id_utilisateur, $this->id_client, $this->date_vente, $this->prix, $this->id_entreprise);
         return $stmt->execute();
     }
@@ -347,7 +427,15 @@ class Vente {
     // Annuler une vente
     public function cancel() {
         $query = "UPDATE " . $this->table . " SET status__vente = 'annulée' WHERE id_vente = ?";
-        $stmt = HURO->prepare($query);
+        $stmt = $this->HURO->prepare($query);
+        $stmt->bind_param("i", $this->id_vente);
+        return $stmt->execute();
+    }
+
+     // Supprimer une vente
+     public function delete() {
+        $query = "UPDATE " . $this->table . " SET status__vente = 'annulée' WHERE id_vente = ?";
+        $stmt = $this->HURO->prepare($query);
         $stmt->bind_param("i", $this->id_vente);
         return $stmt->execute();
     }
@@ -355,7 +443,8 @@ class Vente {
 
 // Classe Trace
 class Trace {    
-    private $table = "traces";
+    protected $HURO;
+    private $table = "trace";
 
     public $id_trace;
     public $id_utilisateur;
@@ -363,13 +452,14 @@ class Trace {
     public $libelle;
 
     public function __construct() {
+        $this->HURO = connectDb();
         // 
     }
 
     // Enregistrer une trace
     public function create() {
         $query = "INSERT INTO " . $this->table . " SET id_utilisateur = ?, date_heure = ?, libelle = ?";
-        $stmt = HURO->prepare($query);
+        $stmt = $this->HURO->prepare($query);
         $stmt->bind_param("iss", $this->id_utilisateur, $this->date_heure, $this->libelle);
         return $stmt->execute();
     }
