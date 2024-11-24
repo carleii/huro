@@ -1,10 +1,14 @@
 <?php
 // Environnement
 require_once './ressources/configuration/envi.php';
-// Database
+// Database path
 require_once './ressources/database/huro.php';
 // Entities
 require_once './ressources/entities/class.php';
+// base de données var
+$HURO = connectDb();
+// Get cookie
+require_once './protocoles/cookie/$_cookie.php';
 // Formulaire
 // 1. GET
 require_once './protocoles/get/$_get.php';

@@ -40,15 +40,15 @@ class Utilisateur
     // Méthode pour s'authentifier
     public function authenticate()
     {
-        $query = "SELECT id_utilisateur, mot_de_passe, status_, niveau_acces FROM " . $this->table . " WHERE email = ? OR telephone = ?";
+        $query = "SELECT id_utilisateur, mot_de_passe, status_, niveau_acces FROM " . $this->table . " WHERE telephone = ?";
         $stmt = $this->HURO->prepare($query);
-        $stmt->bind_param("ss", $this->email, $this->telephone);
+        $stmt->bind_param("s", $this->telephone);
         $stmt->execute();
         $stmt->store_result();
         $stmt->bind_result($this->id_utilisateur, $stored_pass, $this->status_, $this->niveau_acces);
 
         if ($stmt->fetch()) {
-            if (password_verify($this->mot_de_passe, $stored_pass) && $this->status_ != 'revoque') {
+            if ($this->mot_de_passe == $stored_pass && $this->status_ != 'revoque') {
                 return true;
             }
         }
@@ -83,15 +83,9 @@ class Admin1 extends Utilisateur
     }
 
     // Créer un produit
-    public function createProduit($nom, $nature, $unite, $prix_standard, $prix_minimum, $id_entreprise)
+    public function createProduit($id_produit, $id_entreprise, $nom, $prix_standard, $prix_minimum, $nature, $unite, $quantite_dispo)
     {
-        $produit = new Produit;
-        $produit->nom = $nom;
-        $produit->nature = $nature;
-        $produit->unite = $unite;
-        $produit->prix_standard = $prix_standard;
-        $produit->prix_minimum = $prix_minimum;
-        $produit->id_entreprise = $id_entreprise;
+        $produit = new Produit($id_produit, $id_entreprise, $nom, $prix_standard, $prix_minimum, $nature, $unite, $quantite_dispo);       
         return $produit->create();
     }
 
@@ -386,9 +380,9 @@ class Produit
     // Créer un produit
     public function create()
     {
-        $query = "INSERT INTO " . $this->table . "(nom_produit, prix_standard, prix_minimum, id_entreprise) VALUES (?, ?, ?, ?)";
+        $query = "INSERT INTO " . $this->table . "(nom_produit, prix_standard, prix_minimum, id_entreprise, nature, unite, quantite_disponible) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->HURO->prepare($query);
-        $stmt->bind_param("siii", $this->nom, $this->prix_standard, $this->prix_minimum, $this->id_entreprise);
+        $stmt->bind_param("siiissi", $this->nom, $this->prix_standard, $this->prix_minimum, $this->id_entreprise, $this->nature, $this->unite, $this->quantite_dispo);
         return $stmt->execute();
     }
 
