@@ -3,7 +3,7 @@
 $tellToUser = "";
 // register
 if(isset($_POST) and !empty($_POST) and $_POST != null and isset($_POST['save-acc'])){
-    $utilisateur = new Utilisateur($_POST['name'], $_POST['telephone'], $_POST['password'], null, 1);
+    $utilisateur = new Utilisateur($_POST['name'], $_POST['telephone'], $_POST['password'], null, 4);
     if ($utilisateur->register()) {
         if ($utilisateur->id_entreprise = $utilisateur->createEntreprise($_POST['business-name'], $_POST['business-adress'])) {
             // logo
@@ -39,15 +39,15 @@ if(isset($_POST) and !empty($_POST) and $_POST != null and isset($_POST['save-ac
             if (isset($_POST['resume_employer'])) {
             $tels = explode(",", $_POST['resume_employer']);
             for ($i=0; $i < count($tels); $i++) { 
-                    $employer = new Utilisateur("Employer", $tels[$i], $tels[$i], $utilisateur->id_entreprise, 2);
+                    $employer = new Utilisateur("Employer", $tels[$i], $tels[$i], $utilisateur->id_entreprise, 3);
                     $employer->register();
                 # code...
             }
             # code...
             }   
                     
-            if (setcookie('andhisnameisjhoncena', $utilisateur->telephone, time() + 24*60*60*30)) {
-                header("Location: ./?f");exit();
+            if (setcookie('andhisnameisjhoncena', $utilisateur->telephone.'$$$'.$utilisateur->mot_de_passe, time() + 24*60*60*30)) {
+                header("Location: index.php?f");exit();
                 # code...
             }
             # code...
@@ -61,8 +61,8 @@ if(isset($_POST) and !empty($_POST) and $_POST != null and isset($_POST['save-ac
 if (isset($_POST['login'])) {
     $utilisateur = new Utilisateur(null, $_POST['tel'], $_POST['password']);
     if ($utilisateur->authenticate()) {
-        if (setcookie('andhisnameisjhoncena', $utilisateur->telephone, time() + 24*60*60*30)) {
-            header("Location: ./?f");exit();
+        if (setcookie('andhisnameisjhoncena', $utilisateur->telephone.'$$$'.$utilisateur->mot_de_passe, time() + 24*60*60*30)) {
+            header("Location: index.php?f");exit();
             # code...
         }
         # code...

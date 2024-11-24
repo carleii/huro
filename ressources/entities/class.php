@@ -40,17 +40,15 @@ class Utilisateur
     // Méthode pour s'authentifier
     public function authenticate()
     {
-        $query = "SELECT id_utilisateur, mot_de_passe, status_, niveau_acces FROM " . $this->table . " WHERE telephone = ?";
+        $query = "SELECT nom, mot_de_passe, status_, niveau_acces, id_entreprise FROM " . $this->table . " WHERE telephone = ?";
         $stmt = $this->HURO->prepare($query);
         $stmt->bind_param("s", $this->telephone);
         $stmt->execute();
         $stmt->store_result();
-        $stmt->bind_result($this->id_utilisateur, $stored_pass, $this->status_, $this->niveau_acces);
+        $stmt->bind_result($this->nom, $stored_pass, $this->status_, $this->niveau_acces, $this->id_entreprise);
 
         if ($stmt->fetch()) {
-            if ($this->mot_de_passe == $stored_pass && $this->status_ != 'revoque') {
-                return true;
-            }
+            return ($this->mot_de_passe == $stored_pass && $this->status_ != 'revoque') ? true : false ;            
         }
         return false;
     }
@@ -77,9 +75,9 @@ class Utilisateur
 // Classe Admin1 (hérite de Utilisateur)
 class Admin1 extends Utilisateur
 {
-    public function __construct()
+    public function __construct($nom, $telephone, $mot_de_passe, $id_entreprise = null, $niveau_acces = null)
     {
-        parent::__construct();
+        parent::__construct($nom, $telephone, $mot_de_passe, $id_entreprise = null, $niveau_acces = null);
     }
 
     // Créer un produit
@@ -104,9 +102,9 @@ class Admin1 extends Utilisateur
 // Classe Admin2 (hérite de Admin1)
 class Admin2 extends Admin1
 {
-    public function __construct()
+    public function __construct($nom, $telephone, $mot_de_passe, $id_entreprise = null, $niveau_acces = null)
     {
-        parent::__construct();
+        parent::__construct($nom, $telephone, $mot_de_passe, $id_entreprise = null, $niveau_acces = null);
     }
 
     // Ajouter un client
@@ -155,9 +153,9 @@ class Admin2 extends Admin1
 // Classe Admin3 (hérite de Admin2)
 class Admin3 extends Admin2
 {
-    public function __construct()
+    public function __construct($nom, $telephone, $mot_de_passe, $id_entreprise = null, $niveau_acces = null)
     {
-        parent::__construct();
+        parent::__construct($nom, $telephone, $mot_de_passe, $id_entreprise = null, $niveau_acces = null);
     }
 
     // Annuler une vente
@@ -180,9 +178,9 @@ class Admin3 extends Admin2
 // Classe Administrateur (hérite de Admin3)
 class Administrateur extends Admin3
 {
-    public function __construct()
+    public function __construct($nom, $telephone, $mot_de_passe, $id_entreprise = null, $niveau_acces = null)
     {
-        parent::__construct();
+        parent::__construct($nom, $telephone, $mot_de_passe, $id_entreprise = null, $niveau_acces = null);
     }
 
     // Supprimer un produit

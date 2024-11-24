@@ -14,3 +14,5 @@ require_once './protocoles/cookie/$_cookie.php';
 require_once './protocoles/get/$_get.php';
 // 1. POST
 require_once './protocoles/post/$_post.php';
+// Get session info
+require_once './ressources/configuration/session.php';

@@ -48,7 +48,7 @@ fonctionnement :
                                     et le status qui indique si la vente est complete ou annulée
 il peut egalement ajouter d'autres utilisateurs dans son entreprise
     avec des niveaux d'acces restreints: 
-                                        niveau 0 pour administrateur
+                                        niveau 4 pour administrateur
                                         niveau 2 admin2
                                         niveau 3 admin3
                                         niveau 1 admin1
