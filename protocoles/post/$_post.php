@@ -1,10 +1,10 @@
 <?php
 $HURO = connectDb();
 if(isset($_POST) and !empty($_POST) and $_POST != null and isset($_POST['save-acc'])){
-    print_r($_POST);print_r($_FILES);exit();
-$utilisateur = new Utilisateur($_POST['name'], null, $_POST['telephone'], $_POST['password']);
+$utilisateur = new Utilisateur($_POST['name'], $_POST['telephone'], $_POST['password'], null, 1);
 if ($utilisateur->register()) {
-    if ($utilisateur->createEntreprise($_POST['business-name'], $_POST['business-adress'])) {
+    if ($utilisateur->id_entreprise = $utilisateur->createEntreprise($_POST['business-name'], $_POST['business-adress'])) {
+        // logo
         if (isset($_FILES['resume'])) {
             $entreprise = new Entreprise($utilisateur->telephone);
             $logo_name = $_FILES['resume']['name'];
@@ -15,9 +15,37 @@ if ($utilisateur->register()) {
                 # code...
             }            
         # code...
-        }        
-        if (setcookie('andhisnameisjhoncena', $utilisateur->id_utilisateur, time() + 24*60*60*360)) {
-            header("Location: ./auth-register.php?f");exit();
+        }
+        // produits
+        if (isset($_FILES['resume_product'])) {
+            $file_name = $_FILES['resume_product']['name'];
+            $fileEx = explode(".", $file_name);
+            if ($fileEx[1] == "csv") {
+                if ($handle = fopen($_FILES['resume_product']['tmp_name'],"r")) {
+                    $row = fgetcsv($handle, 1000, ";");
+                    while (($row = fgetcsv($handle, 1000, ";")) !== false) { 
+                        $product = new Produit(null, $utilisateur->id_entreprise, $row[0], $row[1], $row[2]);     
+                        $product->create();
+                    }
+                    # code...
+                }
+                # code...
+            }                    
+        # code...
+        }
+        // employers
+        if (isset($_POST['resume_employer'])) {
+           $tels = explode(",", $_POST['resume_employer']);
+           for ($i=0; $i < count($tels); $i++) { 
+                $employer = new Utilisateur("Employer", $tels[$i], $tels[$i], $utilisateur->id_entreprise, 2);
+                $employer->register();
+            # code...
+           }
+        # code...
+        }   
+                 
+        if (setcookie('andhisnameisjhoncena', $utilisateur->telephone, time() + 24*60*60*30)) {
+            header("Location: ./?f");exit();
             # code...
         }
         # code...
