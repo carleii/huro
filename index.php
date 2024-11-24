@@ -107,7 +107,7 @@
                                                 de <?php echo $entreprise->nom ?>
                                             </p>
                                             <div class="button-wrap">
-                                                <a class="button h-button is-info is-outlined is-rounded is-raised">Configure Shop</a>
+                                                <a class="button h-button is-info is-outlined is-rounded is-raised" href="./produit.php">Configure Shop</a>
                                             </div>
                                         </div>
                                         <!--Card-->

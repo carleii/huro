@@ -21,9 +21,9 @@
                             <i class="sidebar-svg" data-feather="activity"></i>
                         </a>
                     </li>
-                    <!-- Layouts -->
+                    <!-- Produits -->
                     <li>
-                        <a href="admin-grid-users-1.html" id="layouts-sidebar-menu" data-content="Layouts">
+                        <a href="./produit.php" id="produits-sidebar-menu" data-content="produits">
                             <i class="sidebar-svg" data-feather="grid"></i>
                         </a>
                     </li>
