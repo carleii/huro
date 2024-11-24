@@ -2,7 +2,6 @@
 <html lang="en">
 
 
-<!-- Mirrored from huro.cssninja.io/admin-dashboards-charts-apex.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 19 Nov 2024 11:42:40 GMT -->
 
 <head>
     <!-- Required meta tags  -->
@@ -10,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
-    <title>Huro :: Apex Charts</title>
+    <title>Huro :: Welcome</title>
     <link rel="icon" type="image/png" href="assets/img/favicon.png" />
 
     
@@ -891,7 +890,7 @@
 
         <!--Page body-->
 
-        <div id="home-sidebar" class="sidebar-panel is-generic">
+        <div id="layouts-sidebar" class="sidebar-panel is-generic">
             <div class="subpanel-header">
                 <div class="dropdown project-dropdown dropdown-trigger is-spaced">
                     <div class="h-avatar is-small">
@@ -951,7 +950,7 @@
                     </div>
                 </div>
 
-                <h3 class="no-mb">Dashboards</h3>
+                <h3 class="no-mb">Layouts</h3>
                 <div class="panel-close">
                     <i data-feather="x"></i>
                 </div>
@@ -960,407 +959,467 @@
                 <ul>
                     <li class="has-children">
                         <div class="collapse-wrap">
+                            <a href="javascript:void(0);" class="parent-link">Lists <i data-feather="chevron-right"></i></a>
+                        </div>
+                        <ul>
+                            <li>
+                                <a class="is-submenu" href="admin-list-view-1.html">
+                                    <i class="lnil lnil-list-alt"></i>
+                                    <span>List View V1</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-list-view-2.html">
+                                    <i class="lnil lnil-list-alt"></i>
+                                    <span>List View V2</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-list-view-3.html">
+                                    <i class="lnil lnil-list-alt"></i>
+                                    <span>List View V3</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-list-view-4.html">
+                                    <i class="lnil lnil-list-alt"></i>
+                                    <span>List View V4</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-children">
+                        <div class="collapse-wrap">
+                            <a href="javascript:void(0);" class="parent-link">Flex Lists <i data-feather="chevron-right"></i></a>
+                        </div>
+                        <ul>
+                            <li>
+                                <a class="is-submenu" href="admin-list-flex-1.html">
+                                    <i class="lnil lnil-list-alt-1"></i>
+                                    <span>Flex List V1</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-list-flex-2.html">
+                                    <i class="lnil lnil-list-alt-1"></i>
+                                    <span>Flex List V2</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-list-flex-3.html">
+                                    <i class="lnil lnil-list-alt-1"></i>
+                                    <span>Flex List V3</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-children">
+                        <div class="collapse-wrap">
+                            <a href="javascript:void(0);" class="parent-link">Datatable <i data-feather="chevron-right"></i></a>
+                        </div>
+                        <ul>
+                            <li>
+                                <a class="is-submenu" href="admin-list-datatable-1.html">
+                                    <i class="lnil lnil-layout-alt"></i>
+                                    <span>Datatable V1</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-list-datatable-2.html">
+                                    <i class="lnil lnil-layout-alt"></i>
+                                    <span>Datatable V2</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-list-datatable-3.html">
+                                    <i class="lnil lnil-layout-alt"></i>
+                                    <span>Datatable V3</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-list-datatable-4.html">
+                                    <i class="lnil lnil-layout-alt"></i>
+                                    <span>Datatable V4</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-children">
+                        <div class="collapse-wrap">
+                            <a href="javascript:void(0);" class="parent-link">Placeload <i data-feather="chevron-right"></i></a>
+                        </div>
+                        <ul>
+                            <li>
+                                <a class="is-submenu" href="admin-placeload-1.html">
+                                    <i class="lnil lnil-reload"></i>
+                                    <span>Placeload V1</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-placeload-2.html">
+                                    <i class="lnil lnil-reload"></i>
+                                    <span>Placeload V2</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-placeload-3.html">
+                                    <i class="lnil lnil-reload"></i>
+                                    <span>Placeload V3</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-placeload-4.html">
+                                    <i class="lnil lnil-reload"></i>
+                                    <span>Placeload V4</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="has-children">
+                        <div class="collapse-wrap">
+                            <a href="javascript:void(0);" class="parent-link">Card Grid <i data-feather="chevron-right"></i></a>
+                        </div>
+                        <ul>
+                            <li>
+                                <a class="is-submenu" href="admin-grid-cards-1.html">
+                                    <i class="lnil lnil-grid-alt"></i>
+                                    <span>Card Grid V1</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-grid-cards-2.html">
+                                    <i class="lnil lnil-grid-alt"></i>
+                                    <span>Card Grid V2</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-grid-cards-3.html">
+                                    <i class="lnil lnil-grid-alt"></i>
+                                    <span>Card Grid V3</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-grid-cards-4.html">
+                                    <i class="lnil lnil-grid-alt"></i>
+                                    <span>Card Grid V4</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-children">
+                        <div class="collapse-wrap">
+                            <a href="javascript:void(0);" class="parent-link">Tile Grid <i data-feather="chevron-right"></i></a>
+                        </div>
+                        <ul>
+                            <li>
+                                <a class="is-submenu" href="admin-grid-tiles-1.html">
+                                    <i class="lnil lnil-layout-alt-2"></i>
+                                    <span>Tile Grid V1</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-grid-tiles-2.html">
+                                    <i class="lnil lnil-layout-alt-2"></i>
+                                    <span>Tile Grid V2</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-grid-tiles-3.html">
+                                    <i class="lnil lnil-layout-alt-2"></i>
+                                    <span>Tile Grid V3</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-children">
+                        <div class="collapse-wrap">
+                            <a href="javascript:void(0);" class="parent-link">User Grid <i data-feather="chevron-right"></i></a>
+                        </div>
+                        <ul>
+                            <li>
+                                <a class="is-submenu" href="admin-grid-users-1.html">
+                                    <i class="lnil lnil-users-alt"></i>
+                                    <span>User Grid V1</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-grid-users-2.html">
+                                    <i class="lnil lnil-users-alt"></i>
+                                    <span>User Grid V2</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-grid-users-3.html">
+                                    <i class="lnil lnil-users-alt"></i>
+                                    <span>User Grid V3</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-grid-users-4.html">
+                                    <i class="lnil lnil-users-alt"></i>
+                                    <span>User Grid V4</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="has-children">
+                        <div class="collapse-wrap">
                             <a href="javascript:void(0);" class="parent-link">Personal <i data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
-                                <a class="is-submenu" href="admin-dashboards-personal-1.html">
-                                    <i class="lnil lnil-analytics-alt-1"></i>
-                                    <span>Personal V1</span>
+                                <a class="is-submenu" href="admin-profile-view.html">
+                                    <i class="lnil lnil-user-alt"></i>
+                                    <span>Profile</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="is-submenu" href="admin-dashboards-personal-2.html">
-                                    <i class="lnil lnil-pie-chart"></i>
-                                    <span>Personal V2</span>
+                                <a class="is-submenu" href="admin-profile-edit-1.html">
+                                    <i class="lnil lnil-pencil"></i>
+                                    <span>Edit Profile</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="is-submenu" href="admin-dashboards-personal-3.html">
-                                    <i class="lnil lnil-stats-up"></i>
-                                    <span>Personal V3</span>
+                                <a class="is-submenu" href="admin-profile-notifications.html">
+                                    <i class="lnil lnil-notification"></i>
+                                    <span>Notifications</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-profile-settings.html">
+                                    <i class="lnil lnil-cog"></i>
+                                    <span>Settings</span>
                                 </a>
                             </li>
                         </ul>
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Finance <i data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Pages <i data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
-                                <a class="is-submenu" href="admin-dashboards-finance-1.html">
-                                    <i class="lnil lnil-analytics-alt-1"></i>
-                                    <span>Analytics Dashboard</span>
+                                <a class="is-submenu" href="auth-login-1.html">
+                                    <i class="lnil lnil-pointer-right"></i>
+                                    <span>Login v1</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="is-submenu" href="admin-dashboards-finance-2.html">
-                                    <i class="lnil lnil-stats-up"></i>
-                                    <span>Stocks Dashboard</span>
+                                <a class="is-submenu" href="auth-login-2.html">
+                                    <i class="lnil lnil-pointer-right"></i>
+                                    <span>Login v2</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="is-submenu" href="admin-dashboards-finance-3.html">
+                                <a class="is-submenu" href="auth-login-3.html">
+                                    <i class="lnil lnil-pointer-right"></i>
+                                    <span>Login v3</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="auth-signup-2.html">
+                                    <i class="lnil lnil-crown"></i>
+                                    <span>Signup v1</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="auth-signup-3.html">
+                                    <i class="lnil lnil-crown"></i>
+                                    <span>Signup v2</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="auth-signup-1.html">
+                                    <i class="lnil lnil-crown"></i>
+                                    <span>Signup Flow</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-search-results.html">
+                                    <i class="lnil lnil-search-alt"></i>
+                                    <span>Search Results</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-search-empty.html">
+                                    <i class="lnil lnil-search-alt"></i>
+                                    <span>Empty Search</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-children">
+                        <div class="collapse-wrap">
+                            <a href="javascript:void(0);" class="parent-link">Subpages <i data-feather="chevron-right"></i></a>
+                        </div>
+                        <ul>
+                            <li>
+                                <a class="is-submenu" href="admin-saas-billing.html">
                                     <i class="lnil lnil-credit-card"></i>
-                                    <span>Sales Dashboard</span>
+                                    <span>SaaS Billing</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-welcome.html">
+                                    <i class="lnil lnil-door-alt"></i>
+                                    <span>Welcome</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-action-page-1.html">
+                                    <i class="lnil lnil-thunderbolt"></i>
+                                    <span>Action Page V1</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-action-page-2.html">
+                                    <i class="lnil lnil-thunderbolt"></i>
+                                    <span>Action Page V2</span>
                                 </a>
                             </li>
                         </ul>
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Banking <i data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Projects <i data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
-                                <a class="is-submenu" href="admin-dashboards-banking-1.html">
-                                    <i class="lnil lnil-bank"></i>
-                                    <span>Banking V1</span>
+                                <a class="is-submenu" href="admin-projects-projects.html">
+                                    <i class="lnil lnil-grid-alt"></i>
+                                    <span>Projects V1</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="is-submenu" href="admin-dashboards-banking-2.html">
-                                    <i class="lnil lnil-bank"></i>
-                                    <span>Banking V2</span>
+                                <a class="is-submenu" href="admin-projects-projects-2.html">
+                                    <i class="lnil lnil-grid-alt"></i>
+                                    <span>Projects V2</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="is-submenu" href="admin-dashboards-banking-3.html">
-                                    <i class="lnil lnil-bank"></i>
-                                    <span>Banking V3</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="has-children">
-                        <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Business <i data-feather="chevron-right"></i></a>
-                        </div>
-                        <ul>
-                            <li>
-                                <a class="is-submenu" href="admin-dashboards-business-1.html">
-                                    <i class="lnil lnil-plane-alt"></i>
-                                    <span>Flights Booking</span>
+                                <a class="is-submenu" href="admin-projects-projects-3.html">
+                                    <i class="lnil lnil-grid-alt"></i>
+                                    <span>Projects V3</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="is-submenu" href="admin-dashboards-business-2.html">
-                                    <i class="lnil lnil-apartment"></i>
-                                    <span>Company Board</span>
+                                <a class="is-submenu" href="admin-projects-project.html">
+                                    <i class="lnil lnil-layout"></i>
+                                    <span>Project Details</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="is-submenu" href="admin-dashboards-business-3.html">
-                                    <i class="lnil lnil-users-alt"></i>
-                                    <span>HR Board</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="admin-dashboards-business-4.html">
-                                    <i class="lnil lnil-graduate"></i>
-                                    <span>Course Board</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="admin-dashboards-business-5.html">
-                                    <i class="lnil lnil-briefcase"></i>
-                                    <span>Jobs Board</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="has-children">
-                        <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Lifestyle <i data-feather="chevron-right"></i></a>
-                        </div>
-                        <ul>
-                            <li>
-                                <a class="is-submenu" href="admin-dashboards-lifestyle-1.html">
-                                    <i class="lnil lnil-cardiology"></i>
-                                    <span>Influencer</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="admin-dashboards-lifestyle-2.html">
-                                    <i class="lnil lnil-cloud-sun"></i>
-                                    <span>Hobbies</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="admin-dashboards-lifestyle-3.html">
-                                    <i class="lnil lnil-hospital-alt-3"></i>
-                                    <span>Health</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="admin-dashboards-lifestyle-4.html">
-                                    <i class="lnil lnil-books"></i>
-                                    <span>Writer</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="admin-dashboards-lifestyle-5.html">
-                                    <i class="lnil lnil-video-alt-1"></i>
-                                    <span>Video</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="admin-dashboards-lifestyle-6.html">
-                                    <i class="lnil lnil-tshirt"></i>
-                                    <span>Soccer</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="has-children">
-                        <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Ecommerce <i data-feather="chevron-right"></i></a>
-                        </div>
-                        <ul>
-                            <li>
-                                <a class="is-submenu" href="admin-dashboards-ecommerce-1.html">
-                                    <i class="lnil lnil-cart"></i>
-                                    <span>Ecommerce V1</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="has-children">
-                        <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Maps <i data-feather="chevron-right"></i></a>
-                        </div>
-                        <ul>
-                            <li>
-                                <a class="is-submenu" href="admin-dashboards-map-1.html">
-                                    <i class="lnil lnil-map"></i>
-                                    <span>Map View V1</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="admin-dashboards-map-2.html">
-                                    <i class="lnil lnil-map"></i>
-                                    <span>Map View V2</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="has-children">
-                        <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Apps <i data-feather="chevron-right"></i></a>
-                        </div>
-                        <ul>
-                            <li>
-                                <a class="is-submenu" href="admin-dashboards-apps-1.html">
-                                    <i class="lnil lnil-pizza"></i>
-                                    <span>Food Delivery</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="admin-dashboards-apps-2.html">
-                                    <i class="lnil lnil-envelope"></i>
-                                    <span>Inbox</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="admin-messaging-chat.html">
-                                    <i class="lnil lnil-bubble"></i>
-                                    <span>Messaging V1</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="webapp-messaging-chat.html">
-                                    <i class="lnil lnil-bubble"></i>
-                                    <span>Messaging V2</span>
+                                <a class="is-submenu" href="admin-kanban-board.html">
+                                    <i class="lnil lnil-layout-alt-1"></i>
+                                    <span>Kanban Board</span>
                                 </a>
                             </li>
                         </ul>
                     </li>
                     <li class="divider"></li>
-                    <li>
-                        <a href="wizard-v1.html">Wizard</a>
-                    </li>
-                    <li class="divider"></li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Charts <i data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Utility <i data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
-                                <a class="is-submenu" href="admin-dashboards-charts-apex.html">
-                                    <i class="lnil lnil-pie-chart-alt"></i>
-                                    <span>Apex Charts</span>
+                                <a class="is-submenu" href="admin-utility-account-confirm.html">
+                                    <i class="lnil lnil-thunderbolt"></i>
+                                    <span>Confirm Account</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="is-submenu" href="admin-dashboards-charts-billboardjs.html">
-                                    <i class="lnil lnil-bar-chart"></i>
-                                    <span>Billboard JS</span>
+                                <a class="is-submenu" href="admin-utility-promotion.html">
+                                    <i class="lnil lnil-magnet"></i>
+                                    <span>Promotion Page</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-utility-invoice.html">
+                                    <i class="lnil lnil-calculator-alt"></i>
+                                    <span>Invoice</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-utility-status.html">
+                                    <i class="lnil lnil-checkmark-circle"></i>
+                                    <span>App Status</span>
                                 </a>
                             </li>
                         </ul>
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Widgets <i data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Onboarding <i data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
-                                <a class="is-submenu" href="admin-dashboards-widgets-ui.html">
-                                    <i class="lnil lnil-layout-alt-1"></i>
-                                    <span>UI Widgets</span>
+                                <a class="is-submenu" href="admin-onboarding-page-1.html">
+                                    <i class="lnil lnil-train"></i>
+                                    <span>Onboarding V1</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="is-submenu" href="admin-dashboards-widgets-creative.html">
-                                    <i class="lnil lnil-layout-alt-2"></i>
-                                    <span>Creative Widgets</span>
+                                <a class="is-submenu" href="admin-onboarding-page-2.html">
+                                    <i class="lnil lnil-train-alt"></i>
+                                    <span>Onboarding V2</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="is-submenu" href="admin-dashboards-widgets-list.html">
-                                    <i class="lnil lnil-layout-alt-1"></i>
-                                    <span>List Widgets</span>
+                                <a class="is-submenu" href="admin-onboarding-page-3.html">
+                                    <i class="lnil lnil-car"></i>
+                                    <span>Onboarding V3</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="is-submenu" href="admin-dashboards-widgets-stats.html">
-                                    <i class="lnil lnil-layout-alt-2"></i>
-                                    <span>Stat Widgets</span>
+                                <a class="is-submenu" href="admin-onboarding-page-4.html">
+                                    <i class="lnil lnil-car-alt"></i>
+                                    <span>Onboarding V4</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-onboarding-page-5.html">
+                                    <i class="lnil lnil-train"></i>
+                                    <span>Onboarding V5</span>
                                 </a>
                             </li>
                         </ul>
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Form Layouts <i data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Error Pages <i data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
-                                <a class="is-submenu" href="admin-form-layouts-1.html">
-                                    <i class="lnil lnil-passport"></i>
-                                    <span>Form Layout V1</span>
+                                <a class="is-submenu" href="error-page-1.html">
+                                    <i class="lnil lnil-cross-circle"></i>
+                                    <span>Error 404 V1</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="is-submenu" href="admin-form-layouts-2.html">
-                                    <i class="lnil lnil-passport"></i>
-                                    <span>Form Layout V2</span>
+                                <a class="is-submenu" href="error-page-2.html">
+                                    <i class="lnil lnil-cross-circle"></i>
+                                    <span>Error 404 V2</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="is-submenu" href="admin-form-layouts-3.html">
-                                    <i class="lnil lnil-passport"></i>
-                                    <span>Form Layout V3</span>
+                                <a class="is-submenu" href="error-page-3.html">
+                                    <i class="lnil lnil-cross-circle"></i>
+                                    <span>Error 404 V3</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="is-submenu" href="admin-form-layouts-4.html">
-                                    <i class="lnil lnil-passport"></i>
-                                    <span>Form Layout V4</span>
+                                <a class="is-submenu" href="error-page-4.html">
+                                    <i class="lnil lnil-cross-circle"></i>
+                                    <span>Error 404 V4</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="is-submenu" href="admin-form-layouts-5.html">
-                                    <i class="lnil lnil-passport"></i>
-                                    <span>Form Layout V5</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="has-children">
-                        <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Starters <i data-feather="chevron-right"></i></a>
-                        </div>
-                        <ul>
-                            <li>
-                                <a class="is-submenu" href="admin-blank-page-1.html">
-                                    <i class="lnil lnil-layout"></i>
-                                    <span>Regular Sidebar</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="admin-blank-page-2.html">
-                                    <i class="lnil lnil-layout"></i>
-                                    <span>Curved Sidebar</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="admin-blank-page-3.html">
-                                    <i class="lnil lnil-layout"></i>
-                                    <span>Colored Sidebar</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="admin-blank-page-4.html">
-                                    <i class="lnil lnil-layout"></i>
-                                    <span>Curved Colored</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="admin-blank-page-5.html">
-                                    <i class="lnil lnil-layout"></i>
-                                    <span>Sidebar Labels</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="admin-blank-page-6.html">
-                                    <i class="lnil lnil-layout"></i>
-                                    <span>Hover Labels</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="admin-blank-page-7.html">
-                                    <i class="lnil lnil-layout"></i>
-                                    <span>Floating Sidebar</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="webapp-blank-page-1.html">
-                                    <i class="lnil lnil-layout-alt-1"></i>
-                                    <span>Regular Navbar</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="webapp-blank-page-2.html">
-                                    <i class="lnil lnil-layout-alt-1"></i>
-                                    <span>Fading Navbar</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="webapp-blank-page-3.html">
-                                    <i class="lnil lnil-layout-alt-1"></i>
-                                    <span>Colored Navbar</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="webapp-blank-page-4.html">
-                                    <i class="lnil lnil-layout-alt-1"></i>
-                                    <span>Dropdown Navbar</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="webapp-blank-page-5.html">
-                                    <i class="lnil lnil-layout-alt-1"></i>
-                                    <span>Colored Dropdown</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="webapp-blank-page-6.html">
-                                    <i class="lnil lnil-layout-alt-1"></i>
-                                    <span>Clean Navbar</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="webapp-blank-page-7.html">
-                                    <i class="lnil lnil-layout-alt-1"></i>
-                                    <span>Clean Centered</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="webapp-blank-page-8.html">
-                                    <i class="lnil lnil-layout-alt-1"></i>
-                                    <span>Clean Transparent</span>
+                                <a class="is-submenu" href="error-page-5.html">
+                                    <i class="lnil lnil-cross-circle"></i>
+                                    <span>Error 500 V1</span>
                                 </a>
                             </li>
                         </ul>
@@ -1371,377 +1430,478 @@
         <div class="mobile-subsidebar">
             <div class="inner">
                 <div class="sidebar-title">
-                    <h3>Dashboards</h3>
+                    <h3>Layouts</h3>
                 </div>
 
-                <ul class="submenu" data-simplebar>
+                <ul class="submenu">
+                    <li class="has-children">
+                        <div class="collapse-wrap">
+                            <a href="javascript:void(0);" class="parent-link">Lists <i data-feather="chevron-right"></i></a>
+                        </div>
+                        <ul>
+                            <li>
+                                <a class="is-submenu" href="admin-list-view-1.html">
+                                    <i class="lnil lnil-list-alt"></i>
+                                    <span>List View V1</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-list-view-2.html">
+                                    <i class="lnil lnil-list-alt"></i>
+                                    <span>List View V2</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-list-view-3.html">
+                                    <i class="lnil lnil-list-alt"></i>
+                                    <span>List View V3</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-list-view-4.html">
+                                    <i class="lnil lnil-list-alt"></i>
+                                    <span>List View V4</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-children">
+                        <div class="collapse-wrap">
+                            <a href="javascript:void(0);" class="parent-link">Flex Lists <i data-feather="chevron-right"></i></a>
+                        </div>
+                        <ul>
+                            <li>
+                                <a class="is-submenu" href="admin-list-flex-1.html">
+                                    <i class="lnil lnil-list-alt-1"></i>
+                                    <span>Flex List V1</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-list-flex-2.html">
+                                    <i class="lnil lnil-list-alt-1"></i>
+                                    <span>Flex List V2</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-list-flex-3.html">
+                                    <i class="lnil lnil-list-alt-1"></i>
+                                    <span>Flex List V3</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-children">
+                        <div class="collapse-wrap">
+                            <a href="javascript:void(0);" class="parent-link">Datatable <i data-feather="chevron-right"></i></a>
+                        </div>
+                        <ul>
+                            <li>
+                                <a class="is-submenu" href="admin-list-datatable-1.html">
+                                    <i class="lnil lnil-layout-alt"></i>
+                                    <span>Datatable V1</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-list-datatable-2.html">
+                                    <i class="lnil lnil-layout-alt"></i>
+                                    <span>Datatable V2</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-list-datatable-3.html">
+                                    <i class="lnil lnil-layout-alt"></i>
+                                    <span>Datatable V3</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-list-datatable-4.html">
+                                    <i class="lnil lnil-layout-alt"></i>
+                                    <span>Datatable V4</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-children">
+                        <div class="collapse-wrap">
+                            <a href="javascript:void(0);" class="parent-link">Placeload <i data-feather="chevron-right"></i></a>
+                        </div>
+                        <ul>
+                            <li>
+                                <a class="is-submenu" href="admin-placeload-1.html">
+                                    <i class="lnil lnil-reload"></i>
+                                    <span>Placeload V1</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-placeload-2.html">
+                                    <i class="lnil lnil-reload"></i>
+                                    <span>Placeload V2</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-placeload-3.html">
+                                    <i class="lnil lnil-reload"></i>
+                                    <span>Placeload V3</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-placeload-4.html">
+                                    <i class="lnil lnil-reload"></i>
+                                    <span>Placeload V4</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="has-children">
+                        <div class="collapse-wrap">
+                            <a href="javascript:void(0);" class="parent-link">Card Grid <i data-feather="chevron-right"></i></a>
+                        </div>
+                        <ul>
+                            <li>
+                                <a class="is-submenu" href="admin-grid-cards-1.html">
+                                    <i class="lnil lnil-grid-alt"></i>
+                                    <span>Card Grid V1</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-grid-cards-2.html">
+                                    <i class="lnil lnil-grid-alt"></i>
+                                    <span>Card Grid V2</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-grid-cards-3.html">
+                                    <i class="lnil lnil-grid-alt"></i>
+                                    <span>Card Grid V3</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-grid-cards-4.html">
+                                    <i class="lnil lnil-grid-alt"></i>
+                                    <span>Card Grid V4</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-children">
+                        <div class="collapse-wrap">
+                            <a href="javascript:void(0);" class="parent-link">Tile Grid <i data-feather="chevron-right"></i></a>
+                        </div>
+                        <ul>
+                            <li>
+                                <a class="is-submenu" href="admin-grid-tiles-1.html">
+                                    <i class="lnil lnil-layout-alt-2"></i>
+                                    <span>Tile Grid V1</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-grid-tiles-2.html">
+                                    <i class="lnil lnil-layout-alt-2"></i>
+                                    <span>Tile Grid V2</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-grid-tiles-3.html">
+                                    <i class="lnil lnil-layout-alt-2"></i>
+                                    <span>Tile Grid V3</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-children">
+                        <div class="collapse-wrap">
+                            <a href="javascript:void(0);" class="parent-link">User Grid <i data-feather="chevron-right"></i></a>
+                        </div>
+                        <ul>
+                            <li>
+                                <a class="is-submenu" href="admin-grid-users-1.html">
+                                    <i class="lnil lnil-users-alt"></i>
+                                    <span>User Grid V1</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-grid-users-2.html">
+                                    <i class="lnil lnil-users-alt"></i>
+                                    <span>User Grid V2</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-grid-users-3.html">
+                                    <i class="lnil lnil-users-alt"></i>
+                                    <span>User Grid V3</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-grid-users-4.html">
+                                    <i class="lnil lnil-users-alt"></i>
+                                    <span>User Grid V4</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
                     <li class="has-children">
                         <div class="collapse-wrap">
                             <a href="javascript:void(0);" class="parent-link">Personal <i data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
-                                <a class="is-submenu" href="admin-dashboards-personal-1.html">
-                                    <i class="lnil lnil-analytics-alt-1"></i>
-                                    <span>Personal V1</span>
+                                <a class="is-submenu" href="admin-profile-view.html">
+                                    <i class="lnil lnil-user-alt"></i>
+                                    <span>Profile</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="is-submenu" href="admin-dashboards-personal-2.html">
-                                    <i class="lnil lnil-pie-chart"></i>
-                                    <span>Personal V2</span>
+                                <a class="is-submenu" href="admin-profile-edit-1.html">
+                                    <i class="lnil lnil-pencil"></i>
+                                    <span>Edit Profile</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="is-submenu" href="admin-dashboards-personal-3.html">
-                                    <i class="lnil lnil-stats-up"></i>
-                                    <span>Personal V3</span>
+                                <a class="is-submenu" href="admin-profile-notifications.html">
+                                    <i class="lnil lnil-notification"></i>
+                                    <span>Notifications</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-profile-settings.html">
+                                    <i class="lnil lnil-cog"></i>
+                                    <span>Settings</span>
                                 </a>
                             </li>
                         </ul>
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Finance <i data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Pages <i data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
-                                <a class="is-submenu" href="admin-dashboards-finance-1.html">
-                                    <i class="lnil lnil-analytics-alt-1"></i>
-                                    <span>Analytics Dashboard</span>
+                                <a class="is-submenu" href="auth-login-1.html">
+                                    <i class="lnil lnil-pointer-right"></i>
+                                    <span>Login v1</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="is-submenu" href="admin-dashboards-finance-2.html">
-                                    <i class="lnil lnil-stats-up"></i>
-                                    <span>Stocks Dashboard</span>
+                                <a class="is-submenu" href="auth-login-2.html">
+                                    <i class="lnil lnil-pointer-right"></i>
+                                    <span>Login v2</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="is-submenu" href="admin-dashboards-finance-3.html">
+                                <a class="is-submenu" href="auth-login-3.html">
+                                    <i class="lnil lnil-pointer-right"></i>
+                                    <span>Login v3</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="auth-signup-2.html">
+                                    <i class="lnil lnil-crown"></i>
+                                    <span>Signup v1</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="auth-signup-3.html">
+                                    <i class="lnil lnil-crown"></i>
+                                    <span>Signup v2</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="auth-signup-1.html">
+                                    <i class="lnil lnil-crown"></i>
+                                    <span>Signup Flow</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-search-results.html">
+                                    <i class="lnil lnil-search-alt"></i>
+                                    <span>Search Results</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-search-empty.html">
+                                    <i class="lnil lnil-search-alt"></i>
+                                    <span>Empty Search</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-children">
+                        <div class="collapse-wrap">
+                            <a href="javascript:void(0);" class="parent-link">Subpages <i data-feather="chevron-right"></i></a>
+                        </div>
+                        <ul>
+                            <li>
+                                <a class="is-submenu" href="admin-saas-billing.html">
                                     <i class="lnil lnil-credit-card"></i>
-                                    <span>Sales Dashboard</span>
+                                    <span>SaaS Billing</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-welcome.html">
+                                    <i class="lnil lnil-door-alt"></i>
+                                    <span>Welcome</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-action-page-1.html">
+                                    <i class="lnil lnil-thunderbolt"></i>
+                                    <span>Action Page V1</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-action-page-2.html">
+                                    <i class="lnil lnil-thunderbolt"></i>
+                                    <span>Action Page V2</span>
                                 </a>
                             </li>
                         </ul>
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Banking <i data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Projects <i data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
-                                <a class="is-submenu" href="admin-dashboards-banking-1.html">
-                                    <i class="lnil lnil-bank"></i>
-                                    <span>Banking V1</span>
+                                <a class="is-submenu" href="admin-projects-projects.html">
+                                    <i class="lnil lnil-grid-alt"></i>
+                                    <span>Projects V1</span>
+                                    <i class="is-auto" data-feather="map-pin"></i>
                                 </a>
                             </li>
                             <li>
-                                <a class="is-submenu" href="admin-dashboards-banking-2.html">
-                                    <i class="lnil lnil-bank"></i>
-                                    <span>Banking V2</span>
+                                <a class="is-submenu" href="admin-projects-projects-2.html">
+                                    <i class="lnil lnil-grid-alt"></i>
+                                    <span>Projects V2</span>
+                                    <i class="is-auto" data-feather="map-pin"></i>
                                 </a>
                             </li>
                             <li>
-                                <a class="is-submenu" href="admin-dashboards-banking-3.html">
-                                    <i class="lnil lnil-bank"></i>
-                                    <span>Banking V3</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="has-children">
-                        <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Business <i data-feather="chevron-right"></i></a>
-                        </div>
-                        <ul>
-                            <li>
-                                <a class="is-submenu" href="admin-dashboards-business-1.html">
-                                    <i class="lnil lnil-plane-alt"></i>
-                                    <span>Flights Booking</span>
+                                <a class="is-submenu" href="admin-projects-projects-3.html">
+                                    <i class="lnil lnil-grid-alt"></i>
+                                    <span>Projects V3</span>
+                                    <i class="is-auto" data-feather="map-pin"></i>
                                 </a>
                             </li>
                             <li>
-                                <a class="is-submenu" href="admin-dashboards-business-2.html">
-                                    <i class="lnil lnil-apartment"></i>
-                                    <span>Company Board</span>
+                                <a class="is-submenu" href="admin-projects-project.html">
+                                    <i class="lnil lnil-layout"></i>
+                                    <span>Project Details</span>
+                                    <i class="is-auto" data-feather="map-pin"></i>
                                 </a>
                             </li>
                             <li>
-                                <a class="is-submenu" href="admin-dashboards-business-3.html">
-                                    <i class="lnil lnil-users-alt"></i>
-                                    <span>HR Board</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="admin-dashboards-business-4.html">
-                                    <i class="lnil lnil-graduate"></i>
-                                    <span>Course Board</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="admin-dashboards-business-5.html">
-                                    <i class="lnil lnil-briefcase"></i>
-                                    <span>Jobs Board</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="has-children">
-                        <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Lifestyle <i data-feather="chevron-right"></i></a>
-                        </div>
-                        <ul>
-                            <li>
-                                <a class="is-submenu" href="admin-dashboards-lifestyle-1.html">
-                                    <i class="lnil lnil-cardiology"></i>
-                                    <span>Influencer</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="admin-dashboards-lifestyle-2.html">
-                                    <i class="lnil lnil-cloud-sun"></i>
-                                    <span>Hobbies</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="admin-dashboards-lifestyle-3.html">
-                                    <i class="lnil lnil-hospital-alt-3"></i>
-                                    <span>Health</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="admin-dashboards-lifestyle-4.html">
-                                    <i class="lnil lnil-books"></i>
-                                    <span>Writer</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="admin-dashboards-lifestyle-5.html">
-                                    <i class="lnil lnil-video-alt-1"></i>
-                                    <span>Video</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="admin-dashboards-lifestyle-6.html">
-                                    <i class="lnil lnil-tshirt"></i>
-                                    <span>Soccer</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="has-children">
-                        <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Ecommerce <i data-feather="chevron-right"></i></a>
-                        </div>
-                        <ul>
-                            <li>
-                                <a class="is-submenu" href="admin-dashboards-ecommerce-1.html">
-                                    <i class="lnil lnil-cart"></i>
-                                    <span>Ecommerce V1</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="has-children">
-                        <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Maps <i data-feather="chevron-right"></i></a>
-                        </div>
-                        <ul>
-                            <li>
-                                <a class="is-submenu" href="admin-dashboards-map-1.html">
-                                    <i class="lnil lnil-map"></i>
-                                    <span>Map View V1</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="admin-dashboards-map-2.html">
-                                    <i class="lnil lnil-map"></i>
-                                    <span>Map View V2</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="has-children">
-                        <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Apps <i data-feather="chevron-right"></i></a>
-                        </div>
-                        <ul>
-                            <li>
-                                <a class="is-submenu" href="admin-dashboards-apps-1.html">
-                                    <i class="lnil lnil-pizza"></i>
-                                    <span>Food Delivery</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="admin-dashboards-apps-2.html">
-                                    <i class="lnil lnil-envelope"></i>
-                                    <span>Inbox</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="admin-messaging-chat.html">
-                                    <i class="lnil lnil-bubble"></i>
-                                    <span>Messaging V1</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="webapp-messaging-chat.html">
-                                    <i class="lnil lnil-bubble"></i>
-                                    <span>Messaging V2</span>
+                                <a class="is-submenu" href="admin-kanban-board.html">
+                                    <i class="lnil lnil-layout-alt-1"></i>
+                                    <span>Kanban Board</span>
+                                    <i class="is-auto" data-feather="map-pin"></i>
                                 </a>
                             </li>
                         </ul>
                     </li>
                     <li class="divider"></li>
-                    <li>
-                        <a href="wizard-v1.html">Wizard</a>
-                    </li>
-                    <li class="divider"></li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Charts <i data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Utility <i data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
-                                <a class="is-submenu" href="admin-dashboards-charts-apex.html">
-                                    <i class="lnil lnil-pie-chart-alt"></i>
-                                    <span>Apex Charts</span>
+                                <a class="is-submenu" href="admin-utility-account-confirm.html">
+                                    <i class="lnil lnil-thunderbolt"></i>
+                                    <span>Confirm Account</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="is-submenu" href="admin-dashboards-charts-billboardjs.html">
-                                    <i class="lnil lnil-bar-chart"></i>
-                                    <span>Billboard JS</span>
+                                <a class="is-submenu" href="admin-utility-promotion.html">
+                                    <i class="lnil lnil-magnet"></i>
+                                    <span>Promotion Page</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-utility-invoice.html">
+                                    <i class="lnil lnil-calculator-alt"></i>
+                                    <span>Invoice</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-utility-status.html">
+                                    <i class="lnil lnil-checkmark-circle"></i>
+                                    <span>App Status</span>
                                 </a>
                             </li>
                         </ul>
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Widgets <i data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Onboarding <i data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
-                                <a class="is-submenu" href="admin-dashboards-widgets-ui.html">
-                                    <i class="lnil lnil-layout-alt-1"></i>
-                                    <span>UI Widgets</span>
+                                <a class="is-submenu" href="admin-onboarding-page-1.html">
+                                    <i class="lnil lnil-train"></i>
+                                    <span>Onboarding V1</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="is-submenu" href="admin-dashboards-widgets-creative.html">
-                                    <i class="lnil lnil-layout-alt-2"></i>
-                                    <span>Creative Widgets</span>
+                                <a class="is-submenu" href="admin-onboarding-page-2.html">
+                                    <i class="lnil lnil-train-alt"></i>
+                                    <span>Onboarding V2</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="is-submenu" href="admin-dashboards-widgets-list.html">
-                                    <i class="lnil lnil-layout-alt-1"></i>
-                                    <span>List Widgets</span>
+                                <a class="is-submenu" href="admin-onboarding-page-3.html">
+                                    <i class="lnil lnil-car"></i>
+                                    <span>Onboarding V3</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="is-submenu" href="admin-dashboards-widgets-stats.html">
-                                    <i class="lnil lnil-layout-alt-2"></i>
-                                    <span>Stat Widgets</span>
+                                <a class="is-submenu" href="admin-onboarding-page-4.html">
+                                    <i class="lnil lnil-car-alt"></i>
+                                    <span>Onboarding V4</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="is-submenu" href="admin-onboarding-page-5.html">
+                                    <i class="lnil lnil-train"></i>
+                                    <span>Onboarding V5</span>
                                 </a>
                             </li>
                         </ul>
                     </li>
                     <li class="has-children">
                         <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Form Layouts <i data-feather="chevron-right"></i></a>
+                            <a href="javascript:void(0);" class="parent-link">Error Pages <i data-feather="chevron-right"></i></a>
                         </div>
                         <ul>
                             <li>
-                                <a class="is-submenu" href="admin-form-layouts-1.html">
-                                    <i class="lnil lnil-passport"></i>
-                                    <span>Form Layout V1</span>
+                                <a class="is-submenu" href="error-page-1.html">
+                                    <i class="lnil lnil-cross-circle"></i>
+                                    <span>Error 404 V1</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="is-submenu" href="admin-form-layouts-2.html">
-                                    <i class="lnil lnil-passport"></i>
-                                    <span>Form Layout V2</span>
+                                <a class="is-submenu" href="error-page-2.html">
+                                    <i class="lnil lnil-cross-circle"></i>
+                                    <span>Error 404 V2</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="is-submenu" href="admin-form-layouts-3.html">
-                                    <i class="lnil lnil-passport"></i>
-                                    <span>Form Layout V3</span>
+                                <a class="is-submenu" href="error-page-3.html">
+                                    <i class="lnil lnil-cross-circle"></i>
+                                    <span>Error 404 V3</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="is-submenu" href="admin-form-layouts-4.html">
-                                    <i class="lnil lnil-passport"></i>
-                                    <span>Form Layout V4</span>
+                                <a class="is-submenu" href="error-page-4.html">
+                                    <i class="lnil lnil-cross-circle"></i>
+                                    <span>Error 404 V4</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="is-submenu" href="admin-form-layouts-5.html">
-                                    <i class="lnil lnil-passport"></i>
-                                    <span>Form Layout V5</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="has-children">
-                        <div class="collapse-wrap">
-                            <a href="javascript:void(0);" class="parent-link">Starters <i data-feather="chevron-right"></i></a>
-                        </div>
-                        <ul>
-                            <li>
-                                <a class="is-submenu" href="admin-blank-page-1.html">
-                                    <i class="lnil lnil-layout"></i>
-                                    <span>Regular Sidebar</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="admin-blank-page-2.html">
-                                    <i class="lnil lnil-layout"></i>
-                                    <span>Curved Sidebar</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="admin-blank-page-3.html">
-                                    <i class="lnil lnil-layout"></i>
-                                    <span>Colored Sidebar</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="admin-blank-page-4.html">
-                                    <i class="lnil lnil-layout"></i>
-                                    <span>Curved Colored</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="webapp-blank-page-1.html">
-                                    <i class="lnil lnil-layout-alt-1"></i>
-                                    <span>Regular Navbar</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="webapp-blank-page-2.html">
-                                    <i class="lnil lnil-layout-alt-1"></i>
-                                    <span>Fading Navbar</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="webapp-blank-page-3.html">
-                                    <i class="lnil lnil-layout-alt-1"></i>
-                                    <span>Colored Navbar</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="webapp-blank-page-4.html">
-                                    <i class="lnil lnil-layout-alt-1"></i>
-                                    <span>Dropdown Navbar</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="is-submenu" href="webapp-blank-page-5.html">
-                                    <i class="lnil lnil-layout-alt-1"></i>
-                                    <span>Colored Dropdown</span>
+                                <a class="is-submenu" href="error-page-5.html">
+                                    <i class="lnil lnil-cross-circle"></i>
+                                    <span>Error 500 V1</span>
                                 </a>
                             </li>
                         </ul>
@@ -1752,12 +1912,12 @@
 
 
         <!-- Content Wrapper -->
-        <div id="app-home" class="view-wrapper" data-naver-offset="150" data-menu-item="#home-sidebar-menu" data-mobile-item="#home-sidebar-menu-mobile">
+        <div id="app-onboarding" class="view-wrapper" data-naver-offset="214" data-menu-item="#layouts-navbar-menu" data-mobile-item="#home-sidebar-menu-mobile">
             <div class="page-content-wrapper">
                 <div class="page-content is-relative">
                     <div class="page-title has-text-centered">
                         <!-- Sidebar Trigger -->
-                        <div class="huro-hamburger nav-trigger push-resize" data-sidebar="home-sidebar">
+                        <div class="huro-hamburger nav-trigger push-resize" data-sidebar="layouts-sidebar">
                             <span class="menu-toggle has-chevron">
                   <span class="icon-box-toggle">
                     <span class="rotate">
@@ -1770,7 +1930,7 @@
                         </div>
 
                         <div class="title-wrap">
-                            <h1 class="title is-4">Apex Charts</h1>
+                            <h1 class="title is-4">Welcome</h1>
                         </div>
 
                         <div class="toolbar ml-auto">
@@ -1866,116 +2026,57 @@
                         </div>
                     </div>
 
-                    <div class="page-content-inner apex-dashboard">
-                        <div class="columns is-multiline">
-                            <div class="column is-6">
-                                <div class="s-card">
-                                    <div id="apex-chart-1"></div>
-                                </div>
+                    <div class="page-content-inner">
+                        <div class="standard-onboarding">
+                            <div class="title-wrap">
+                                <p>Looks like you're new here</p>
+                                <h2>Welcome to Huro. What would you like to do?</h2>
                             </div>
-                            <div class="column is-6">
-                                <div class="s-card">
-                                    <div id="apex-chart-2"></div>
-                                </div>
-                            </div>
-                            <div class="column is-6">
-                                <div class="s-card">
-                                    <div id="apex-chart-4"></div>
-                                </div>
-                            </div>
-                            <div class="column is-6">
-                                <div class="s-card">
-                                    <div id="apex-chart-5"></div>
-                                </div>
-                            </div>
-                            <div class="column is-6">
-                                <div class="s-card">
-                                    <div id="apex-chart-6"></div>
-                                </div>
-                            </div>
-                            <div class="column is-6">
-                                <div class="s-card">
-                                    <div id="apex-chart-7"></div>
-                                </div>
-                            </div>
-                            <div class="column is-6">
-                                <div class="s-card">
-                                    <div id="apex-chart-8"></div>
-                                </div>
-                            </div>
-                            <div class="column is-6">
-                                <div class="s-card">
-                                    <div id="apex-chart-9"></div>
-                                </div>
-                            </div>
-                            <div class="column is-6">
-                                <div class="s-card">
-                                    <div id="apex-chart-10"></div>
-                                </div>
-                            </div>
-                            <div class="column is-6">
-                                <div class="s-card">
-                                    <div id="apex-chart-11"></div>
-                                </div>
-                            </div>
-                            <div class="column is-6">
-                                <div class="s-card">
-                                    <div id="apex-chart-12"></div>
-                                </div>
-                            </div>
-                            <div class="column is-6">
-                                <div class="s-card">
-                                    <div id="apex-chart-13"></div>
-                                </div>
-                            </div>
-                            <div class="column is-6">
-                                <div class="s-card">
-                                    <div id="apex-chart-14"></div>
-                                </div>
-                            </div>
-                            <div class="column is-6">
-                                <div class="s-card">
-                                    <div id="apex-chart-15"></div>
-                                </div>
-                            </div>
-                            <div class="column is-6">
-                                <div class="s-card">
-                                    <div id="apex-chart-16"></div>
-                                </div>
-                            </div>
-                            <div class="column is-6">
-                                <div class="s-card">
-                                    <div id="apex-chart-17"></div>
-                                </div>
-                            </div>
-                            <div class="column is-6">
-                                <div class="s-card">
-                                    <div id="apex-chart-18"></div>
-                                </div>
-                            </div>
-                            <div class="column is-6">
-                                <div class="s-card">
-                                    <div id="apex-chart-19"></div>
-                                </div>
-                            </div>
-                            <div class="column is-6">
-                                <div class="s-card">
-                                    <div id="apex-chart-20"></div>
-                                </div>
-                            </div>
-                            <div class="column is-6">
-                                <div class="s-card">
-                                    <div id="apex-chart-21"></div>
-                                </div>
-                            </div>
-                            <div class="column is-6">
-                                <div class="s-card">
-                                    <div id="apex-chart-22"></div>
-                                </div>
-                            </div>
-                            <div class="column is-6">
-                                <div class="s-card">
-                                    <div id="apex-chart-23"></div>
+
+                            <div class="onboarding-wrap">
+                                <div class="onboarding-wrap-inner">
+                                    <!--Card-->
+                                    <div class="onboarding-card">
+                                        <img class="light-image" src="assets/img/illustrations/onboarding/set1-1.svg" alt="" />
+                                        <img class="dark-image" src="assets/img/illustrations/onboarding/set1-1-dark.svg" alt="" />
+                                        <h3>Configure Shop</h3>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Recte
+                                            dicis; Ita enim vivunt quidam, ut eorum vita refellatur
+                                            oratio. Sed tament.
+                                        </p>
+                                        <div class="button-wrap">
+                                            <a class="button h-button is-primary is-outlined is-rounded is-raised">Configure Shop</a>
+                                        </div>
+                                    </div>
+                                    <!--Card-->
+                                    <div class="onboarding-card">
+                                        <img class="light-image" src="assets/img/illustrations/onboarding/set1-2.svg" alt="" />
+                                        <img class="dark-image" src="assets/img/illustrations/onboarding/set1-2-dark.svg" alt="" />
+                                        <h3>Manage Products</h3>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Recte
+                                            dicis; Ita enim vivunt quidam, ut eorum vita refellatur
+                                            oratio. Sed tament.
+                                        </p>
+                                        <div class="button-wrap">
+                                            <a class="button h-button is-primary is-outlined is-rounded is-raised">Manage Products</a>
+                                        </div>
+                                    </div>
+                                    <!--Card-->
+                                    <div class="onboarding-card">
+                                        <img class="light-image" src="assets/img/illustrations/onboarding/set1-3.svg" alt="" />
+                                        <img class="dark-image" src="assets/img/illustrations/onboarding/set1-3-dark.svg" alt="" />
+                                        <h3>Setup Payments</h3>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Recte
+                                            dicis; Ita enim vivunt quidam, ut eorum vita refellatur
+                                            oratio. Sed tament.
+                                        </p>
+                                        <div class="button-wrap">
+                                            <a class="button h-button is-primary is-outlined is-rounded is-raised">Setup Payments</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -2006,8 +2107,6 @@
         <!-- Dashboards js -->
 
         <!-- Charts js -->
-        <script src="assets/js/apex-data.js" async></script>
-        <script src="assets/js/apex.js" async></script>
 
         <!--Forms-->
 
@@ -2020,5 +2119,4 @@
 </body>
 
 
-<!-- Mirrored from huro.cssninja.io/admin-dashboards-charts-apex.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 19 Nov 2024 11:42:40 GMT -->
 </html>
