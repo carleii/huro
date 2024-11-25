@@ -71,3 +71,8 @@ if (isset($_POST['login'])) {
     }
     # code...
 }
+// Enregistrer un produit
+if (isset($_POST['save-produit'])) {
+    print_r($_POST);exit();
+    # code...
+}

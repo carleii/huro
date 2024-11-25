@@ -186,7 +186,7 @@ class Administrateur extends Admin3
     // Supprimer un produit
     public function supprimerProduit($id_produit)
     {
-        $produit = new Produit;
+        $produit = new Produit($id_produit);
         $produit->id_produit = $id_produit;
         return $produit->delete();
     }
@@ -347,7 +347,7 @@ class Produit
     public $quantite_dispo;
     public $id_entreprise;
 
-    public function __construct($id_produit, $id_entreprise, $nom, $prix_standard, $prix_minimum, $nature = null, $unite = null, $quantite_dispo = 0)
+    public function __construct($id_produit = null, $id_entreprise = null, $nom = null, $prix_standard = null, $prix_minimum = null, $nature = null, $unite = null, $quantite_dispo = 0)
     {
         $this->HURO = connectDb();
         if (!is_null($id_produit)) {

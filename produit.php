@@ -117,7 +117,7 @@
 
                         <div class="buttons">
                             <a class="button h-button is-warning is-outlined h-modal-trigger" data-modal="file-product">Utiliser un fichier</a>
-                            <button class="button h-button is-primary is-elevated">
+                            <button class="button h-button is-primary is-elevated h-modal-trigger" data-modal="uniq-product">
                                 <span class="icon">
                                     <i aria-hidden="true" class="fas fa-plus"></i>
                                 </span>
@@ -167,7 +167,7 @@
 
         <!-- Concatenated plugins -->
         <script src="assets/js/app.js"></script>
-
+       
         <!-- Huro js -->
         <script src="assets/js/functions.js"></script>
         <script src="assets/js/main.js" async></script>
@@ -177,6 +177,8 @@
 
         <!-- Additional Features -->
         <script src="assets/js/touch.js" async></script>
+         <!-- Async -->
+         <script src="./async/js/async.js"></script>
 
         <!-- Landing page js -->
 
