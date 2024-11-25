@@ -6,7 +6,12 @@ $("#enregistrer-produit").on("submit", function (e) {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
                 console.log((xhr.response));
-                notyf.error(xhr.response);
+                if (xhr.response == 1) {
+                    notyf.success("Le produit a été enregistré dans la base de données");
+                }else{
+                    notyf.error("Il semblerait que ce produit existe déjà."); 
+                }
+                
             }
         }
     }

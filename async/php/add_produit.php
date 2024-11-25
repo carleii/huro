@@ -12,7 +12,7 @@ if ($_POST['notification_selection'] == 0) {
         $_POST['prix_standard'], 
         $_POST['prix_minimum'], 
         $_POST['nature'], 
-        $_POST['unite'],
+        $_POST['fees_selection'],
         $_POST['quantite']);
     # code...
 }else {
@@ -23,7 +23,7 @@ if ($_POST['notification_selection'] == 0) {
         $_POST['prix_standard'], 
         $_POST['prix_minimum'], 
         $_POST['nature'], 
-        $_POST['unite'],
+        $_POST['fees_selection'],
         -1);
 }
-print_r($produit);
+echo $retVal = ($produit->create()) ? 1 : 0 ;

@@ -338,7 +338,7 @@
                                             <div class="select-drop has-slimscroll-sm">
                                                 <div class="drop-inner">
                                                     <div class="option-row">
-                                                        <input type="radio" value="piece" name="fees_selection">
+                                                        <input type="radio" value="piece" checked name="fees_selection">
                                                         <div class="option-meta">
                                                             <span>Piece</span>
                                                         </div>
@@ -371,13 +371,13 @@
                                     <label>Stock Illimité?</label>
                                     <div class="control">
                                         <label class="radio is-info">
-                                            <input type="radio" value="-1" name="notification_selection" checked="">
+                                            <input type="radio" value="-1" name="notification_selection" >
                                             <span></span>
                                             Oui
                                         </label>
 
                                         <label class="radio is-outlined is-primary">
-                                            <input type="radio" value="0" name="notification_selection">
+                                            <input type="radio" value="0" name="notification_selection" checked="">
                                             <span></span>
                                             Non
                                         </label>
