@@ -2,8 +2,8 @@ VALUES
     personnal home: ecomerce
     client : dashboard personnal
     entreprise et parametre: profile-settings admin-profile-1-2-3-settings
-    produit et parametre: list-datatable-1, table-flex-advanced ------------gooooooo
-    stock et parametre: flex-list-2, table-flex-advanced, icons-Inir
+    produit et parametre: list-datatable-1, table-flex-advanced  okay il reste --lien vers le produit, supprimer, modifier
+    stock et parametre: admin-project-3 --------go
     trace d'activité: admin-profile-notification
     employer et parametre: hr dashboard
     vente : utility-invoice
@@ -13,7 +13,7 @@ VALUES
     billing : saas-billing
     welcom: admin-welcom - okay il reste les liens
     approuver: kaban- valider annulation (vente, stock), flux de vente, trace
-
+    detail produit : admin-dashbord personnal-1- rapport de vente d'une periode - pourcentage(en vente, en nombre de vente, en stockage), nombre de vente
 
 main sidebar:
     1 : personal home employer

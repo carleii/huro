@@ -1,8 +1,8 @@
-nom_produit;prix_standard;prix_minimum
-Castel;650;600
-Format A4;25;20
-Toyota;1500000;1400000
-Service marketing;45000;35000
-Infographie;5000;3500
-Plat de Koki;2500;2000
-Abonnemnt Canal;10000;5000
+nom_produit;prix_standard;prix_minimum;unité de mesure;stock_disponible
+Castel;650;600;casier;3
+Format A4;25;20;rame;5
+Toyota;1500000;1400000;piece;2
+Service marketing;45000;35000;service;-1
+Infographie;5000;3500;service;-1
+Koki;2500;2000;plat;5
+Abonnement Canal;10000;5000;mensuel;-1

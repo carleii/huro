@@ -40,13 +40,13 @@ class Utilisateur
     // Méthode pour s'authentifier
     public function authenticate()
     {
+        echo $this->telephone;
         $query = "SELECT nom, mot_de_passe, status_, niveau_acces, id_entreprise FROM " . $this->table . " WHERE telephone = ?";
         $stmt = $this->HURO->prepare($query);
         $stmt->bind_param("s", $this->telephone);
         $stmt->execute();
         $stmt->store_result();
         $stmt->bind_result($this->nom, $stored_pass, $this->status_, $this->niveau_acces, $this->id_entreprise);
-
         if ($stmt->fetch()) {
             return ($this->mot_de_passe == $stored_pass && $this->status_ != 'revoque') ? true : false ;            
         }
@@ -88,13 +88,14 @@ class Admin1 extends Utilisateur
     }
 
     // Enregistrer un stock
-    public function enregistrerStock($id_produit, $quantite, $date_enreg, $id_entreprise)
+    public function enregistrerStock($id_stock, $id_produit, $quantite, $date_enreg, $id_entreprise)
     {
         $stock = new Stock;
-        $stock->id_produit = $id_produit;
-        $stock->quantite = $quantite;
+        $stock->id_stock = $id_stock;
+        $stock->id_produit = intval($id_produit);
+        $stock->quantite = intval($quantite);
         $stock->date_enreg = $date_enreg;
-        $stock->id_entreprise = $id_entreprise;
+        $stock->id_entreprise = intval($id_entreprise);
         return $stock->create();
     }
 }
@@ -145,7 +146,7 @@ class Admin2 extends Admin1
     public function validerStock($id_stock)
     {
         $stock = new Stock;
-        $stock->id_stock = $id_stock;
+        $stock->id_stock = $id_stock;   
         return $stock->validate();
     }
 }
@@ -381,15 +382,15 @@ class Produit
         $query = "INSERT INTO " . $this->table . "(nom_produit, prix_standard, prix_minimum, id_entreprise, nature, unite, quantite_disponible) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->HURO->prepare($query);
         $stmt->bind_param("siiissi", $this->nom, $this->prix_standard, $this->prix_minimum, $this->id_entreprise, $this->nature, $this->unite, $this->quantite_dispo);
-        return $stmt->execute();
+        $stmt->execute();print_r($stmt);
     }
 
     // Modifier un produit
     public function update()
     {
-        $query = "UPDATE " . $this->table . " SET nom = ?, nature = ?, unite = ?, prix_standard = ?, prix_minimum = ? WHERE id_produit = ?";
+        $query = "UPDATE " . $this->table . " SET nom_produit = ?, nature = ?, unite = ?, prix_standard = ?, prix_minimum = ?, quantite_disponible = ? WHERE id_produit = ?";
         $stmt = $this->HURO->prepare($query);
-        $stmt->bind_param("sssssi", $this->nom, $this->nature, $this->unite, $this->prix_standard, $this->prix_minimum, $this->id_produit);
+        $stmt->bind_param("sssiiii", $this->nom, $this->nature, $this->unite, $this->prix_standard, $this->prix_minimum, $this->quantite_dispo, $this->id_produit);
         return $stmt->execute();
     }
 
@@ -413,7 +414,7 @@ class Stock
     public $id_produit;
     public $quantite;
     public $date_enreg;
-    public $status_;
+    public $status_ = 0;
     public $id_entreprise;
 
     public function __construct()
@@ -425,19 +426,33 @@ class Stock
     // Enregistrer un stock
     public function create()
     {
-        $query = "INSERT INTO " . $this->table . " SET id_produit = ?, quantite = ?, date_enreg = ?, status_ = 'non validé', id_entreprise = ?";
+        $query = "INSERT INTO " . $this->table . "(id_stock, id_produit, quantite, date_enregistrement, status_, id_entreprise) VALUES (?,?,?,?,?,?)";
         $stmt = $this->HURO->prepare($query);
-        $stmt->bind_param("issi", $this->id_produit, $this->quantite, $this->date_enreg, $this->id_entreprise);
+        $stmt->bind_param("siisii", $this->id_stock, $this->id_produit, $this->quantite, $this->date_enreg, $this->status_, $this->id_entreprise);
         return $stmt->execute();
     }
 
     // Valider un stock
     public function validate()
     {
-        $query = "UPDATE " . $this->table . " SET status_ = 'validé' WHERE id_stock = ?";
+        $query = "SELECT quantite, id_produit FROM " . $this->table . " WHERE id_stock = ? and status_ = 0 ";
         $stmt = $this->HURO->prepare($query);
-        $stmt->bind_param("i", $this->id_stock);
-        return $stmt->execute();
+        $stmt->bind_param("s", $this->id_stock);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($quantite, $id_produit);
+        while ($stmt->fetch()) {
+            $produit = new Produit($id_produit);
+            $produit->quantite_dispo += $quantite;
+            if ($produit->update()) {
+                $q = "UPDATE " . $this->table . " SET status_ = '1' WHERE id_stock = ? and id_produit = ? ";
+                $sstmt = $this->HURO->prepare($q);
+                $sstmt->bind_param("si", $this->id_stock, $produit->id_produit);
+                $sstmt->execute();        
+                # code...
+            }
+           
+        }
     }
 
     // Annuler un stock

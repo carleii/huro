@@ -70,7 +70,7 @@
                                     <!-- Input -->
                                     <div class="field">
                                         <div class="control has-icon">
-                                            <input class="input" type="tel" name="tel"  placeholder="telephone" />
+                                            <input class="input" type="number" min="8" name="tel" autocomplete="false"  placeholder="telephone" />
                                             <span class="form-icon">
                                                 <i data-feather="user"></i>
                                             </span>
@@ -79,7 +79,7 @@
                                     <!-- Input -->
                                     <div class="field">
                                         <div class="control has-icon">
-                                            <input class="input" name="password" type="password" placeholder="Password" />
+                                            <input class="input" name="password" type="password" autocomplete="false" placeholder="Password" />
                                             <span class="form-icon">
                                                 <i data-feather="lock"></i>
                                             </span>

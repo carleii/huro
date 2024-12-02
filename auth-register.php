@@ -374,7 +374,7 @@
                                     <div class="field">
                                         <div class="control">
                                             <input id="choices-text-remove-button" class="input"
-                                                value="696970539" name="resume_employer" placeholder="Enter phone">
+                                                value="" name="resume_employer" placeholder="Enter phone">
                                         </div>
                                     </div>
                                     <div class="h-avatar is-big">
