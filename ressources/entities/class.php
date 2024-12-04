@@ -40,7 +40,6 @@ class Utilisateur
     // Méthode pour s'authentifier
     public function authenticate()
     {
-        echo $this->telephone;
         $query = "SELECT nom, mot_de_passe, status_, niveau_acces, id_entreprise FROM " . $this->table . " WHERE telephone = ?";
         $stmt = $this->HURO->prepare($query);
         $stmt->bind_param("s", $this->telephone);
@@ -148,6 +147,14 @@ class Admin2 extends Admin1
         $stock = new Stock;
         $stock->id_stock = $id_stock;   
         return $stock->validate();
+    }
+
+    // Annuler un produit d'un stock
+    public function cancelStockProduct($id_stock, $id_produit){
+        $stock = new Stock();
+        $stock->id_stock = $id_stock;
+        return $stock->cancelProduct($id_produit);
+
     }
 }
 
@@ -267,17 +274,16 @@ class Entreprise
     public $telephone_utilisateur;
     public $logo;
 
-    public function __construct($telephone_utilisateur)
+    public function __construct($id_entreprise)
     {
         $this->HURO = connectDb();
-        $this->telephone_utilisateur = $telephone_utilisateur;
-        $query = "SELECT id_entreprise, nom_entreprise, telephone_utilisateur, logo FROM " . $this->table . " WHERE telephone_utilisateur = ?  ";
+        $this->id_entreprise = $id_entreprise;
+        $query = "SELECT id_entreprise, nom_entreprise, telephone_utilisateur, logo, adresse_entreprise FROM " . $this->table . " WHERE id_entreprise = $id_entreprise  ";
         $stmt = $this->HURO->prepare($query);
-        $stmt->bind_param('s', $telephone_utilisateur);
         $stmt->execute();
         $stmt->store_result();
         if ($stmt->num_rows() != 0) {
-            $stmt->bind_result($this->id_entreprise, $this->nom, $this->telephone_utilisateur, $this->logo);
+            $stmt->bind_result($this->id_entreprise, $this->nom, $this->telephone_utilisateur, $this->logo, $this->adresse);
             $stmt->fetch();
             # code...
         }
@@ -382,7 +388,7 @@ class Produit
         $query = "INSERT INTO " . $this->table . "(nom_produit, prix_standard, prix_minimum, id_entreprise, nature, unite, quantite_disponible) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->HURO->prepare($query);
         $stmt->bind_param("siiissi", $this->nom, $this->prix_standard, $this->prix_minimum, $this->id_entreprise, $this->nature, $this->unite, $this->quantite_dispo);
-        $stmt->execute();print_r($stmt);
+        return $stmt->execute();
     }
 
     // Modifier un produit
@@ -461,6 +467,15 @@ class Stock
         $query = "DELETE FROM " . $this->table . " WHERE id_stock = ?";
         $stmt = $this->HURO->prepare($query);
         $stmt->bind_param("i", $this->id_stock);
+        return $stmt->execute();
+    }
+
+    // Annuler un produit d'un stock
+    public function cancelProduct($id_produit)
+    {
+        $query = "DELETE FROM " . $this->table . " WHERE id_stock = ? and id_produit = ? ";
+        $stmt = $this->HURO->prepare($query);
+        $stmt->bind_param("si", $this->id_stock, $id_produit);
         return $stmt->execute();
     }
 }

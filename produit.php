@@ -139,7 +139,8 @@
                             if (xhr.readyState === 4) {
                                 if (xhr.status === 200) {
                                     if(xhr.response == 1){
-                                        window.open("./produit.php", "_parent");
+                                        loadProducts();
+                                        // window.open("./produit.php", "_parent");
                                     }else{
                                         notyf.success("Un probleme est survenu.");
                                     }                                    

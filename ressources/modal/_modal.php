@@ -1,7 +1,7 @@
 <!-- Ajouter des produits avec fichier excel -->
 <div id="file-product" class="modal h-modal is-big">
     <div class="modal-background h-modal-close"></div>
-    <div class="modal-content">
+    <div class="modal-content" style="overflow: initial;">
         <form action="" method="post" enctype="multipart/form-data">
             <div class="form-layout is-split">
                 <div class="form-outer">
@@ -58,7 +58,7 @@
 <!-- Ajouter produit -->
 <div id="uniq-product" class="modal h-modal is-big">
     <div class="modal-background h-modal-close"></div>
-    <div class="modal-content">
+    <div class="modal-content" style="overflow: initial;">
         <form action="" method="post" id="enregistrer-produit">
             <div class="form-layout is-split">
                 <div class="form-outer">
@@ -239,7 +239,7 @@
 <!-- Enregistrer un stock -->
 <div id="new-stock" class="modal h-modal is-big">
     <div class="modal-background h-modal-close"></div>
-    <div class="modal-content">
+    <div class="modal-content" style="overflow: initial;">
         <form action="" method="post" id="enregistrer-stock" enctype="multipart/form-data">
             <div class="form-layout is-split">
                 <div class="form-outer">
@@ -267,27 +267,27 @@
                         <div class="form-section">
                             <div class="left">
                                 <div class="field">
-                                <sub>les produits illimités n'y figurent pas.</sub>
+                                    <sub>les produits illimités n'y figurent pas.</sub>
 
                                     <div class="control has-icons-left">
                                         <div class="select">
                                             <select name="produit" required>
-                                                <?php 
+                                                <?php
                                                 $request = "SELECT * FROM produit WHERE id_entreprise = '$utilisateur->id_entreprise' and quantite_disponible > -1 ORDER BY nom_produit";
                                                 $query = mysqli_query($HURO, $request);
                                                 while ($r = mysqli_fetch_assoc($query)) {
-                                                    echo'
-                                                        <option value='.$r['id_produit'].'>'.$r['nom_produit'].' - '.$r['unite'].'</option>
+                                                    echo '
+                                                        <option value=' . $r['id_produit'] . '>' . $r['nom_produit'] . ' - ' . $r['unite'] . '</option>
                                                     ';
                                                     # code...
                                                 }
                                                 ?>
-                                                
+
                                             </select>
-                                           
+
                                         </div>
                                         <div class="icon is-small is-left">
-                                        <i class="lnil lnil-arrow-up-circle"></i>
+                                            <i class="lnil lnil-arrow-up-circle"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -295,7 +295,7 @@
                                     <div class="control has-icon">
                                         <input class="input" type="number" name="qte" required value="1" min="1" placeholder="">
                                         <div class="form-icon">
-                                        <i class="lnil lnil-inbox"></i>
+                                            <i class="lnil lnil-inbox"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -322,6 +322,182 @@
                 </div>
             </div>
         </form>
+
+    </div>
+</div>
+<!-- TYPES USERS =-->
+<div id="type-user" class="modal h-modal is-big">
+    <div class="modal-background h-modal-close"></div>
+    <div class="modal-content" style="overflow: initial;">
+        <div class="course-grid">
+            <div class="columns is-multiline">
+                <!--Card-->
+                <div class="column is-4">
+                    <div class="card h-card">
+                        <header class="card-header">
+                            <div class="card-header-title">Droit d'accès</div>
+                            <a href="#" class="card-header-icon text-twitter">
+                                <span class="icon">
+                                    <i class="lnir lnir-user-alt"></i>
+                                </span>
+                            </a>
+                        </header>
+                        <div class="card-content">
+                            <div class="media-flex p-b-10">
+                                <div class="h-avatar is-medium">
+                                    <img class="avatar is-squared" src="./protocoles/logo/<?php echo $entreprise->logo ?>" data-demo-src="./protocoles/logo/<?php echo $entreprise->logo ?>" alt="" data-user-popover="17">
+                                </div>
+                                <div class="flex-meta">
+                                    <span>Admin 1</span>
+                                    <ul>
+                                        <li class="text-twitter" href="#">
+                                            Enregistrer un stock
+                                        </li>
+                                        <li class="text-twitter" href="#">
+                                            Gérer les Produits
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Card-->
+                <div class="column is-4">
+                    <div class="card h-card">
+                        <header class="card-header">
+                            <div class="card-header-title">Droits D'accès</div>
+                            <a href="#" class="card-header-icon text-instagram">
+                                <span class="icon">
+                                    <i class="lnir lnir-user-alt"></i>
+                                </span>
+                            </a>
+                        </header>
+                        <div class="card-content">
+                            <div class="media-flex p-b-10">
+                                <div class="h-avatar is-medium">
+                                    <img class="avatar is-squared" src="./protocoles/logo/<?php echo $entreprise->logo ?>" data-demo-src="./protocoles/logo/<?php echo $entreprise->logo ?>" alt="" data-user-popover="9">
+                                </div>
+                                <div class="flex-meta">
+                                    <span>Admin 2</span>
+                                    <ul>
+                                        <li class="text-twitter" href="#">
+                                            @Accès Admin 1
+                                        </li>
+                                        <li class="text-twitter" href="#">
+                                            Faire des Ventes
+                                        </li>
+                                        <li class="text-twitter" href="#">
+                                            V/A des Stocks
+                                        </li>
+                                        <li class="text-twitter" href="#">
+                                            Gérer les Clients
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!--Card-->
+                <div class="column is-4">
+                    <div class="card h-card">
+                        <header class="card-header">
+                            <div class="card-header-title">Droit D'accès</div>
+                            <a href="#" class="card-header-icon text-facebook">
+                                <span class="icon">
+                                    <i class="lnir lnir-user-alt"></i> </span>
+                            </a>
+                        </header>
+                        <div class="card-content">
+                            <div class="media-flex p-b-10">
+                                <div class="h-avatar is-medium">
+                                    <img class="avatar is-squared" src="./protocoles/logo/<?php echo $entreprise->logo ?>" data-demo-src="./protocoles/logo/<?php echo $entreprise->logo ?>" alt="" data-user-popover="30">
+                                </div>
+                                <div class="flex-meta">
+                                    <span>Admin 3</span>
+                                    <li class="text-twitter" href="#">
+                                        @Accès Admin 2
+                                    </li>
+                                    <li class="text-twitter" href="#">
+                                        Annuler des ventes
+                                    </li>
+                                    <li class="text-twitter" href="#">
+                                        Modifier les Prix
+                                    </li>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- Enregistrer un utilisateur =-->
+<div id="add-user" class="modal h-modal is-big">
+    <div class="modal-background h-modal-close"></div>
+    <div class="modal-content" style="overflow: initial;">
+        <form action="./e_v.php?kjhzghvfzebpivnlscbsnfvsdvhkjzegblbsdkbgzljbgblzjbgljzebgjkbzelgjj" method="post">
+            <div class="course-grid">
+                <div class="columns is-multiline">
+                    <!--Card-->
+                    <div class="column is-10">
+                        <div class="card h-card">
+                            <header class="card-header">
+                                <div class="card-header-title">Ajouter un employer - Juste les numéros de telephone</div>
+                                <a href="#" class="card-header-icon text-twitter">
+                                    <span class="icon">
+                                        <i class="lnir lnir-user-alt"></i>
+                                    </span>
+                                </a>
+                                <div class="buttons">
+                                    <button type="submit" name="add_user" class="button h-action is-rounded">Enregistrer</button>
+                                </div>
+                            </header>
+                            <div class="card-content">
+                                <div class="field">
+                                    <div class="control">
+                                        <input id="choices-text-remove-button" required class="input"
+                                            value="" name="e_tel" placeholder="Enter phone">
+                                    </div>
+                                </div>
+                                <div class="field demo-select">
+                                    <div class="control">
+                                        <label class="radio is-solid is-square is-success">
+                                            <input type="radio" name="role" value="1">
+                                            <span></span>
+                                            Admin 1
+                                        </label>
+
+                                        <label class="radio is-solid is-square is-warning">
+                                            <input type="radio" name="role" checked value="2">
+                                            <span></span>
+                                            Admin 2
+                                        </label>
+
+                                        <label class="radio is-solid is-square is-danger">
+                                            <input type="radio" name="role" value="3">
+                                            <span></span>
+                                            Admin 3
+                                        </label>
+                                        <label class="radio is-solid is-square is-info">
+                                            <input type="radio" name="role" value="4">
+                                            <span></span>
+                                            Super Admin
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+
 
     </div>
 </div>

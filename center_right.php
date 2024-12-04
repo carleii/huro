@@ -20,7 +20,7 @@
             <i data-feather="box"></i>
             <span>Produits</span>
         </a> -->
-        <a id="components-navbar-menu" class="centered-link centered-link-toggle" data-menu-id="components-webapp-menu">
+        <a href="./users.php?kjfhae" class="centered-link centered-link-toggle">
             <i data-feather="cpu"></i>
             <span>Employers</span>
         </a>

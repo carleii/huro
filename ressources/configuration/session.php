@@ -1,8 +1,7 @@
 <?php
 if (isset($_COOKIE['andhisnameisjhoncena'])) {
-    $cookie_val = explode("$$", $_COOKIE['andhisnameisjhoncena']);
+    $cookie_val = explode("$$$", $_COOKIE['andhisnameisjhoncena']);
     $utilisateur = new Utilisateur(null, $cookie_val[0], $cookie_val[1]);
-    
     // utilisateur
     if (!$utilisateur->authenticate()) {
         header("Location: ./auth-login.php?logout");exit();
@@ -29,6 +28,6 @@ if (isset($_COOKIE['andhisnameisjhoncena'])) {
             break;
     }
     // entreprise
-    $entreprise = new Entreprise($utilisateur->telephone);
+    $entreprise = new Entreprise($utilisateur->id_entreprise);
     # code...
 }

@@ -149,6 +149,30 @@
         <script src="assets/js/touch.js" async></script>
         <!-- Async -->
         <script src="./async/js/async.js"></script>
+        <script>
+                // supprimer un produit du stock
+                function deleteProduitStock(params) {
+                    if (confirm("Voulez vous supprimer ce produit de l'enregistrement en cours ? cette action est irreversible")) {
+                        let xhr = new XMLHttpRequest();
+                        xhr.open("GET", "async/php/delete_produit_stock.php?produit="+params, true);
+                        xhr.onload = () => {
+                            if (xhr.readyState === 4) {
+                                if (xhr.status === 200) {                                    
+                                    if(xhr.response == 1){
+                                        window.open("./new_stock.php", "_parent");
+                                    }else{
+                                        notyf.success("Un probleme est survenu.");
+                                    }                                    
+                                }
+                            }
+                        }
+                        xhr.send();
+                    } else {
+                        notyf.success("Action abandonnée.");
+                    }
+
+                }
+            </script>
         <!-- Landing page js -->
 
         <!-- Dashboards js -->

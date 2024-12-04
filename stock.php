@@ -270,7 +270,7 @@
                                                 <a href="#" class="grid-item">
                                                     <div class="item-head">
                                                         <span class="type">' .  $id_stock . '</span>
-                                                        <span class="status is-info">Stock valider</span>
+                                                        <span class="status is-success">Stock validé</span>
                                                     </div>
                                                     
                                                     <div class="item-description">
@@ -434,7 +434,7 @@
                                                     <span class="cell-end">Actions</span>
                                                 </div>
                                                 <?php
-                                                $request = "SELECT produit.id_produit FROM produit WHERE produit.id_entreprise = $utilisateur->id_entreprise and (produit.quantite_disponible > 0 or produit.quantite_disponible = -1) ORDER by produit.nom_produit desc ";
+                                                $request = "SELECT id_produit FROM produit WHERE id_entreprise = $utilisateur->id_entreprise and (`quantite_disponible` > 0 or `quantite_disponible` = -1) and `nom_produit` NOT LIKE 'Deleted' ORDER by nom_produit desc ";
                                                 $stmt = $HURO->prepare($request);
                                                 $stmt->execute();
                                                 $stmt->store_result();

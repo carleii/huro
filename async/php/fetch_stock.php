@@ -7,7 +7,7 @@ require '../../ressources/configuration/session.php';
 $HURO = connectDb();
 $output = "";
 $c = $_COOKIE['new_stock'];
-$query = "SELECT stock.id_stock, stock.quantite, stock.date_enregistrement, produit.nom_produit, produit.nature, produit.unite, produit.quantite_disponible FROM produit, stock WHERE stock.id_stock = ? and stock.id_produit = produit.id_produit  ";
+$query = "SELECT stock.id_stock, stock.quantite, stock.date_enregistrement, produit.nom_produit, produit.nature, produit.unite, produit.quantite_disponible, produit.id_produit FROM produit, stock WHERE stock.id_stock = ? and stock.id_produit = produit.id_produit  ";
 $stmt = $HURO->prepare($query);
 $stmt->bind_param('s', $c);
 $stmt->execute();
@@ -15,7 +15,7 @@ $stmt->store_result();
 if ($stmt->num_rows() != 0) {
     $produit = new Produit();
     $stock = new Stock();
-    $stmt->bind_result($stock->id_stock, $stock->quantite, $stock->date_enreg, $produit->nom, $produit->nature, $produit->unite, $produit->quantite_dispo);
+    $stmt->bind_result($stock->id_stock, $stock->quantite, $stock->date_enreg, $produit->nom, $produit->nature, $produit->unite, $produit->quantite_dispo, $produit->id_produit);
     while ($stmt->fetch()) {
         $output .= '
         <!--Table item-->
@@ -50,7 +50,9 @@ if ($stmt->num_rows() != 0) {
                  <span class="tag is-solid is-rounded">'.$stock->date_enreg.'</span>
             </div>
             <div class="flex-table-cell cell-end" data-th="Actions">
-                <i class="lnil lnil-trash-can-alt-1 tag is-danger"></i>
+               <div class="icon">
+                    <i class="lnil lnil-trash-can" onclick="deleteProduitStock(\'' . $produit->id_produit . '\')"></i>
+                </div>
             </div>
         </div>
         ';

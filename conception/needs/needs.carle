@@ -70,6 +70,7 @@ un admin3 est une sorte d'admin2:
     -consulter les ventes de l'entreprise
     -consulter les traces faites par les utilisateurs de l'entreprise
     -consulter les rapports financiers généraux de l'entreprise à une date
+    -modifier le prix standard et minimum d'un produits de l'entreprise
     
 un admin2 est une sorte d'admin1:
     -ajouter un nouveau client de l'entreprise
@@ -77,7 +78,6 @@ un admin2 est une sorte d'admin1:
     -enregistrer une vente de l'entreprise
     -valider un enregistrement en stock de l'entreprise
     -annuler un enregistrement de stock de l'entreprise
-    -modifier le prix standard et minimum d'un produits de l'entreprise
     -consulter ses rapports financiers de l'entreprise à une date
     -consulter ses ventes de l'entreprise
 un admin1 peut:

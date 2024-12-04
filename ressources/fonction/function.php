@@ -4,7 +4,7 @@ function timeLapsed($givendate, $format = DATE_RSS){
     if (is_numeric($givendate)) {
         $givendate = new DateTime($givendate);
         # code...
-    }else{
+    }elseif($givendate !="" and !is_null($givendate) and !is_bool($givendate)){
         $givendate = DateTime::createFromFormat($format, $givendate);
         $currentDate = new DateTime();
         $interval = $currentDate->diff($givendate);
@@ -13,5 +13,7 @@ function timeLapsed($givendate, $format = DATE_RSS){
         $minutes = $interval->i;
         $secondes = $interval->s;
         return "$days Jours, $hours heures, $minutes minutes, $secondes secondes";
+    }else {
+        return "No data";
     }
 }
