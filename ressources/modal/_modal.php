@@ -536,7 +536,7 @@
                                     <div class="control has-icon">
                                         <select class="input" name="produit" id="select-box">
                                             <?php 
-                                            $query = mysqli_query($HURO, "SELECT * FROM produit WHERE id_entreprise = $utilisateur->id_entreprise AND quantite_disponible > -2 AND nom_produit NOT LIKE 'Deleted' ORDER BY nom_produit");
+                                            $query = mysqli_query($HURO, "SELECT * FROM produit WHERE id_entreprise = $utilisateur->id_entreprise AND quantite_disponible > 0 or quantite_disponible = -1  AND nom_produit NOT LIKE 'Deleted' ORDER BY nom_produit");
                                             while ($result = mysqli_fetch_assoc($query)) {
                                                 echo '<option value="'.$result['id_produit'].'">'.$result['nom_produit'].'</option>';
                                                 # code...
@@ -568,7 +568,7 @@
                                 <h3 class="has-text-centered">Modifier le Prix de Vente à l'unité </h3>
                                 <div class="field">
                                     <div class="control has-icon">
-                                        <input class="input" type="number" name="prix_réduit" min="1" value="0" placeholder="Amount...">
+                                        <input class="input" type="number" name="prix_réduit" min="1" value="1" placeholder="Amount...">
                                         <div class="form-icon">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-dollar-sign">
                                                 <line x1="12" y1="1" x2="12" y2="23"></line>

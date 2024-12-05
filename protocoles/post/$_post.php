@@ -138,3 +138,17 @@ if (isset($_POST['new_sell'])) {
     header("Location: sells.php");exit();
     # code...
 }
+// Terminer une vente
+if (isset($_POST['endsell'])) {
+    $t = $_POST['tc'];
+    if (!empty($t)) {
+        $c = $_COOKIE['new_sell'];
+        $admin->ajouterClient(null, $_POST['tc'], $_POST['ac'], $utilisateur->id_entreprise);
+        mysqli_query($HURO, "UPDATE vente SET id_client = '$t' WHERE id_vente = '$c' ");
+        setcookie('new_sell');
+        unset($_COOKIE['new_sell']);
+        header("Location: ./personnal-home.php");exit();
+        # code...
+    }
+    # code...
+}

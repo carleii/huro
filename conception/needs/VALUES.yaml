@@ -1,12 +1,12 @@
 VALUES
-    personnal home: ecomerce
+    personnal home: ecomerce go------------------------
     client : dashboard personnal
     entreprise et parametre: profile-settings admin-profile-1-2-3-settings
     produit et parametre: list-datatable-1, table-flex-advanced  okay il reste --lien vers le produit, supprimer, modifier
     stock et parametre: admin-project-3 okay
     trace d'activité: admin-profile-notification
     employer et parametre: hr dashboard okay
-    vente : utility-invoice --------------go
+    vente : utility-invoice okay
     facture: utility-invoice, voir la vente
     statistique financier: dashboard-finance-1
     demo : lifestyle video

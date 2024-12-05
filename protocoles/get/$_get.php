@@ -18,3 +18,8 @@ if (isset($_GET['dlkjhgfezertyuiolkjnbfdertyujbvcdszasdvhjuytrezsxcvbnjuytredfgh
     }
     # code...
 }
+// Supprimer vente
+if (isset($_GET['kiuyghvbnczevzevzchtgebsv'])) {
+    $admin->annulerVente($_GET['kiuyghvbnczevzevzchtgebsv'], $_GET['ktsjhgfdcvbjuytred']);
+    # code...
+}

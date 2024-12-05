@@ -61,7 +61,7 @@ class Utilisateur
         return $stmt->execute();
     }
 
-    // Créer une entreprise (Admin1)
+    // Creer une entreprise (Admin1)
     public function createEntreprise($nom, $adresse)
     {
         $entreprise = new Entreprise($this->telephone);
@@ -79,7 +79,7 @@ class Admin1 extends Utilisateur
         parent::__construct($nom, $telephone, $mot_de_passe, $id_entreprise = null, $niveau_acces = null);
     }
 
-    // Créer un produit
+    // Creer un produit
     public function createProduit($id_produit, $id_entreprise, $nom, $prix_standard, $prix_minimum, $nature, $unite, $quantite_dispo)
     {
         $produit = new Produit($id_produit, $id_entreprise, $nom, $prix_standard, $prix_minimum, $nature, $unite, $quantite_dispo);       
@@ -167,17 +167,18 @@ class Admin3 extends Admin2
     }
 
     // Annuler une vente
-    public function annulerVente($id_vente)
+    public function annulerVente($id_vente, $id_produit)
     {
         $vente = new Vente;
         $vente->id_vente = $id_vente;
+        $vente->id_produit = $id_produit;
         return $vente->cancel();
     }
 
     // Consulter les rapports financiers généraux
     public function consulterRapportsFinanciersGeneraux($date)
     {
-        // Logique pour consulter les rapports financiers généraux à une date donnée
+        // Logique pour consulter les rapports financiers généraux à une date donnee
         // Cela dépend des détails du rapport financier, que vous devrez implémenter
         return "Rapport financier général pour la date: " . $date;
     }
@@ -227,7 +228,7 @@ class Administrateur extends Admin3
         return $stmt->execute();
     }
 
-    // Créer une entreprise
+    // Creer une entreprise
     public function creerEntreprise($nom, $adresse)
     {
         return parent::createEntreprise($nom, $adresse);
@@ -252,8 +253,10 @@ class Client
         // 
     }
 
-    // Créer un client
-    public function create() {}
+    // Creer un client
+    public function create() {
+       return mysqli_query($this->HURO, "INSERT INTO $this->table VALUES (null, '$this->nom', '$this->numero', '$this->adresse', $this->id_entreprise) ");
+    }
 
     // Update un client
     public function update() {}
@@ -291,7 +294,7 @@ class Entreprise
         // 
     }
 
-    // Créer une entreprise
+    // Creer une entreprise
     public function create()
     {
         $query = "INSERT INTO " . $this->table . " (nom_entreprise, adresse_entreprise, telephone_utilisateur) VALUES (?, ?, ?)";
@@ -382,7 +385,7 @@ class Produit
         // 
     }
 
-    // Créer un produit
+    // Creer un produit
     public function create()
     {
         $query = "INSERT INTO " . $this->table . "(nom_produit, prix_standard, prix_minimum, id_entreprise, nature, unite, quantite_disponible) VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -493,7 +496,7 @@ class Vente
     public $prix;
     public $quantite;
     public $id_produit;
-    public $status__vente;
+    public $status_vente;
     public $id_entreprise;
 
     public function __construct()
@@ -528,16 +531,16 @@ class Vente
     // Annuler une vente
     public function cancel()
     {
-        $query = "UPDATE " . $this->table . " SET status__vente = 'annulée' WHERE id_vente = ?";
+        $query = "UPDATE " . $this->table . " SET status_vente = 'annulee' WHERE id_vente = ? and id_produit = ? ";
         $stmt = $this->HURO->prepare($query);
-        $stmt->bind_param("i", $this->id_vente);
+        $stmt->bind_param("si", $this->id_vente, $this->id_produit);
         return $stmt->execute();
     }
 
     // Supprimer une vente
     public function delete()
     {
-        $query = "UPDATE " . $this->table . " SET status__vente = 'annulée' WHERE id_vente = ?";
+        $query = "UPDATE " . $this->table . " SET status_vente = 'annulee' WHERE id_vente = ?";
         $stmt = $this->HURO->prepare($query);
         $stmt->bind_param("i", $this->id_vente);
         return $stmt->execute();

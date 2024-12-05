@@ -1,6 +1,7 @@
 'use strict';
 loadProducts();
 loadStock();
+loadSells();
 // Enregistrer un produit
 $("#enregistrer-produit").on("submit", function (e) {
     e.preventDefault();
@@ -121,7 +122,7 @@ $("#enregistrer-sell").on("submit", function (e) {
                 if (xhr.response == 1) {
                     notyf.success("Enregistré dans la base de données");
                     this.reset();
-                    // loadStock();
+                    loadSells();
                 }else if(xhr.response == -1) {
                     notyf.error("Cet enregistrement a déjà été fait.");
                 }else{

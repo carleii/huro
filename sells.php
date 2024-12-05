@@ -96,184 +96,109 @@ if (!isset($_COOKIE['new_sell'])) {
 
                     <div class="page-content-inner">
                         <!--Invoice-->
-                        <div class="invoice-wrapper">
-                            <div class="invoice-header">
-                                <div class="left">
-                                    <h3>Facture <?php echo $_COOKIE['new_sell'] ?></h3>
-                                    <div class="buttons">
-                                    <form action="" method="post">
-                                        <button type="button" class="button h-button is-success is-outlined h-modal-trigger" data-modal="uniq-sell">
-                                            <span class="icon">
-                                                <i aria-hidden="true" class="fas fa-plus"></i>
-                                            </span>
-                                            <span></span>
-                                        </button>
-                                    </form>
-                                </div>
-                                </div>
-                                <div class="right">
-                                    <div class="controls">
-                                        <a class="action">
-                                            <i data-feather="printer"></i>
-                                        </a>
-                                        <a class="action">
-                                            <i data-feather="download-cloud"></i>
-                                        </a>
-                                        <a class="action">
-                                            <i data-feather="mail"></i>
-                                        </a>
-                                        <a class="action">
-                                            <i data-feather="arrow-left"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="invoice-body">
-                                <div class="invoice-card">
-                                    <div class="invoice-section is-flex is-bordered">
-                                        <div class="h-avatar is-large">
-                                            <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="./protocoles/logo/<?php echo $entreprise->logo ?>" alt="" data-user-popover="6" />
-                                        </div>
-                                        <div class="meta">
-                                            <h3><?php echo $entreprise->nom ?></h3>
-                                            <span><?php echo $entreprise->adresse ?></span>
-                                            <span><?php echo $utilisateur->telephone ?></span>
-                                        </div>
-                                        <div class="end">
-                                            <h3>Invoice <?php echo $_COOKIE['new_sell'] ?></h3>
-                                            <span>Issued: <?php echo date(DATE_RSS) ?></span>
-                                            <span>Payment Due: <?php echo date(DATE_RSS) ?></span>
+                        <form action="" method="post">
+                            <div class="invoice-wrapper">
+                                <div class="invoice-header">
+                                    <div class="left">
+                                        <h3>Facture <?php echo $_COOKIE['new_sell'] ?></h3>
+                                        <div class="buttons">
+                                            <button type="button" class="button h-button is-success is-outlined h-modal-trigger" data-modal="uniq-sell">
+                                                <span class="icon">
+                                                    <i aria-hidden="true" class="fas fa-plus"></i>
+                                                </span>
+                                                <span></span>
+                                            </button>
                                         </div>
                                     </div>
-                                    <div class="invoice-section is-flex is-bordered">
-                                        <div class="h-avatar is-customer is-large">
-                                            <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/photo/demo/brands/airbnb.svg" alt="" />
+                                    <div class="right">
+                                        <div class="controls">
+                                            <a class="action">
+                                                <i data-feather="printer"></i>
+                                            </a>
+                                            <a class="action">
+                                                <i data-feather="download-cloud"></i>
+                                            </a>
+                                            <a class="action">
+                                                <i data-feather="mail"></i>
+                                            </a>
+                                            <a class="action">
+                                                <i data-feather="arrow-left"></i>
+                                            </a>
                                         </div>
-                                        <div class="meta">
-                                            
+                                    </div>
+                                </div>
+                                <div class="invoice-body">
+                                    <div class="invoice-card">
+                                        <div class="invoice-section is-flex is-bordered">
+                                            <div class="h-avatar is-large">
+                                                <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="./protocoles/logo/<?php echo $entreprise->logo ?>" alt="" data-user-popover="6" />
+                                            </div>
+                                            <div class="meta">
+                                                <h3><?php echo $entreprise->nom ?></h3>
+                                                <span><?php echo $entreprise->adresse ?></span>
+                                                <span><?php echo $utilisateur->telephone ?></span>
+                                            </div>
+                                            <div class="end">
+                                                <h3>Invoice <?php echo $_COOKIE['new_sell'] ?></h3>
+                                                <span>Issued: <?php echo date(DATE_RSS) ?></span>
+                                                <span>Payment Due: <?php echo date(DATE_RSS) ?></span>
+                                            </div>
+                                        </div>
+                                        <div class="invoice-section is-flex is-bordered">
+                                            <div class="h-avatar is-customer is-large">
+                                                <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/photo/demo/brands/airbnb.svg" alt="" />
+                                            </div>
+                                            <div class="meta">
+
                                                 <div class="field">
                                                     <div class="control">
-                                                    <input class="input" type="text" placeholder="telephone client" name="ct">
+                                                        <input class="input" type="text" placeholder="telephone client" name="tc">
                                                     </div>
                                                 </div>
-                                            <div class="field">
+                                                <div class="field">
                                                     <div class="control">
-                                                    <input class="input" type="text" placeholder="adresse client" name="ad">
+                                                        <input class="input" type="text" placeholder="adresse client" name="ac">
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div class="end is-left">
+                                                <h3>Description</h3>
+                                                <p>
+                                                <div class="field">
+                                                    <div class="control">
+                                                        <textarea name="des" class="textarea is-primary-focus" rows="2" cols="35" placeholder="Commenter la vente...."></textarea>
+                                                    </div>
+                                                </div>
+                                                </p>
+                                            </div>
                                         </div>
-                                        <div class="end is-left">
-                                            <h3>Description</h3>
-                                            <p>
-                                            <div class="field">
-                                                <div class="control">
-                                                    <textarea name="des" class="textarea is-primary-focus" rows="2" cols="35" placeholder="Commenter la vente...."></textarea>
+                                        <div class="invoice-section">
+                                            <div class="flex-table">
+                                                <!--Table header-->
+                                                <div class="flex-table-header">
+                                                    <span class="is-grow">Produit</span>
+                                                    <span class="cell-end">Quantité</span>
+                                                    <span>Quantity</span>
+                                                    <span>P.Unit.</span>
+                                                    <span>Soustotal</span>
                                                 </div>
-                                            </div>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="invoice-section">
-                                        <div class="flex-table">
-                                            <!--Table header-->
-                                            <div class="flex-table-header">
-                                                <span class="is-grow">Produit</span>
-                                                <span class="cell-end">Quantité</span>
-                                                <span>Quantity</span>
-                                                <span>P.Unit.</span>
-                                                <span>Soustotal</span>
-                                            </div>
-                                            <div id="sell-list">
-                                                
-                                            </div>
-                                            <!--Table item-->
-                                            <div class="flex-table-item">
-                                                <div class="flex-table-cell is-grow" data-th="">
-                                                    <span class="dark-text">Website Redesign</span>
-                                                </div>
-                                                <div class="flex-table-cell cell-end" data-th="Unit">
-                                                    <span class="light-text"></span>
-                                                </div>
-                                                <div class="flex-table-cell" data-th="Quantity">
-                                                    <span class="light-text">54</span>
-                                                </div>
-                                                <div class="flex-table-cell" data-th="Rate">
-                                                    <span class="dark-inverted">$24</span>
-                                                </div>
-                                                <div class="flex-table-cell has-text-right" data-th="Subtotal">
-                                                    <span class="dark-inverted">$1,296</span>
-                                                </div>
-                                            </div>
+                                                <div id="sell-list">
 
-                                         
-                                        </div>
-
-                                        <div class="flex-table sub-table">
-                                            <!--Table item-->
-                                            <div class="flex-table-item">
-                                                <div class="flex-table-cell is-grow is-vhidden" data-th="">
-                                                    <span class="dark-text"></span>
-                                                </div>
-                                                <div class="flex-table-cell cell-end is-vhidden" data-th="Unit">
-                                                    <span class="light-text"></span>
-                                                </div>
-                                                <div class="flex-table-cell is-vhidden" data-th="Quantity">
-                                                    <span class="light-text"></span>
-                                                </div>
-                                                <div class="flex-table-cell" data-th="">
-                                                    <span class="table-label">Subtotal</span>
-                                                </div>
-                                                <div class="flex-table-cell has-text-right" data-th="">
-                                                    <span class="table-total dark-inverted">$1,808</span>
-                                                </div>
-                                            </div>
-                                            <!--Table item-->
-                                            <div class="flex-table-item">
-                                                <div class="flex-table-cell is-grow is-vhidden" data-th="">
-                                                    <span class="dark-text"></span>
-                                                </div>
-                                                <div class="flex-table-cell cell-end is-vhidden" data-th="Unit">
-                                                    <span class="light-text"></span>
-                                                </div>
-                                                <div class="flex-table-cell is-vhidden" data-th="Quantity">
-                                                    <span class="light-text"></span>
-                                                </div>
-                                                <div class="flex-table-cell" data-th="">
-                                                    <span class="table-label">Taxes</span>
-                                                </div>
-                                                <div class="flex-table-cell has-text-right" data-th="">
-                                                    <span class="table-total dark-inverted">$273</span>
-                                                </div>
-                                            </div>
-                                            <!--Table item-->
-                                            <div class="flex-table-item">
-                                                <div class="flex-table-cell is-grow is-vhidden" data-th="">
-                                                    <span class="dark-text"></span>
-                                                </div>
-                                                <div class="flex-table-cell cell-end is-vhidden" data-th="Unit">
-                                                    <span class="light-text"></span>
-                                                </div>
-                                                <div class="flex-table-cell is-vhidden" data-th="Quantity">
-                                                    <span class="light-text"></span>
-                                                </div>
-                                                <div class="flex-table-cell" data-th="">
-                                                    <span class="table-label">Total</span>
-                                                </div>
-                                                <div class="flex-table-cell has-text-right" data-th="">
-                                                    <span class="table-total is-bigger dark-inverted">$2,081</span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div><hr><br>
-                            <button class="button h-button is-success is-elevated">
-                                                <span class="icon">
-                            <i aria-hidden="true" class="fas fa-check"></i>
-                          </span>
-                                                <span>Approve</span>
-                                            </button>
-                        </div>
+                                <hr><br>
+                                <button type="submit" name="endsell" class="button h-button is-success is-elevated">
+                                    <span class="icon">
+                                        <i aria-hidden="true" class="fas fa-check"></i>
+                                    </span>
+                                    <span>Approve</span>
+                                </button>
+                            </div>
+                        </form>
+
                     </div>
                 </div>
             </div>
@@ -295,8 +220,8 @@ if (!isset($_COOKIE['new_sell'])) {
 
         <!-- Additional Features -->
         <script src="assets/js/touch.js" async></script>
-            <!-- Async -->
-            <script src="./async/js/async.js"></script>
+        <!-- Async -->
+        <script src="./async/js/async.js"></script>
         <!-- Landing page js -->
 
         <!-- Dashboards js -->
