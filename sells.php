@@ -183,7 +183,9 @@ if (!isset($_COOKIE['new_sell'])) {
                                                 <span>P.Unit.</span>
                                                 <span>Soustotal</span>
                                             </div>
-
+                                            <div id="sell-list">
+                                                
+                                            </div>
                                             <!--Table item-->
                                             <div class="flex-table-item">
                                                 <div class="flex-table-cell is-grow" data-th="">

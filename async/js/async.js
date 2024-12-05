@@ -120,9 +120,12 @@ $("#enregistrer-sell").on("submit", function (e) {
                 console.log(xhr.response);                
                 if (xhr.response == 1) {
                     notyf.success("Enregistré dans la base de données");
+                    this.reset();
                     // loadStock();
-                } else {
+                }else if(xhr.response == -1) {
                     notyf.error("Cet enregistrement a déjà été fait.");
+                }else{
+                    notyf.error("Cette quantité n'est pas disponible dans le stock.");
                 }
 
             }
@@ -131,3 +134,28 @@ $("#enregistrer-sell").on("submit", function (e) {
     let formData = new FormData(this);
     xhr.send(formData);
 });
+
+// Charger les ventes encours dans le tableau
+function loadSells() {
+    let ul = document.getElementById("sell-list");
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "async/php/fetch_sell.php", true);
+    xhr.setRequestHeader('Cache-Control', 'no-cache, no-store, max-age=0');
+    xhr.setRequestHeader('Expires', 'Thu, 1 Jan 1970 00:00:00 GMT');
+    xhr.setRequestHeader('Pragma', 'no-cache');
+
+    xhr.onload = () => {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                if (xhr.response != "") {
+                    ul.innerHTML = xhr.response;
+                } else {
+                    notyf.error("Vous n'avez encore fait aucune vente.");
+                }
+
+            }
+        }
+    }
+    let formData = new FormData(this);
+    xhr.send(formData);
+}

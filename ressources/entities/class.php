@@ -506,9 +506,23 @@ class Vente
     public function create()
     {
         $query = "INSERT INTO " . $this->table . " SET qte = ?, id_produit = ?, id_vente = ?, id_utilisateur = ?, id_client = ?, date_vente = ?, prix_vente = ?, status_vente = 'complete', id_entreprise = ?";
-        $stmt = $this->HURO->prepare($query);       
-        $stmt->bind_param("iississi", $this->quantite, $this->id_produit, $this->id_vente, $this->id_utilisateur, $this->id_client, $this->date_vente, $this->prix, $this->id_entreprise);
-        return $stmt->execute();
+        $produit = new Produit($this->id_produit);
+        if ($produit->quantite_dispo > -1 and ($produit->quantite_dispo - $this->quantite >= 0)) {
+            $stmt = $this->HURO->prepare($query);       
+            $stmt->bind_param("iississi", $this->quantite, $this->id_produit, $this->id_vente, $this->id_utilisateur, $this->id_client, $this->date_vente, $this->prix, $this->id_entreprise);
+            $produit->quantite_dispo = $produit->quantite_dispo - $this->quantite;
+            if ($stmt->execute()) {
+                return ($produit->update()) ? 1: -2;        
+                # code...
+            }
+            return -1; //Probleme de vente
+            # code...
+        }elseif ($produit->quantite_dispo == -1) {
+            $stmt = $this->HURO->prepare($query);       
+            $stmt->bind_param("iississi", $this->quantite, $this->id_produit, $this->id_vente, $this->id_utilisateur, $this->id_client, $this->date_vente, $this->prix, $this->id_entreprise);
+            return ($stmt->execute()) ? 1: -1;  
+            # code...
+        }
     }
 
     // Annuler une vente

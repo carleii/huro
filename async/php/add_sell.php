@@ -18,6 +18,6 @@ if ($utilisateur->niveau_acces >=2 ) {
     $vente->id_produit = $_POST['produit'];
     $vente->quantite = $_POST['qte'];
     $vente->id_vente = $_COOKIE['new_sell'];
-    echo $retVal = ( $vente->create()) ? 1 : -1 ;
+    echo $vente->create();
     # code...
 }
