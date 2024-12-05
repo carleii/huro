@@ -99,22 +99,25 @@ if (isset($_POST['file_product'])) {
 // Enregistrer un nouveau stock
 if (isset($_POST['new_stock'])) {
     if (isset($_COOKIE['new_stock.php'])) {
-        header("Location: new_stock.php");exit();
+        header("Location: new_stock.php");
+        exit();
         # code...
     }
-    setcookie("new_stock", uniqid(), time() + 60*60*12);
-    header("Location: new_stock.php");exit();
+    setcookie("new_stock", uniqid(), time() + 60 * 60 * 12);
+    header("Location: new_stock.php");
+    exit();
     # code...
 }
 // Enregistrer les employers
 if (!isset($_POST['add_user']) and $_SERVER['SCRIPT_NAME'] == '/huro/e_v.php') {
-    header("Location: ./users.php?kjhgfghbevzjvhzvejbhnvbberbethegetr");exit();
+    header("Location: ./users.php?kjhgfghbevzjvhzvejbhnvbberbethegetr");
+    exit();
     # code...
 }
 if (isset($_POST['add_user'])) {
     $ev = [];
     $e_tel = explode(",", $_POST['e_tel']);
-    for ($i=0; $i < count($e_tel); $i++) {        
+    for ($i = 0; $i < count($e_tel); $i++) {
         if ($utilisateur->niveau_acces == 4) {
             $p = random_int(9999, 99999);
             $e = new Utilisateur(null, $e_tel[$i], $p, $entreprise->id_entreprise, $_POST['role']);
@@ -131,11 +134,13 @@ if (isset($_POST['add_user'])) {
 // Enregistrer une vente
 if (isset($_POST['new_sell'])) {
     if (isset($_COOKIE['new_sell.php'])) {
-        header("Location: sells.php");exit();
+        header("Location: sells.php");
+        exit();
         # code...
     }
-    setcookie("new_sell", uniqid(), time() + 60*60*12);
-    header("Location: sells.php");exit();
+    setcookie("new_sell", uniqid(), time() + 60 * 60 * 12);
+    header("Location: sells.php");
+    exit();
     # code...
 }
 // Terminer une vente
@@ -145,10 +150,11 @@ if (isset($_POST['endsell'])) {
         $c = $_COOKIE['new_sell'];
         $admin->ajouterClient(null, $_POST['tc'], $_POST['ac'], $utilisateur->id_entreprise);
         mysqli_query($HURO, "UPDATE vente SET id_client = '$t' WHERE id_vente = '$c' ");
-        setcookie('new_sell');
-        unset($_COOKIE['new_sell']);
-        header("Location: ./personnal-home.php");exit();
         # code...
     }
+    setcookie('new_sell');
+    unset($_COOKIE['new_sell']);
+    header("Location: ./personnal-home.php");
+    exit();
     # code...
 }

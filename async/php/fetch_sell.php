@@ -7,7 +7,7 @@ require '../../ressources/configuration/session.php';
 $HURO = connectDb();
 $output = "";
 $c = $_COOKIE['new_sell'];
-$query = "SELECT produit.id_produit, vente.qte, vente.prix_vente FROM produit, vente WHERE vente.id_vente = ? and vente.id_produit = produit.id_produit and vente.status_vente = 'complete'  ";
+$query = "SELECT produit.id_produit, vente.qte, vente.prix_vente FROM produit, vente WHERE vente.id_vente = ? and vente.id_produit = produit.id_produit and vente.status_vente = 'complete' and vente.id_produit = produit.id_produit ";
 $stmt = $HURO->prepare($query);
 $stmt->bind_param('s', $c);
 $stmt->execute();
