@@ -104,3 +104,30 @@ function loadStock() {
     let formData = new FormData(this);
     xhr.send(formData);
 }
+
+// Enregistrer une vente
+$("#enregistrer-sell").on("submit", function (e) {
+    e.preventDefault();
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "async/php/add_sell.php", true);
+    xhr.setRequestHeader('Cache-Control', 'no-cache, no-store, max-age=0');
+    xhr.setRequestHeader('Expires', 'Thu, 1 Jan 1970 00:00:00 GMT');
+    xhr.setRequestHeader('Pragma', 'no-cache');
+
+    xhr.onload = () => {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                console.log(xhr.response);                
+                if (xhr.response == 1) {
+                    notyf.success("Enregistré dans la base de données");
+                    // loadStock();
+                } else {
+                    notyf.error("Cet enregistrement a déjà été fait.");
+                }
+
+            }
+        }
+    }
+    let formData = new FormData(this);
+    xhr.send(formData);
+});

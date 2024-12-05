@@ -24,10 +24,7 @@
             <i data-feather="cpu"></i>
             <span>Employers</span>
         </a>
-        <a class="centered-link centered-link-toggle" href="./?sell">
-            <i data-feather="shopping-cart"></i>
-            <span>VENDRE</span>
-        </a>
+       
         <a href="webapp-messaging-chat.html" class="centered-link">
             <i data-feather="message-circle"></i>
             <span>Chat</span>
@@ -50,6 +47,14 @@
                 <div class="search-results has-slimscroll"></div>
             </div>
         </div>
+    </div>
+    <div class="buttons">
+        <form action="" method="post">
+            <button type="submit" name="new_sell" class="button h-button is-success is-outlined">
+                <span class="icon">
+                <i data-feather="shopping-cart"></i>                            </span>
+            </button>
+        </form>
     </div>
 </div>
 <div class="right">

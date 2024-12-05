@@ -128,3 +128,13 @@ if (isset($_POST['add_user'])) {
     }
     # code...
 }
+// Enregistrer une vente
+if (isset($_POST['new_sell'])) {
+    if (isset($_COOKIE['new_sell.php'])) {
+        header("Location: sells.php");exit();
+        # code...
+    }
+    setcookie("new_sell", uniqid(), time() + 60*60*12);
+    header("Location: sells.php");exit();
+    # code...
+}

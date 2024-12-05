@@ -501,3 +501,112 @@
 
     </div>
 </div>
+<!-- Ajouter produit à la vente -->
+<div id="uniq-sell" class="modal h-modal is-big">
+    <div class="modal-background h-modal-close"></div>
+    <div class="modal-content" style="overflow: initial;">
+        <form action="" method="post" id="enregistrer-sell">
+            <div class="form-layout is-split">
+                <div class="form-outer">
+                    <div class="form-header stuck-header">
+                        <div class="form-header-inner">
+                            <div class="left">
+                                <h3>Faite la vente</h3>
+                            </div>
+                            <div class="right">
+                                <div class="buttons">
+                                    <button type="reset" id="reset-button" class="button h-button is-danger is-outlined is-raised">
+                                        Effacer
+                                    </button>
+                                    <button type="submit" id="save-sell" name="save-sell" class="button h-button is-success is-outlined is-raised">
+                                        Ajouter
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-body">
+                        <div class="form-section">
+                            <div class="left">
+                                <h3 class="has-text-centered">Produit</h3>
+                                <div class="operator">
+                                    <span>And</span>
+                                </div>
+                                <div class="field">
+                                    <div class="control has-icon">
+                                        <select class="input" name="produit" id="select-box">
+                                            <?php 
+                                            $query = mysqli_query($HURO, "SELECT * FROM produit WHERE id_entreprise = $utilisateur->id_entreprise AND quantite_disponible > -2 AND nom_produit NOT LIKE 'Deleted' ORDER BY nom_produit");
+                                            while ($result = mysqli_fetch_assoc($query)) {
+                                                echo '<option value="'.$result['id_produit'].'">'.$result['nom_produit'].'</option>';
+                                                # code...
+                                            }
+                                            ?>
+                                        </select>
+                                        <div class="form-icon">
+                                            <i data-feather="shopping-cart"></i>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="right">
+                                <h3 class="has-text-centered">Quantité</h3>
+                                <div class="field">
+                                    <div class="control has-icon">
+                                        <input class="input" type="number" name="qte" min="1" value="1" placeholder="Amount...">
+                                        <div class="form-icon">
+                                            <i data-feather="layers"></i>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-section is-grey">
+                            <div class="left">
+                                <h3 class="has-text-centered">Modifier le Prix de Vente à l'unité </h3>
+                                <div class="field">
+                                    <div class="control has-icon">
+                                        <input class="input" type="number" name="prix_réduit" min="0" value="0" placeholder="Amount...">
+                                        <div class="form-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-dollar-sign">
+                                                <line x1="12" y1="1" x2="12" y2="23"></line>
+                                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="right">
+                                <div class="field">
+                                    <label>Vendre à quel prix ?</label>
+                                    <div class="control">
+                                        <label class="radio is-info">
+                                            <input type="radio" checked value="-1" name="notification_selection">
+                                            <span></span>
+                                            Prix Standard
+                                        </label>
+
+                                        <label class="radio is-outlined is-primary">
+                                            <input type="radio" value="0" name="notification_selection">
+                                            <span></span>
+                                            Prix Minimum
+                                        </label>
+
+                                        <label class="radio is-outlined is-primary">
+                                            <input type="radio" value="-2" name="notification_selection">
+                                            <span></span>
+                                            Prix de Vente Modifier
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>

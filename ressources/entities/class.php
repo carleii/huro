@@ -491,6 +491,8 @@ class Vente
     public $id_client;
     public $date_vente;
     public $prix;
+    public $quantite;
+    public $id_produit;
     public $status__vente;
     public $id_entreprise;
 
@@ -503,9 +505,9 @@ class Vente
     // Enregistrer une vente
     public function create()
     {
-        $query = "INSERT INTO " . $this->table . " SET id_utilisateur = ?, id_client = ?, date_vente = ?, prix = ?, status__vente = 'complète', id_entreprise = ?";
-        $stmt = $this->HURO->prepare($query);
-        $stmt->bind_param("iissi", $this->id_utilisateur, $this->id_client, $this->date_vente, $this->prix, $this->id_entreprise);
+        $query = "INSERT INTO " . $this->table . " SET qte = ?, id_produit = ?, id_vente = ?, id_utilisateur = ?, id_client = ?, date_vente = ?, prix_vente = ?, status_vente = 'complete', id_entreprise = ?";
+        $stmt = $this->HURO->prepare($query);       
+        $stmt->bind_param("iississi", $this->quantite, $this->id_produit, $this->id_vente, $this->id_utilisateur, $this->id_client, $this->date_vente, $this->prix, $this->id_entreprise);
         return $stmt->execute();
     }
 
