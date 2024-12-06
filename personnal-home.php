@@ -118,7 +118,7 @@
                                     # code...
                                 } else {
                                     $go = $prix_vente;
-                                }echo $id_produit."---------";
+                                }
                                 $tst += $go * $quantite;
                                 $no++;
                                 if ($status == "complete") {
@@ -165,7 +165,7 @@
                                     </div>
                                     <div class="dashboard-tile-inner">
                                         <div class="left">
-                                            <span class="dark-inverted">$389.9K</span>
+                                            <span class="dark-inverted"><?php echo $tic/1000  ?>K</span>
                                         </div>
                                         <div class="right">
                                             <div id="spark2"></div>
@@ -185,7 +185,7 @@
                                     </div>
                                     <div class="dashboard-tile-inner">
                                         <div class="left">
-                                            <span class="dark-inverted">371</span>
+                                            <span class="dark-inverted"><?php echo $no  ?></span>
                                         </div>
                                         <div class="right">
                                             <div id="spark3"></div>
@@ -205,7 +205,7 @@
                                     </div>
                                     <div class="dashboard-tile-inner">
                                         <div class="left">
-                                            <span class="dark-inverted">29</span>
+                                            <span class="dark-inverted"><?php echo $loss  ?></span>
                                         </div>
                                         <div class="right">
                                             <div id="spark4"></div>
