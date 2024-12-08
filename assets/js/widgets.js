@@ -23,8 +23,8 @@ function _unsupportedIterableToArray(e, t) {
         ? Array.from(e)
         : "Arguments" === r ||
           /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r)
-        ? _arrayLikeToArray(e, t)
-        : void 0
+          ? _arrayLikeToArray(e, t)
+          : void 0
     );
   }
 }
@@ -145,53 +145,65 @@ $(function () {
 
 
 
-    
 
 
-    $("#line-stats-widget-chart").length)
+
+      $("#line-stats-widget-chart").length)
   ) {
-    var r = {
-      series: [
-        {
-          name: "Revenue",
-          data: [10835, 40214, 36257, 51411, 45697, 61221, 65295, 91512, 75648],
-        },
-      ],
-      chart: {
-        height: 250,
-        type: "line",
-        zoom: { enabled: !1 },
-        toolbar: { show: !1 },
-      },
-      colors: [themeColors.accent],
-      dataLabels: { enabled: !1 },
-      stroke: { width: [2, 2, 2], curve: "smooth" },
-      grid: { row: { colors: ["transparent", "transparent"], opacity: 0.5 } },
-      xaxis: {
-        categories: [
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct",
-        ],
-      },
-      tooltip: {
-        y: {
-          formatter: function (e) {
-            return "$" + e;
-          },
-        },
-      },
-    };
-    new ApexCharts(
-      document.querySelector("#line-stats-widget-chart"),
-      r
-    ).render();
+
+
+
+
+
+
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "async/php/revenue.php");
+    xhr.onload = () => {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          let data = xhr.response;
+          console.log(data);
+          var r = {
+            series: [
+              {
+                name: "Revenue",
+                data: data[2],
+              },
+            ],
+            chart: {
+              height: 250,
+              type: "line",
+              zoom: { enabled: !1 },
+              toolbar: { show: !1 },
+            },
+            colors: [themeColors.accent],
+            dataLabels: { enabled: !1 },
+            stroke: { width: [2, 2, 2], curve: "smooth" },
+            grid: { row: { colors: ["transparent", "transparent"], opacity: 0.5 } },
+            xaxis: {
+              categories: data[1],
+            },
+            tooltip: {
+              y: {
+                formatter: function (e) {
+                  return e + "K";
+                },
+              },
+            },
+          };
+          new ApexCharts(
+            document.querySelector("#line-stats-widget-chart"),
+            r
+          ).render();
+        }
+      }
+    }
+    xhr.responseType = "json"
+    xhr.send();
+
+
+
   }
 
 
@@ -217,63 +229,90 @@ $(function () {
 
 
   if ($("#area-stats-widget-chart").length) {
-    var o = {
-      series: [
-        {
-          name: "Returning",
-          data: [318.42, 407.16, 284.12, 517, 452.45, 1209.34, 1010.11],
-        },
-        {
-          name: "Newcomers",
-          data: [112.42, 324.45, 457.5, 312.75, 342.45, 527.56, 414.75],
-        },
-        {
-          name: "Abandonned",
-          data: [787.89, 534.46, 365.78, 107.45, 145.78, 54.42, 27.12],
-        },
-      ],
-      chart: { height: 250, type: "area", offsetY: -10, toolbar: { show: !1 } },
-      colors: [themeColors.accent, themeColors.info, themeColors.orange],
-      legend: { position: "bottom", horizontalAlign: "center", show: !1 },
-      dataLabels: { enabled: !1 },
-      stroke: { width: [2, 2, 2], curve: "smooth" },
-      xaxis: {
-        type: "datetime",
-        categories: [
-          "2020-09-19T00:00:00.000Z",
-          "2020-09-20T01:30:00.000Z",
-          "2020-09-21T02:30:00.000Z",
-          "2020-09-22T03:30:00.000Z",
-          "2020-09-23T04:30:00.000Z",
-          "2020-09-24T05:30:00.000Z",
-          "2020-09-25T06:30:00.000Z",
-        ],
-      },
-      tooltip: {
-        x: { format: "dd/MM/yy HH:mm" },
-        y: {
-          formatter: function (e) {
-            return "$" + e;
-          },
-        },
-      },
-    };
-    new ApexCharts(
-      document.querySelector("#area-stats-widget-chart"),
-      o
-    ).render();
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "async/php/cra.php");
+    xhr.onload = () => {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          let data = xhr.response;
+          console.log(data);
+          var o = {
+            series: [
+              {
+                name: "Chiffre",
+                data: data[2],
+              },
+              {
+                name: "Revenue",
+                data: data[3],
+              },
+              {
+                name: "Abandonned",
+                data: data[4],
+              },
+            ],
+            chart: { height: 280, type: "area", offsetY: -10, toolbar: { show: !1 } },
+            colors: [themeColors.accent, themeColors.success, themeColors.orange],
+            legend: { position: "bottom", horizontalAlign: "center", show: !1 },
+            dataLabels: { enabled: !1 },
+            stroke: { width: [2, 2, 2], curve: "smooth" },
+            xaxis: {
+              categories: data[1],
+            },
+            tooltip: {
+              y: {
+                formatter: function (e) {
+                  return e + "K" ;
+                },
+              },
+            },
+          };
+          new ApexCharts(
+            document.querySelector("#area-stats-widget-chart"),
+            o
+          ).render();
+
+        }
+      }
+    }
+    xhr.responseType = "json"
+    xhr.send();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   }
   if ($(".spark-tile-widget").length) {
     (Apex.grid = { padding: { right: 0, left: 0 } }),
       (Apex.dataLabels = { enabled: !1 });
     var a = function (e) {
-        for (var t, r, o = e.slice(), a = o.length; 0 !== a; )
-          (r = Math.floor(Math.random() * a)),
-            (t = o[(a -= 1)]),
-            (o[a] = o[r]),
-            (o[r] = t);
-        return o;
-      },
+      for (var t, r, o = e.slice(), a = o.length; 0 !== a;)
+        (r = Math.floor(Math.random() * a)),
+          (t = o[(a -= 1)]),
+          (o[a] = o[r]),
+          (o[r] = t);
+      return o;
+    },
       s = [
         472, 454, 547, 385, 562, 247, 652, 318, 379, 391, 622, 515, 355, 415,
         358, 271, 932, 534, 615, 278, 546, 435, 192, 465,

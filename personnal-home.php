@@ -100,6 +100,8 @@
                         $tic = 0;
                         $no = 0;
                         $loss = 0;
+                        $revenuecemois = 0;
+                        $revenuemoisdernier = 0;
                         $query = "SELECT produit.id_produit, vente.qte, vente.prix_vente, vente.status_vente, vente.date_vente FROM produit, vente WHERE vente.date_vente = ? and vente.id_utilisateur = ? and vente.id_produit = produit.id_produit  ";
                         $stmt = $HURO->prepare($query);
                         $today = date('Y-m-d');
@@ -120,16 +122,17 @@
                                     $go = $prix_vente;
                                 }
                                 $tst += $go * $quantite;
-                                $no++;
+                               
                                 if ($status == "complete") {
+                                    $no++;
                                     $tic += $go * $quantite;
                                     # code...
-                                }else {
-                                    $loss++;
+                                } else {                                    
+                                    $loss += $go * $quantite;
                                 }
                                 # code...
                             }
-                           
+
                             # code...
                         }
                         ?>
@@ -138,14 +141,14 @@
                             <div class="column is-3">
                                 <div class="dashboard-tile">
                                     <div class="tile-head">
-                                        <h3>Total Sales Today</h3>
+                                        <h3>Chiffres Aff. Today</h3>
                                         <div class="h-icon is-info is-rounded">
                                             <i data-feather="gift"></i>
                                         </div>
                                     </div>
                                     <div class="dashboard-tile-inner">
                                         <div class="left">
-                                            <span class="dark-inverted"> <?php echo $tst/1000  ?>K</span>
+                                            <span class="dark-inverted"> <?php echo $tst / 1000  ?>K</span>
                                         </div>
                                         <div class="right">
                                             <div id="spark1"></div>
@@ -158,14 +161,14 @@
                             <div class="column is-3">
                                 <div class="dashboard-tile">
                                     <div class="tile-head">
-                                        <h3>Total Income</h3>
+                                        <h3>Today Revenue</h3>
                                         <div class="h-icon is-purple is-rounded">
                                             <i data-feather="dollar-sign"></i>
                                         </div>
                                     </div>
                                     <div class="dashboard-tile-inner">
                                         <div class="left">
-                                            <span class="dark-inverted"><?php echo $tic/1000  ?>K</span>
+                                            <span class="dark-inverted"><?php echo $tic / 1000  ?>K</span>
                                         </div>
                                         <div class="right">
                                             <div id="spark2"></div>
@@ -178,7 +181,7 @@
                             <div class="column is-3">
                                 <div class="dashboard-tile">
                                     <div class="tile-head">
-                                        <h3>New Orders</h3>
+                                        <h3>Ventes Faites Today</h3>
                                         <div class="h-icon is-green is-rounded">
                                             <i data-feather="box"></i>
                                         </div>
@@ -198,14 +201,14 @@
                             <div class="column is-3">
                                 <div class="dashboard-tile">
                                     <div class="tile-head">
-                                        <h3>Abandonned</h3>
+                                        <h3>Ventes Annulées</h3>
                                         <div class="h-icon is-orange is-rounded">
                                             <i data-feather="shopping-cart"></i>
                                         </div>
                                     </div>
                                     <div class="dashboard-tile-inner">
                                         <div class="left">
-                                            <span class="dark-inverted"><?php echo $loss  ?></span>
+                                            <span class="dark-inverted"><?php echo $loss/1000  ?> k</span>
                                         </div>
                                         <div class="right">
                                             <div id="spark4"></div>
@@ -218,7 +221,7 @@
                             <div class="column is-6">
                                 <div class="stat-widget line-stats-widget is-straight">
                                     <div class="widget-head">
-                                        <h3 class="dark-inverted">Revenue</h3>
+                                        <h3 class="dark-inverted">Revenue Personnel Annuel - <?php echo date("Y") ?></h3>
                                         <!--Dropdown-->
                                         <div class="dropdown is-spaced is-dots is-right dropdown-trigger">
                                             <div class="is-trigger" aria-haspopup="true">
@@ -267,14 +270,52 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <?php
+                                    $revenuecemois = 0;
+                                    $revenuemoisdernier = 0;
+                                    $query = "SELECT produit.id_produit, vente.qte, vente.prix_vente, vente.status_vente, vente.date_vente FROM produit, vente WHERE vente.id_utilisateur = ? and vente.id_produit = produit.id_produit  ";
+                                    $stmt = $HURO->prepare($query);
+                                    $mois = date('m');
+                                    $stmt->bind_param('s', $utilisateur->telephone);
+                                    $stmt->execute();
+                                    $stmt->store_result();
+                                    $stmt->bind_result($id_produit, $quantite, $prix_vente, $status, $date);
+                                    while ($stmt->fetch()) {                                                                                
+                                        if (IsthisMonth($date, 'Y-m-d') == 0) {
+                                            $produit = new Produit($id_produit);
+                                            if ($prix_vente == -1) {
+                                                $go = $produit->prix_standard;
+                                                # code...
+                                            } elseif ($prix_vente == 0) {
+                                                $go = $produit->prix_minimum;
+                                                # code...
+                                            } else {
+                                                $go = $prix_vente;
+                                            }
+                                            if ($status == "complete") {
+                                                $revenuecemois += $go * $quantite;
+                                                # code...
+                                            }
+                                            # code...
+                                        }elseif(IsthisMonth($date, 'Y-m-d') == 1) {
+                                            if ($status == "complete") {
+                                                $revenuemoisdernier += $go * $quantite;
+                                                # code...
+                                            }
+                                            # code...
+                                        }
+
+                                        # code...
+                                    }
+                                    ?>
                                     <div class="line-stats">
                                         <div class="line-stat">
-                                            <span>This Month</span>
-                                            <span class="current">$75,648.43</span>
+                                            <span>Ce mois - <?php echo date("F") ?></span>
+                                            <span class="current"><?php echo $revenuecemois/1000 ?> k</span>
                                         </div>
                                         <div class="line-stat">
-                                            <span>Last Month</span>
-                                            <span class="dark-inverted">$91,512.18</span>
+                                            <span>Mois dernier</span>
+                                            <span class="dark-inverted"><?php echo $revenuemoisdernier/1000 ?> k</span>
                                         </div>
                                     </div>
                                     <div id="line-stats-widget-chart"></div>
@@ -285,7 +326,7 @@
                             <div class="column is-6">
                                 <div class="stat-widget area-stats-widget is-straight">
                                     <div class="widget-head">
-                                        <h3 class="dark-inverted">Customers</h3>
+                                        <h3 class="dark-inverted">Votre Chiffre d'Affaires - Revenue - Abandon: <?php echo date("Y") ?></h3>
                                         <!--Dropdown-->
                                         <div class="dropdown is-spaced is-dots is-right dropdown-trigger">
                                             <div class="is-trigger" aria-haspopup="true">
@@ -334,7 +375,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="area-stats">
+                                    <!-- <div class="area-stats">
                                         <div class="area-stat">
                                             <span>New Customers</span>
                                             <span class="current">249</span>
@@ -343,7 +384,7 @@
                                             <span>Returning</span>
                                             <span class="dark-inverted">684</span>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div id="area-stats-widget-chart"></div>
                                 </div>
                             </div>
