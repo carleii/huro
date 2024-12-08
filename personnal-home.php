@@ -122,12 +122,12 @@
                                     $go = $prix_vente;
                                 }
                                 $tst += $go * $quantite;
-                               
+
                                 if ($status == "complete") {
                                     $no++;
                                     $tic += $go * $quantite;
                                     # code...
-                                } else {                                    
+                                } else {
                                     $loss += $go * $quantite;
                                 }
                                 # code...
@@ -208,7 +208,7 @@
                                     </div>
                                     <div class="dashboard-tile-inner">
                                         <div class="left">
-                                            <span class="dark-inverted"><?php echo $loss/1000  ?> k</span>
+                                            <span class="dark-inverted"><?php echo $loss / 1000  ?> k</span>
                                         </div>
                                         <div class="right">
                                             <div id="spark4"></div>
@@ -280,7 +280,7 @@
                                     $stmt->execute();
                                     $stmt->store_result();
                                     $stmt->bind_result($id_produit, $quantite, $prix_vente, $status, $date);
-                                    while ($stmt->fetch()) {                                                                                
+                                    while ($stmt->fetch()) {
                                         if (IsthisMonth($date, 'Y-m-d') == 0) {
                                             $produit = new Produit($id_produit);
                                             if ($prix_vente == -1) {
@@ -297,7 +297,7 @@
                                                 # code...
                                             }
                                             # code...
-                                        }elseif(IsthisMonth($date, 'Y-m-d') == 1) {
+                                        } elseif (IsthisMonth($date, 'Y-m-d') == 1) {
                                             if ($status == "complete") {
                                                 $revenuemoisdernier += $go * $quantite;
                                                 # code...
@@ -311,11 +311,11 @@
                                     <div class="line-stats">
                                         <div class="line-stat">
                                             <span>Ce mois - <?php echo date("F") ?></span>
-                                            <span class="current"><?php echo $revenuecemois/1000 ?> k</span>
+                                            <span class="current"><?php echo $revenuecemois / 1000 ?> k</span>
                                         </div>
                                         <div class="line-stat">
                                             <span>Mois dernier</span>
-                                            <span class="dark-inverted"><?php echo $revenuemoisdernier/1000 ?> k</span>
+                                            <span class="dark-inverted"><?php echo $revenuemoisdernier / 1000 ?> k</span>
                                         </div>
                                     </div>
                                     <div id="line-stats-widget-chart"></div>
@@ -390,7 +390,7 @@
                             </div>
 
                             <!--Flex Stat Widget-->
-                            <div class="column is-6">
+                            <!-- <div class="column is-6">
                                 <div class="stat-widget flex-stat-widget is-straight">
                                     <div class="chart-media">
                                         <div class="meta">
@@ -407,10 +407,10 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <!--Flex Stat Widget-->
-                            <div class="column is-6">
+                            <!-- <div class="column is-6">
                                 <div class="stat-widget flex-stat-widget is-straight has-fullheight">
                                     <div class="chart-media">
                                         <div class="meta">
@@ -427,10 +427,10 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <!--Grouped Stat Widget-->
-                            <div class="column is-6">
+                            <!-- <div class="column is-6">
                                 <div class="stat-widget grouped-stat-widget is-straight">
                                     <div class="widget-head">
                                         <h3 class="dark-inverted">Shipping Stats</h3>
@@ -465,10 +465,10 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <!--Grouped Stat Widget-->
-                            <div class="column is-6">
+                            <!-- <div class="column is-6">
                                 <div class="stat-widget grouped-stat-widget is-straight">
                                     <div class="widget-head">
                                         <h3 class="dark-inverted">Customer Support</h3>
@@ -503,13 +503,13 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <!--Table-->
                             <div class="column is-12">
                                 <!--Header-->
                                 <div class="table-header">
-                                    <h3 class="dark-inverted">Recent Orders</h3>
+                                    <h3 class="dark-inverted">Ventes Récentes</h3>
                                     <div class="field">
                                         <div class="control">
                                             <div class="h-select">
@@ -562,171 +562,68 @@
                                         <span>Tracking</span>
                                         <span class="cell-end">Actions</span>
                                     </div>
+                                    <?php
+                                    $query = "SELECT DISTINCT(id_vente) as idvente, date_vente, id_client FROM vente WHERE status_vente = 'complete' and id_entreprise = '$entreprise->id_entreprise' and id_utilisateur = '$utilisateur->telephone'  ORDER BY date_vente LIMIT 10";
+                                    $query = mysqli_query($HURO, $query);
+                                    while ($result = mysqli_fetch_assoc($query)) {
+                                        $idvente = $result['idvente'];
+                                        $date_vente = $result['date_vente'];
+                                        $id_client = $result['id_client'];
+                                        $q = "SELECT produit.id_produit, vente.qte, vente.prix_vente FROM produit, vente WHERE vente.date_vente = '$date_vente' and vente.id_utilisateur = '$utilisateur->telephone' and vente.id_vente = '$idvente' and vente.id_produit = produit.id_produit  ";
+                                        $q = mysqli_query($HURO, $q);
+                                        $facture = 0;
+                                        while ($r = mysqli_fetch_assoc($q)) {
+                                            if (1) {
+                                                $produit = new Produit($id_produit);
+                                                if ($r['prix_vente'] == -1) {
+                                                    $go = $produit->prix_standard;
+                                                    # code...
+                                                } elseif ($r['prix_vente'] == 0) {
+                                                    $go = $produit->prix_minimum;
+                                                    # code...
+                                                } else {
+                                                    $go = ($r['prix_vente']);
+                                                }
+                                                $facture += $go * $r['qte'];
+                                            }
+                                            # code...
+                                        }
+                                        echo '
+                                         <!--Table item-->
+                                        <div class="flex-table-item">
+                                            <div class="flex-table-cell is-media is-grow" data-th="">
+                                            
+                                                <div>
+                                                    <span
+                                                        class="item-name dark-inverted is-font-alt is-weight-600"><a href="tel:'.$id_client.'">'.$id_client.'</a></span>
+                                                    <span class="item-meta">
+                                                        <span>#158456</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="flex-table-cell" data-th="Date">
+                                                <span class="light-text">'.$date_vente.'</span>
+                                            </div>
+                                            <div class="flex-table-cell" data-th="Amount">
+                                                <span class="dark-inverted is-weight-500">'.$facture.'</span>
+                                            </div>
+                                            <div class="flex-table-cell" data-th="Status">
+                                                <span class="tag is-green is-rounded">Paid</span>
+                                            </div>
+                                            <div class="flex-table-cell" data-th="Tracking">
+                                                <a class="action-link is-pushed-mobile">'.$idvente.'</a>
+                                            </div>
+                                            <div class="flex-table-cell cell-end" data-th="Actions">
+                                                <button class="button h-button is-dark-outlined is-pushed-mobile">
+                                                    View Order
+                                                </button>
+                                            </div>
+                                        </div>
+                                        ';
+                                        # code...
+                                    }
+                                    ?>
 
-                                    <!--Table item-->
-                                    <div class="flex-table-item">
-                                        <div class="flex-table-cell is-media is-grow" data-th="">
-                                            <div class="h-avatar is-medium">
-                                                <img class="avatar is-squared" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/8.jpg" alt="" />
-                                            </div>
-                                            <div>
-                                                <span
-                                                    class="item-name dark-inverted is-font-alt is-weight-600">Erik K.</span>
-                                                <span class="item-meta">
-                                                    <span>#158456</span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="flex-table-cell" data-th="Date">
-                                            <span class="light-text">Oct 31, 2020</span>
-                                        </div>
-                                        <div class="flex-table-cell" data-th="Amount">
-                                            <span class="dark-inverted is-weight-500">$863.42</span>
-                                        </div>
-                                        <div class="flex-table-cell" data-th="Status">
-                                            <span class="tag is-green is-rounded">Paid</span>
-                                        </div>
-                                        <div class="flex-table-cell" data-th="Tracking">
-                                            <a class="action-link is-pushed-mobile">TR-7295</a>
-                                        </div>
-                                        <div class="flex-table-cell cell-end" data-th="Actions">
-                                            <button class="button h-button is-dark-outlined is-pushed-mobile">
-                                                View Order
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <!--Table item-->
-                                    <div class="flex-table-item">
-                                        <div class="flex-table-cell is-media is-grow" data-th="">
-                                            <div class="h-avatar is-medium">
-                                                <img class="avatar is-squared" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/22.jpg" alt="" />
-                                            </div>
-                                            <div>
-                                                <span
-                                                    class="item-name dark-inverted is-font-alt is-weight-600">Jimmy H.</span>
-                                                <span class="item-meta">
-                                                    <span>#15893</span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="flex-table-cell" data-th="Date">
-                                            <span class="light-text">Oct 31, 2020</span>
-                                        </div>
-                                        <div class="flex-table-cell" data-th="Amount">
-                                            <span class="dark-inverted is-weight-500">$128.00</span>
-                                        </div>
-                                        <div class="flex-table-cell" data-th="Status">
-                                            <span class="tag is-green is-rounded">Paid</span>
-                                        </div>
-                                        <div class="flex-table-cell" data-th="Tracking">
-                                            <a class="action-link is-pushed-mobile">TR-6259</a>
-                                        </div>
-                                        <div class="flex-table-cell cell-end" data-th="Actions">
-                                            <button class="button h-button is-dark-outlined is-pushed-mobile">
-                                                View Orderwe
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <!--Table item-->
-                                    <div class="flex-table-item">
-                                        <div class="flex-table-cell is-media is-grow" data-th="">
-                                            <div class="h-avatar is-medium">
-                                                <img class="avatar is-squared" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/25.jpg" alt="" />
-                                            </div>
-                                            <div>
-                                                <span
-                                                    class="item-name dark-inverted is-font-alt is-weight-600">Melany W.</span>
-                                                <span class="item-meta">
-                                                    <span>#155848</span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="flex-table-cell" data-th="Date">
-                                            <span class="light-text">Oct 31, 2020</span>
-                                        </div>
-                                        <div class="flex-table-cell" data-th="Amount">
-                                            <span class="dark-inverted is-weight-500">$236.79</span>
-                                        </div>
-                                        <div class="flex-table-cell" data-th="Status">
-                                            <span class="tag is-orange is-rounded">Pending</span>
-                                        </div>
-                                        <div class="flex-table-cell" data-th="Tracking">
-                                            <span class="light-text is-pushed-mobile">N/A</span>
-                                        </div>
-                                        <div class="flex-table-cell cell-end" data-th="Actions">
-                                            <button class="button h-button is-dark-outlined is-pushed-mobile">
-                                                View Order
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <!--Table item-->
-                                    <div class="flex-table-item">
-                                        <div class="flex-table-cell is-media is-grow" data-th="">
-                                            <div class="h-avatar is-medium">
-                                                <img class="avatar is-squared" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/12.jpg" alt="" />
-                                            </div>
-                                            <div>
-                                                <span
-                                                    class="item-name dark-inverted is-font-alt is-weight-600">Joshua S.</span>
-                                                <span class="item-meta">
-                                                    <span>#154736</span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="flex-table-cell" data-th="Date">
-                                            <span class="light-text">Oct 30, 2020</span>
-                                        </div>
-                                        <div class="flex-table-cell" data-th="Amount">
-                                            <span class="dark-inverted is-weight-500">$98.31</span>
-                                        </div>
-                                        <div class="flex-table-cell" data-th="Status">
-                                            <span class="tag is-green is-rounded">Paid</span>
-                                        </div>
-                                        <div class="flex-table-cell" data-th="Tracking">
-                                            <a class="action-link is-pushed-mobile">TR-48951</a>
-                                        </div>
-                                        <div class="flex-table-cell cell-end" data-th="Actions">
-                                            <button class="button h-button is-dark-outlined is-pushed-mobile">
-                                                View Order
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <!--Table item-->
-                                    <div class="flex-table-item">
-                                        <div class="flex-table-cell is-media is-grow" data-th="">
-                                            <div class="h-avatar is-medium">
-                                                <img class="avatar is-squared" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/13.jpg" alt="" />
-                                            </div>
-                                            <div>
-                                                <span
-                                                    class="item-name dark-inverted is-font-alt is-weight-600">Tina C.</span>
-                                                <span class="item-meta">
-                                                    <span>#158315</span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="flex-table-cell" data-th="Date">
-                                            <span class="light-text">Oct 30, 2020</span>
-                                        </div>
-                                        <div class="flex-table-cell" data-th="Amount">
-                                            <span class="dark-inverted is-weight-500">$112.00</span>
-                                        </div>
-                                        <div class="flex-table-cell" data-th="Status">
-                                            <span class="tag is-green is-rounded">Paid</span>
-                                        </div>
-                                        <div class="flex-table-cell" data-th="Tracking">
-                                            <a class="action-link is-pushed-mobile">TR-48555</a>
-                                        </div>
-                                        <div class="flex-table-cell cell-end" data-th="Actions">
-                                            <button class="button h-button is-dark-outlined is-pushed-mobile">
-                                                View Order
-                                            </button>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
