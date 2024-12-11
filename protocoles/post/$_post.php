@@ -3,12 +3,12 @@
 $tellToUser = "";
 // register
 if (isset($_POST) and !empty($_POST) and $_POST != null and isset($_POST['save-acc'])) {
-    $utilisateur = new Utilisateur($_POST['name'], $_POST['telephone'], $_POST['password'], null, 4);
+    $utilisateur = new Utilisateur($_POST['name'], $_POST['telephone'],md5($_POST['password']), null, 4);
     if ($utilisateur->register()) {
-        if ($utilisateur->id_entreprise = $utilisateur->createEntreprise($_POST['business-name'], $_POST['business-adress'])) {
+        if ($utilisateur->id_entreprise = $utilisateur->createEntreprise("", $_POST['business-name'], $_POST['business-adress'])) {
             // logo
             if (isset($_FILES['resume'])) {
-                $entreprise = new Entreprise($utilisateur->telephone);
+                $entreprise = new Entreprise($utilisateur->id_entreprise);
                 $logo_name = $_FILES['resume']['name'];
                 $logoEx = explode(".", $logo_name);
                 $logo_name = $entreprise->nom . '.' . $logoEx[1];
@@ -47,12 +47,13 @@ if (isset($_POST) and !empty($_POST) and $_POST != null and isset($_POST['save-a
             }
 
             if (setcookie('andhisnameisjhoncena', $utilisateur->telephone . '$$$' . $utilisateur->mot_de_passe, time() + 24 * 60 * 60 * 30)) {
-                header("Location: ./webapp-welcome.php?f");
+                header("Location: ./personnal-home.php?f");
                 exit();
                 # code...
             }
             # code...
         } else {
+            exit("cookie failed");
             // utilisateur failed
         }
         # code...
@@ -63,7 +64,7 @@ if (isset($_POST['login'])) {
     $utilisateur = new Utilisateur(null, $_POST['tel'], $_POST['password']);
     if ($utilisateur->authenticate()) {
         if (setcookie('andhisnameisjhoncena', $utilisateur->telephone . '$$$' . $_POST['password'], time() + 24 * 60 * 60 * 30)) {
-            header("Location: ./webapp-welcome.php?f");
+            header("Location: ./personnal-home.php?f");
             exit();
             # code...
         }

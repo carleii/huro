@@ -18,7 +18,7 @@ class Utilisateur
         $this->HURO = connectDb();
         $this->nom = mysqli_real_escape_string($this->HURO, $nom);
         $this->telephone = mysqli_real_escape_string($this->HURO, $telephone);
-        $this->mot_de_passe = md5(mysqli_real_escape_string($this->HURO, $mot_de_passe));
+        $this->mot_de_passe = $mot_de_passe;
         $this->id_entreprise = mysqli_real_escape_string($this->HURO, $id_entreprise);
         $this->niveau_acces = $niveau_acces;
     }
@@ -64,9 +64,7 @@ class Utilisateur
     // Creer une entreprise (Admin1)
     public function createEntreprise($nom, $adresse)
     {
-        $entreprise = new Entreprise($this->telephone);
-        $entreprise->nom = $nom;
-        $entreprise->adresse = $adresse;
+        $entreprise = new Entreprise("", $this->telephone, $nom, $adresse);        
         return $entreprise->create();
     }
 }
@@ -277,21 +275,27 @@ class Entreprise
     public $telephone_utilisateur;
     public $logo;
 
-    public function __construct($id_entreprise)
+    public function __construct($id_entreprise, $telephone_utilisateur ="", $nom = "", $adresse = "", $logo = "")
     {
         $this->HURO = connectDb();
-        $this->id_entreprise = $id_entreprise;
-        $query = "SELECT id_entreprise, nom_entreprise, telephone_utilisateur, logo, adresse_entreprise FROM " . $this->table . " WHERE id_entreprise = $id_entreprise  ";
-        $stmt = $this->HURO->prepare($query);
-        $stmt->execute();
-        $stmt->store_result();
-        if ($stmt->num_rows() != 0) {
-            $stmt->bind_result($this->id_entreprise, $this->nom, $this->telephone_utilisateur, $this->logo, $this->adresse);
-            $stmt->fetch();
+        $this->telephone_utilisateur = $id_entreprise;
+        if (!empty($id_entreprise)) {
+            $query = "SELECT telephone_utilisateur, nom_entreprise, logo, adresse_entreprise FROM " . $this->table . " WHERE id_entreprise = $id_entreprise  ";
+            $stmt = $this->HURO->prepare($query);
+            $stmt->execute();
+            $stmt->store_result();
+            if ($stmt->num_rows() != 0) {
+                $stmt->bind_result($this->telephone_utilisateur, $this->nom, $this->logo, $this->adresse);
+                $stmt->fetch();
+                # code...
+            }
             # code...
-        }
-        # code...
-        // 
+        }else {
+            $this->telephone_utilisateur = $telephone_utilisateur;
+            $this->nom = $nom;
+            $this->adresse = $adresse;
+            $this->logo = $logo;
+        }    
     }
 
     // Creer une entreprise
@@ -304,7 +308,7 @@ class Entreprise
             // Get id_enterprise
             $query = "SELECT id_entreprise FROM " . $this->table . " WHERE telephone_utilisateur = ?";
             $stmt = $this->HURO->prepare($query);
-            $stmt->bind_param('i', $this->telephone_utilisateur);
+            $stmt->bind_param('s', $this->telephone_utilisateur);
             $stmt->execute();
             $stmt->store_result();
             $stmt->bind_result($this->id_entreprise);
@@ -335,9 +339,9 @@ class Entreprise
     // uptade logo
     public function updateLogo($path)
     {
-        $query = "UPDATE " . $this->table . " SET logo = ? WHERE telephone_utilisateur = ? ";
+        $query = "UPDATE " . $this->table . " SET logo = ? WHERE id_entreprise = ? ";
         $stmt = $this->HURO->prepare($query);
-        $stmt->bind_param("ss", $path, $this->telephone_utilisateur);
+        $stmt->bind_param("ss", $path, $this->id_entreprise);
         return $stmt->execute();
     }
 }
