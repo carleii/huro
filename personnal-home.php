@@ -581,8 +581,8 @@
                                         $q = "SELECT produit.id_produit, vente.qte, vente.prix_vente FROM produit, vente WHERE vente.id_utilisateur = '$utilisateur->telephone' and vente.id_vente = '$idvente' and vente.id_produit = produit.id_produit  ";
                                         $q = mysqli_query($HURO, $q);
                                         $facture = 0;
-                                        while ($r = mysqli_fetch_assoc($q)) {
-                                                $produit = new Produit($id_produit);
+                                        while ($r = mysqli_fetch_assoc($q)) { 
+                                                $produit = new Produit($r['id_produit']);
                                                 if ($r['prix_vente'] == -1) {
                                                     $go = $produit->prix_standard;
                                                     # code...
