@@ -4,6 +4,7 @@ require '../../ressources/database/huro.php';
 require '../../ressources/entities/class.php';
 require '../../protocoles/cookie/$_cookie.php';
 require '../../ressources/configuration/session.php';
+// print_r($entreprise);
 if ($utilisateur->niveau_acces >=2 ) {
     $vente = new Vente;
     $vente->date_vente = date('Y-m-d');

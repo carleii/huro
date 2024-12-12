@@ -61,9 +61,9 @@ if (isset($_POST) and !empty($_POST) and $_POST != null and isset($_POST['save-a
 };
 // login
 if (isset($_POST['login'])) {
-    $utilisateur = new Utilisateur(null, $_POST['tel'], $_POST['password']);
+    $utilisateur = new Utilisateur(null, $_POST['tel'], md5($_POST['password']));
     if ($utilisateur->authenticate()) {
-        if (setcookie('andhisnameisjhoncena', $utilisateur->telephone . '$$$' . $_POST['password'], time() + 24 * 60 * 60 * 30)) {
+        if (setcookie('andhisnameisjhoncena', $utilisateur->telephone . '$$$' . $utilisateur->mot_de_passe, time() + 24 * 60 * 60 * 30)) {
             header("Location: ./personnal-home.php?f");
             exit();
             # code...

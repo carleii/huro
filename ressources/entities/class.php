@@ -275,12 +275,12 @@ class Entreprise
     public $telephone_utilisateur;
     public $logo;
 
-    public function __construct($id_entreprise, $telephone_utilisateur ="", $nom = "", $adresse = "", $logo = "")
+    public function __construct($id_entreprise = "", $telephone_utilisateur ="", $nom = "", $adresse = "", $logo = "")
     {
         $this->HURO = connectDb();
-        $this->telephone_utilisateur = $id_entreprise;
         if (!empty($id_entreprise)) {
-            $query = "SELECT telephone_utilisateur, nom_entreprise, logo, adresse_entreprise FROM " . $this->table . " WHERE id_entreprise = $id_entreprise  ";
+            $this->id_entreprise = $id_entreprise;
+            $query = "SELECT telephone_utilisateur, nom_entreprise, logo, adresse_entreprise FROM " . $this->table . " WHERE id_entreprise = '$id_entreprise'  ";
             $stmt = $this->HURO->prepare($query);
             $stmt->execute();
             $stmt->store_result();
@@ -514,7 +514,7 @@ class Vente
     {
         $query = "INSERT INTO " . $this->table . " SET qte = ?, id_produit = ?, id_vente = ?, id_utilisateur = ?, id_client = ?, date_vente = ?, prix_vente = ?, status_vente = 'complete', id_entreprise = ?";
         $produit = new Produit($this->id_produit);
-        if ($produit->quantite_dispo > -1 and ($produit->quantite_dispo - $this->quantite >= 0)) {
+        if ($produit->quantite_dispo > -1 and (($produit->quantite_dispo - $this->quantite) >= 0)) {
             $stmt = $this->HURO->prepare($query);       
             $stmt->bind_param("iississi", $this->quantite, $this->id_produit, $this->id_vente, $this->id_utilisateur, $this->id_client, $this->date_vente, $this->prix, $this->id_entreprise);
             $produit->quantite_dispo = $produit->quantite_dispo - $this->quantite;
@@ -522,6 +522,7 @@ class Vente
                 return ($produit->update()) ? 1: -2;        
                 # code...
             }
+            print_r($this->HURO);
             return -1; //Probleme de vente
             # code...
         }elseif ($produit->quantite_dispo == -1) {

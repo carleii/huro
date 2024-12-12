@@ -1,6 +1,6 @@
 <div class="center">
     <div id="webapp-navbar-menu" class="centered-links">
-        <a id="dashboards-navbar-menu" class="centered-link centered-link-toggle" data-menu-id="dashboards-webapp-menu">
+        <a href="./personnal-home.php" id="dashboards-navbar-menu" class="centered-link centered-link-toggle">
             <i data-feather="activity"></i>
             <span>Dashboards</span>
         </a>
@@ -25,7 +25,7 @@
             <span>Employers</span>
         </a>
        
-        <a href="webapp-messaging-chat.html" class="centered-link">
+        <a href="#" class="centered-link">
             <i data-feather="message-circle"></i>
             <span>Chat</span>
         </a>
@@ -67,7 +67,7 @@
         </div>
 
         <a class="toolbar-link right-panel-trigger" data-panel="languages-panel">
-            <img src="assets/img/icons/flags/united-states-of-america.svg" alt="" />
+            <img src="assets/img/icons/flags/france.svg" alt="" />
         </a>
 
         <div class="toolbar-notifications is-hidden-mobile">
@@ -76,72 +76,7 @@
                     <i data-feather="bell"></i>
                     <span class="new-indicator pulsate"></span>
                 </div>
-                <div class="dropdown-menu" role="menu">
-                    <div class="dropdown-content">
-                        <div class="heading">
-                            <div class="heading-left">
-                                <h6 class="heading-title">Notifications</h6>
-                            </div>
-                            <div class="heading-right">
-                                <a class="notification-link" href="admin-profile-notifications.html">See all</a>
-                            </div>
-                        </div>
-                        <ul class="notification-list">
-                            <li>
-                                <a class="notification-item">
-                                    <div class="img-left">
-                                        <img class="user-photo" alt="" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/7.jpg" />
-                                    </div>
-                                    <div class="user-content">
-                                        <p class="user-info">
-                                            <span class="name">Alice C.</span> left a comment.
-                                        </p>
-                                        <p class="time">1 hour ago</p>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="notification-item">
-                                    <div class="img-left">
-                                        <img class="user-photo" alt="" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/12.jpg" />
-                                    </div>
-                                    <div class="user-content">
-                                        <p class="user-info">
-                                            <span class="name">Joshua S.</span> uploaded a file.
-                                        </p>
-                                        <p class="time">2 hours ago</p>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="notification-item">
-                                    <div class="img-left">
-                                        <img class="user-photo" alt="" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/13.jpg" />
-                                    </div>
-                                    <div class="user-content">
-                                        <p class="user-info">
-                                            <span class="name">Tara S.</span> sent you a message.
-                                        </p>
-                                        <p class="time">2 hours ago</p>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="notification-item">
-                                    <div class="img-left">
-                                        <img class="user-photo" alt="" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/25.jpg" />
-                                    </div>
-                                    <div class="user-content">
-                                        <p class="user-info">
-                                            <span class="name">Melany W.</span> left a comment.
-                                        </p>
-                                        <p class="time">3 hours ago</p>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                
             </div>
         </div>
 
@@ -160,11 +95,11 @@
                         <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/avatars/photos/8.jpg" alt="" />
                     </div>
                     <div class="meta">
-                        <span>Erik Kovalsky</span>
-                        <span>Product Manager</span>
+                        <span><?php echo $utilisateur->nom ?></span>
+                        <span><?php echo $utilisateur->telephone ?></span>
                     </div>
                 </div>
-                <a href="admin-profile-view.html" class="dropdown-item is-media">
+                <a href="#" class="dropdown-item is-media">
                     <div class="icon">
                         <i class="lnil lnil-user-alt"></i>
                     </div>
@@ -173,7 +108,7 @@
                         <span>View your profile</span>
                     </div>
                 </a>
-                <a class="dropdown-item is-media layout-switcher">
+                <a href="#" class="dropdown-item is-media layout-switcher">
                     <div class="icon">
                         <i class="lnil lnil-layout"></i>
                     </div>

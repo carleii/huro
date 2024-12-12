@@ -98,7 +98,6 @@
                         <?php
                         $tst = 0;
                         $tic = 0;
-                        $no = 0;
                         $loss = 0;
                         $revenuecemois = 0;
                         $revenuemoisdernier = 0;
@@ -124,7 +123,6 @@
                                 $tst += $go * $quantite;
 
                                 if ($status == "complete") {
-                                    $no++;
                                     $tic += $go * $quantite;
                                     # code...
                                 } else {
@@ -188,7 +186,18 @@
                                     </div>
                                     <div class="dashboard-tile-inner">
                                         <div class="left">
-                                            <span class="dark-inverted"><?php echo $no  ?></span>
+                                            <span class="dark-inverted">
+                                                <?php
+                                                $query = mysqli_query($HURO, "SELECT COUNT(DISTINCT(id_vente)) as sells FROM vente
+                                                where id_utilisateur = '$admin->telephone' and id_entreprise = '$entreprise->id_entreprise' 
+                                                and
+                                                MONTH(date_vente) = MONTH(CURDATE()) and YEAR(vente.date_vente) = YEAR(CURDATE())
+                                                 ");
+                                                $result = mysqli_fetch_assoc($query);
+                                                echo $result['sells'];
+
+                                                ?>
+                                            </span>
                                         </div>
                                         <div class="right">
                                             <div id="spark3"></div>
@@ -569,11 +578,10 @@
                                         $idvente = $result['idvente'];
                                         $date_vente = $result['date_vente'];
                                         $id_client = $result['id_client'];
-                                        $q = "SELECT produit.id_produit, vente.qte, vente.prix_vente FROM produit, vente WHERE vente.date_vente = '$date_vente' and vente.id_utilisateur = '$utilisateur->telephone' and vente.id_vente = '$idvente' and vente.id_produit = produit.id_produit  ";
+                                        $q = "SELECT produit.id_produit, vente.qte, vente.prix_vente FROM produit, vente WHERE vente.id_utilisateur = '$utilisateur->telephone' and vente.id_vente = '$idvente' and vente.id_produit = produit.id_produit  ";
                                         $q = mysqli_query($HURO, $q);
                                         $facture = 0;
                                         while ($r = mysqli_fetch_assoc($q)) {
-                                            if (1) {
                                                 $produit = new Produit($id_produit);
                                                 if ($r['prix_vente'] == -1) {
                                                     $go = $produit->prix_standard;
@@ -582,10 +590,9 @@
                                                     $go = $produit->prix_minimum;
                                                     # code...
                                                 } else {
-                                                    $go = ($r['prix_vente']);
+                                                    $go = $r['prix_vente'];
                                                 }
                                                 $facture += $go * $r['qte'];
-                                            }
                                             # code...
                                         }
                                         echo '
@@ -595,23 +602,23 @@
                                             
                                                 <div>
                                                     <span
-                                                        class="item-name dark-inverted is-font-alt is-weight-600"><a href="tel:'.$id_client.'">'.$id_client.'</a></span>
+                                                        class="item-name dark-inverted is-font-alt is-weight-600"><a href="tel:' . $id_client . '">' . $id_client . '</a></span>
                                                     <span class="item-meta">
                                                         <span>#158456</span>
                                                     </span>
                                                 </div>
                                             </div>
                                             <div class="flex-table-cell" data-th="Date">
-                                                <span class="light-text">'.$date_vente.'</span>
+                                                <span class="light-text">' . $date_vente . '</span>
                                             </div>
                                             <div class="flex-table-cell" data-th="Amount">
-                                                <span class="dark-inverted is-weight-500">'.$facture.'</span>
+                                                <span class="dark-inverted is-weight-500">' . $facture . '</span>
                                             </div>
                                             <div class="flex-table-cell" data-th="Status">
                                                 <span class="tag is-green is-rounded">Paid</span>
                                             </div>
                                             <div class="flex-table-cell" data-th="Tracking">
-                                                <a class="action-link is-pushed-mobile">'.$idvente.'</a>
+                                                <a class="action-link is-pushed-mobile">' . $idvente . '</a>
                                             </div>
                                             <div class="flex-table-cell cell-end" data-th="Actions">
                                                 <button class="button h-button is-dark-outlined is-pushed-mobile">
