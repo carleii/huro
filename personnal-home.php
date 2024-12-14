@@ -49,7 +49,7 @@
                     <div class="dropdown project-dropdown dropdown-trigger is-spaced">
                         <div class="h-avatar is-small">
                             <span class="avatar is-fake is-h-green">
-                                <span>Pd</span>
+                                <span>Ph</span>
                             </span>
                         </div>
                         <span class="status-indicator"></span>
@@ -618,7 +618,7 @@
                                                 <span class="tag is-green is-rounded">Paid</span>
                                             </div>
                                             <div class="flex-table-cell" data-th="Tracking">
-                                                <a class="action-link is-pushed-mobile">' . $idvente . '</a>
+                                                <a href="./facture.php?ktds=' . $idvente . '" class="action-link is-pushed-mobile">' . $idvente . '</a>
                                             </div>
                                             <div class="flex-table-cell cell-end" data-th="Actions">
                                                 <button class="button h-button is-dark-outlined is-pushed-mobile">

@@ -1,7 +1,7 @@
 <?php require_once './ressources/configuration/settings.php' ?>
 <!-- Get the cookie session -->
 <?php
-if (!isset($_COOKIE['new_sell'])) {
+if (!isset($_GET['ktds'])) {
     header("Location: ./");
     exit();
     # code...
@@ -15,7 +15,7 @@ if (!isset($_COOKIE['new_sell'])) {
     <!-- Required meta tags  -->
     <?php require './ressources/view/metadata/metadata.php' ?>
 
-    <title>Huro :: Vente</title>
+    <title>Huro :: Facture</title>
     <link rel="icon" type="image/png" href="assets/img/favicon.png" />
 
 
@@ -57,7 +57,7 @@ if (!isset($_COOKIE['new_sell'])) {
                     <div class="dropdown project-dropdown dropdown-trigger is-spaced">
                         <div class="h-avatar is-small">
                             <span class="avatar is-fake is-h-green">
-                                <span>Vt</span>
+                                <span>Ft</span>
                             </span>
                         </div>
                         <span class="status-indicator"></span>
@@ -100,15 +100,7 @@ if (!isset($_COOKIE['new_sell'])) {
                             <div class="invoice-wrapper">
                                 <div class="invoice-header">
                                     <div class="left">
-                                        <h3>Facture <?php echo $_COOKIE['new_sell'] ?></h3>
-                                        <div class="buttons">
-                                            <button type="button" class="button h-button is-success is-outlined h-modal-trigger" data-modal="uniq-sell">
-                                                <span class="icon">
-                                                    <i aria-hidden="true" class="fas fa-plus"></i>
-                                                </span>
-                                                <span></span>
-                                            </button>
-                                        </div>
+                                        <h3>Facture <?php echo $_GET['ktds'] ?></h3>                                       
                                     </div>
                                     <div class="right">
                                         <div class="controls">
@@ -139,12 +131,11 @@ if (!isset($_COOKIE['new_sell'])) {
                                                 <span><?php echo $utilisateur->telephone ?></span>
                                             </div>
                                             <div class="end">
-                                                <h3>Invoice <?php echo $_COOKIE['new_sell'] ?></h3>
-                                                <span>Issued: <?php echo date(DATE_RSS) ?></span>
-                                                <span>Payment Due: <?php echo date(DATE_RSS) ?></span>
+                                                <h3>Invoice <?php echo $_GET['ktds'] ?></h3>
+                                               
                                             </div>
                                         </div>
-                                        <div class="invoice-section is-flex is-bordered">
+                                        <!-- <div class="invoice-section is-flex is-bordered">
                                             <div class="h-avatar is-customer is-large">
                                                 <img class="avatar" src="https://via.placeholder.com/150x150" data-demo-src="assets/img/photo/demo/brands/airbnb.svg" alt="" />
                                             </div>
@@ -171,7 +162,7 @@ if (!isset($_COOKIE['new_sell'])) {
                                                 </div>
                                                 </p>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class="invoice-section">
                                             <div class="flex-table">
                                                 <!--Table header-->
@@ -182,20 +173,89 @@ if (!isset($_COOKIE['new_sell'])) {
                                                     <span>P.Unit.</span>
                                                     <span>Soustotal</span>
                                                 </div>
-                                                <div id="sell-list">
+                                                <div id="">
+                                                    <?php
+                                                    $output = "";
+                                                    $c = $_GET['ktds'];
+                                                    $query = "SELECT produit.id_produit, vente.qte, vente.prix_vente FROM produit, vente WHERE vente.id_vente = ? and vente.id_produit = produit.id_produit and vente.status_vente = 'complete' and vente.id_produit = produit.id_produit ";
+                                                    $stmt = $HURO->prepare($query);
+                                                    $stmt->bind_param('s', $c);
+                                                    $stmt->execute();
+                                                    $stmt->store_result();
+                                                    if ($stmt->num_rows() != 0) {
+                                                        $total = 0;
+                                                        $stmt->bind_result($id_produit, $quantite, $prix_vente);
+                                                        while ($stmt->fetch()) {
+                                                            $produit = new Produit($id_produit);
+                                                            if ($prix_vente == -1) {
+                                                                $go = $produit->prix_standard;
+                                                                # code...
+                                                            } elseif ($prix_vente == 0) {
+                                                                $go = $produit->prix_minimum;
+                                                                # code...
+                                                            } else {
+                                                                $go = $prix_vente;
+                                                            }
+                                                            $total += $go * $quantite;
+                                                            $output .= '
+                                                            <div class="flex-table-item">
+                                                                <div class="flex-table-cell is-grow" data-th="">
+                                                                <a href="sells.php?ktsjhgfdcvbjuytred=' . $id_produit . '&kiuyghvbnczevzevzchtgebsv=' . $c . '">
+                                                                 <div class="icon">
+                                                                    <i class="lnil lnil-trash-can"></i>
+                                                                </div>
+                                                                </a>           
+                                                                    <span class="dark-text">' . $produit->nom . '</span>
+                                                                </div>
+                                                                <div class="flex-table-cell cell-end" data-th="Unit">
+                                                                    <span class="light-text"></span>
+                                                                </div>
+                                                                <div class="flex-table-cell" data-th="Quantity">
+                                                                    <span class="light-text">' . $quantite . '</span>
+                                                                </div>
+                                                                <div class="flex-table-cell" data-th="Rate">
+                                                                    <span class="dark-inverted">' . $go . '</span>
+                                                                </div>
+                                                                <div class="flex-table-cell has-text-right" data-th="Subtotal">
+                                                                    <span class="dark-inverted">' . $quantite * $go . '</span>
+                                                                </div>
+                                                            </div>
+                                                            ';
+                                                        }
+                                                        $output .= '
+                                                            <div class="flex-table-item">
+                                                                <div class="flex-table-cell is-grow" data-th="">
+                                                                <a href="#">
+                                                                 <div class="icon">
+                                                                    
+                                                                </div>
+                                                                </a>           
+                                                                    <span class="dark-text"></span>
+                                                                </div>
+                                                                <div class="flex-table-cell cell-end" data-th="Unit">
+                                                                    <span class="light-text"></span>
+                                                                </div>
+                                                                <div class="flex-table-cell" data-th="Quantity">
+                                                                    <span class="light-text"></span>
+                                                                </div>
+                                                                <div class="flex-table-cell" data-th="Rate">
+                                                                    <span class="dark-inverted">Total</span>
+                                                                </div>
+                                                                <div class="flex-table-cell has-text-right" data-th="Subtotal">
+                                                                    <span class="dark-inverted">' . $total . '</span>
+                                                                </div>
+                                                            </div>
+                                                            ';
+                                                        # code...
+                                                    }
 
+                                                    echo $output;
+                                                    ?>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <hr><br>
-                                <button type="submit" name="endsell" class="button h-button is-success is-elevated">
-                                    <span class="icon">
-                                        <i aria-hidden="true" class="fas fa-check"></i>
-                                    </span>
-                                    <span>Approve</span>
-                                </button>
+                                </div>                               
                             </div>
                         </form>
 
@@ -239,6 +299,5 @@ if (!isset($_COOKIE['new_sell'])) {
 </body>
 
 
-<!-- Mirrored from huro.cssninja.io/webapp-projects-projects-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 19 Nov 2024 11:41:36 GMT -->
 
 </html>
