@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 12 déc. 2024 à 01:45
+-- Généré le : sam. 14 déc. 2024 à 05:28
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.0.30
 
@@ -49,13 +49,6 @@ CREATE TABLE `entreprise` (
   `logo` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Déchargement des données de la table `entreprise`
---
-
-INSERT INTO `entreprise` (`id_entreprise`, `nom_entreprise`, `adresse_entreprise`, `telephone_utilisateur`, `logo`) VALUES
-(1, '', 'Ultimate', '697960393', '');
-
 -- --------------------------------------------------------
 
 --
@@ -72,23 +65,6 @@ CREATE TABLE `produit` (
   `quantite_disponible` int(11) DEFAULT 0,
   `id_entreprise` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Déchargement des données de la table `produit`
---
-
-INSERT INTO `produit` (`id_produit`, `nom_produit`, `nature`, `unite`, `prix_standard`, `prix_minimum`, `quantite_disponible`, `id_entreprise`) VALUES
-(1, 'Castel', NULL, NULL, 650, 600, 0, 1),
-(2, 'Format A4', NULL, 'rame', 25, 20, 5, 1),
-(3, 'Toyota', NULL, 'piece', 1500000, 1400000, 2, 1),
-(4, 'Service marketing', NULL, 'service', 45000, 35000, -1, 1),
-(5, 'Infographie', NULL, 'service', 5000, 3500, -1, 1),
-(6, 'Abonnement Canal', NULL, 'mensuel', 10000, 5000, -1, 1),
-(7, 'Scanner', NULL, 'service', 500, 450, -1, 1),
-(8, 'Impression', NULL, 'service', 25, 20, -1, 1),
-(9, 'Reliure', NULL, 'service', 500, 450, -1, 1),
-(10, 'Saisie', NULL, 'service', 300, 150, -1, 1),
-(11, 'produit', 'produit', 'carton', 1500, 1000, 15, 1);
 
 -- --------------------------------------------------------
 
@@ -135,13 +111,6 @@ CREATE TABLE `utilisateur` (
   `status_` enum('revoque','nonrevoque') DEFAULT 'nonrevoque',
   `id_entreprise` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Déchargement des données de la table `utilisateur`
---
-
-INSERT INTO `utilisateur` (`id_utilisateur`, `nom`, `email`, `telephone`, `mot_de_passe`, `niveau_acces`, `status_`, `id_entreprise`) VALUES
-(2, 'devcarle@gmail.com', NULL, '696970539', '25f9e794323b453885f5181f1b624d0b', 4, 'nonrevoque', 1);
 
 -- --------------------------------------------------------
 
@@ -236,13 +205,13 @@ ALTER TABLE `client`
 -- AUTO_INCREMENT pour la table `entreprise`
 --
 ALTER TABLE `entreprise`
-  MODIFY `id_entreprise` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_entreprise` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `produit`
 --
 ALTER TABLE `produit`
-  MODIFY `id_produit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_produit` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `trace`
@@ -254,7 +223,7 @@ ALTER TABLE `trace`
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Contraintes pour les tables déchargées
